@@ -1,0 +1,1063 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Visual Twins — Дизайн, который говорит за вас</title>
+    <meta name="description"
+          content="Команда, которая помогает вашему бизнесу говорить ярко и просто. Стильные профили, видео и фирменный стиль."/>
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="./static/css/style.css"/>
+    <style>
+        /* ---- INTRO OVERLAY ---- */
+        #intro {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            background: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        #intro-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* пока интро активно — страница не скроллится */
+        body.intro-active {
+            overflow: hidden;
+        }
+
+        /* главный контент скрыт до конца интро */
+        #page-content {
+            opacity: 0;
+        }
+
+        /* ---- INTRO LOGO (анимируется в хедер) ---- */
+        #intro-logo {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            opacity: 0;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+        }
+
+        #intro-logo .il-wrapper {
+            display: flex;
+            align-items: center;
+            border: 1.5px solid #1A1A1A;
+            border-radius: 60px;
+            padding: 14px 20px 14px 32px;
+            gap: 20px;
+            white-space: nowrap;
+            background: #fff;
+        }
+
+        #intro-logo .il-icon {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        #intro-logo .il-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        #intro-logo .il-text {
+            font-family: 'Inter', sans-serif;
+            font-size: 3.2rem;
+            font-weight: 700;
+            line-height: 1.15;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: #1A1A1A;
+        }
+
+        @media (max-width: 768px) {
+            #intro-logo .il-wrapper {
+                padding: 10px 16px 10px 22px;
+                gap: 12px;
+            }
+
+            #intro-logo .il-icon {
+                width: 72px;
+                height: 72px;
+            }
+
+            #intro-logo .il-text {
+                font-size: 1.9rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            #intro-logo .il-wrapper {
+                padding: 8px 12px 8px 16px;
+                gap: 8px;
+            }
+
+            #intro-logo .il-icon {
+                width: 56px;
+                height: 56px;
+            }
+
+            #intro-logo .il-text {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body class="intro-active">
+
+<!-- =============================================
+     INTRO SPLASH
+     ============================================= -->
+<div id="intro">
+    <video
+            id="intro-video"
+            src="./static/video/logo-animation.mp4"
+            autoplay
+            muted
+            playsinline
+            preload="auto"
+    ></video>
+
+    <!-- Статичный логотип — появляется после видео и анимируется в хедер -->
+    <div id="intro-logo">
+        <div class="il-wrapper">
+            <span class="il-text">VISUAL<br>TWINS</span>
+            <div class="il-icon">
+                <img src="./static/images/logo-icon.png" alt="Visual Twins">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="page-content">
+
+    <!-- Custom Cursor -->
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+
+    <!-- =============================================
+         HEADER
+         ============================================= -->
+    <header class="header">
+        <a href="./" class="logo">
+            <div class="logo-wrapper">
+                <span class="logo-text">VISUAL<br>TWINS</span>
+                <div class="logo-icon">
+                    <img src="./static/images/logo-icon.png" alt="Visual Twins">
+                </div>
+            </div>
+        </a>
+
+        <div class="header-right">
+            <a href="./contact/" class="btn-cta">Начать проект</a>
+            <button class="hamburger" aria-label="Меню">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <nav class="mobile-menu">
+        <div class="mobile-nav">
+            <a href="./">Главная</a>
+            <a href="./services/">Услуги</a>
+            <a href="./portfolio/">Работы</a>
+            <a href="#team">Команда</a>
+            <a href="./contact/">Контакты</a>
+        </div>
+        <div class="menu-footer">
+            <div class="menu-social">
+                <a href="#">Instagram</a>
+                <a href="#">ВКонтакте</a>
+                <a href="#">TikTok</a>
+                <a href="#">Telegram</a>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+
+        <!-- =============================================
+             HERO
+             ============================================= -->
+        <section class="hero" id="home">
+            <canvas id="hero-canvas" class="hero-canvas"></canvas>
+            <div class="hero-content">
+                <h1 class="hero-heading">
+                    Команда, которая помогает<br>
+                    вашему бизнесу говорить <span class="pink">ярко и просто.</span>
+                </h1>
+                <p class="hero-desc">
+                    Мы создаём стильные профили, запоминающиеся видео и фирменный стиль —
+                    всё, чтобы ваши идеи увидели и полюбили. Работаем быстро, с душой и
+                    вниманием, потому что очень верим в силу хорошего дизайна.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#works" class="btn-outline">Наши работы</a>
+                    <a href="./contact/" class="btn-solid">Начать проект</a>
+                </div>
+            </div>
+            <div class="scroll-indicator">
+                <div class="scroll-line"></div>
+                <span>Scroll</span>
+            </div>
+        </section>
+
+        <!-- =============================================
+             ABOUT PREVIEW
+             ============================================= -->
+        <section class="about-preview" id="about">
+            <div class="about-media">
+                <div class="media-grid">
+                    <div class="media-card tall">
+                        <div class="media-card-placeholder">Проект 01</div>
+                    </div>
+                    <div class="media-card">
+                        <div class="media-card-placeholder">Проект 02</div>
+                    </div>
+                    <div class="media-card">
+                        <div class="media-card-placeholder">Проект 03</div>
+                    </div>
+                </div>
+                <div class="contact-bubble">
+                    <span>Свяжитесь<br>с нами</span>
+                </div>
+            </div>
+
+            <div class="about-text">
+                <h2 class="about-heading">
+                    Visual Twins — команда, которая превращает идеи в
+                    <strong>визуальные шедевры,</strong> цепляющие внимание
+                    и вызывающие доверие.
+                </h2>
+                <div class="about-services">
+                    <div class="about-service-item">
+                        Мы разрабатываем дизайн и наполняем контентом ваши страницы
+                        в Instagram, ВКонтакте, TikTok и других платформах. Используем
+                        современные тренды, чтобы ваш профиль выглядел актуально и ярко
+                        выделялся среди конкурентов.
+                    </div>
+                    <div class="about-service-item">
+                        Производим видеоролики и рекламные клипы, которые сразу захватывают
+                        внимание зрителя. В видео мы добавляем эффектные графические
+                        элементы и динамичные анимации.
+                    </div>
+                    <div class="about-service-item">
+                        Разработка фирменных цветов, единый стиль шрифтов и графики.
+                        Всё это объединяет ваш визуальный ряд, делает бренд узнаваемым.
+                        В результате вы получаете целостный имидж, который вызывает
+                        положительные ассоциации и способствует лояльности.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =============================================
+             OUR WORKS
+             ============================================= -->
+        <section class="our-works" id="works">
+            <div class="section-label">
+                <span class="dot"></span>
+                <span>Что мы умеем лучше всего</span>
+            </div>
+            <p class="section-subtitle">Упаковка брендов: от современного дизайна до профессионального видеомонтажа.</p>
+
+            <div class="works-grid">
+                <div class="work-card vertical">
+                    <div class="work-card-inner">
+                        <span class="work-card-label">Reels</span>
+                    </div>
+                    <div class="work-card-info">
+                        <div class="work-card-title">Название бренда</div>
+                        <div class="work-card-desc">Вертикальный ролик для соцсетей</div>
+                    </div>
+                </div>
+
+                <div class="work-card vertical">
+                    <div class="work-card-inner">
+                        <span class="work-card-label">Logo Animation</span>
+                    </div>
+                    <div class="work-card-info">
+                        <div class="work-card-title">Название бренда</div>
+                        <div class="work-card-desc">Анимация логотипа</div>
+                    </div>
+                </div>
+
+                <div class="work-card vertical">
+                    <div class="work-card-inner">
+                        <span class="work-card-label">Фирменный стиль</span>
+                    </div>
+                    <div class="work-card-info">
+                        <div class="work-card-title">Sasha</div>
+                        <div class="work-card-desc">Разработка фирменного стиля</div>
+                    </div>
+                </div>
+
+                <div class="work-card wide">
+                    <div class="work-card-inner">
+                        <span class="work-card-label">Horizontal Video</span>
+                    </div>
+                    <div class="work-card-info">
+                        <div class="work-card-title">Название видеоролика</div>
+                        <div class="work-card-desc">Горизонтальный рекламный ролик</div>
+                    </div>
+                </div>
+
+                <div class="work-card vertical">
+                    <div class="work-card-inner">
+                        <span class="work-card-label">Ребрендинг</span>
+                    </div>
+                    <div class="work-card-info">
+                        <div class="work-card-title">Sasha</div>
+                        <div class="work-card-desc">Полный ребрендинг</div>
+                    </div>
+                </div>
+
+                <div class="work-card vertical">
+                    <div class="work-card-inner">
+                        <span class="work-card-label">Векторная графика</span>
+                    </div>
+                    <div class="work-card-info">
+                        <div class="work-card-title">Sasha</div>
+                        <div class="work-card-desc">Векторные иллюстрации</div>
+                    </div>
+                </div>
+
+                <div class="work-card vertical">
+                    <div class="work-card-inner">
+                        <span class="work-card-label">Reels</span>
+                    </div>
+                    <div class="work-card-info">
+                        <div class="work-card-title">Название бренда</div>
+                        <div class="work-card-desc">Контент для Instagram</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="works-cta">
+                <a href="./portfolio/" class="btn-outline-light">Посмотреть полное Портфолио</a>
+            </div>
+        </section>
+
+        <!-- =============================================
+             ВИДЕОМОНТАЖ
+             ============================================= -->
+        <section class="service-section" id="video">
+            <div class="service-layout">
+                <h2 class="service-title">Видео&shy;монтаж</h2>
+                <div class="service-right">
+                    <div class="service-cards-grid">
+                        <div class="service-card">Reels</div>
+                        <div class="service-card">Reels</div>
+                        <div class="service-card">Horizont Video</div>
+                        <div class="service-card">Logo Animation</div>
+                    </div>
+                    <p class="service-desc">
+                        Мы являемся экспертами в создании динамичного видеоконтента — от
+                        ритмичного монтажа вертикальных и горизонтальных роликов до
+                        сложной анимации логотипов. Наша команда не просто собирает
+                        кадры, а закладывает в них основу будущего визуального кода
+                        вашего бренда. Мы создаём видео, которое плавно перетекает
+                        в общую стратегию дизайна, обеспечивая единство стиля в каждой
+                        детали вашего имиджа.
+                    </p>
+                    <a href="./services/" class="btn-service">Видеомонтаж →</a>
+                </div>
+            </div>
+
+            <div class="accordion">
+                <div class="accordion-item">
+                    <button class="accordion-trigger">
+                        Монтаж под любые платформы
+                        <span class="accordion-icon">
+            <svg width="12" height="12" viewBox="0 0 12 12"><line x1="6" y1="1" x2="6" y2="11" stroke="currentColor"
+                                                                  stroke-width="1.5"/><line x1="1" y1="6" x2="11" y2="6"
+                                                                                            stroke="currentColor"
+                                                                                            stroke-width="1.5"/></svg>
+          </span>
+                    </button>
+                    <div class="accordion-body">
+                        <p>Мы создаём динамичный контент в любом формате — от широкоэкранных видео для YouTube до
+                            взрывных вертикальных роликов для Reels, Shorts и TikTok. Каждый кадр адаптируется под
+                            специфику площадки, чтобы удерживать внимание зрителя.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-trigger">
+                        Анимированные и графические элементы
+                        <span class="accordion-icon">
+            <svg width="12" height="12" viewBox="0 0 12 12"><line x1="6" y1="1" x2="6" y2="11" stroke="currentColor"
+                                                                  stroke-width="1.5"/><line x1="1" y1="6" x2="11" y2="6"
+                                                                                            stroke="currentColor"
+                                                                                            stroke-width="1.5"/></svg>
+          </span>
+                    </button>
+                    <div class="accordion-body">
+                        <p>Ваше видео дополняется современным моушн-дизайном: от эффектных переходов до сложных
+                            визуальных элементов. Мы оживляем картинку, добавляя в неё глубину и динамику с помощью
+                            профессиональной графики.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-trigger">
+                        Уникальная анимация логотипов
+                        <span class="accordion-icon">
+            <svg width="12" height="12" viewBox="0 0 12 12"><line x1="6" y1="1" x2="6" y2="11" stroke="currentColor"
+                                                                  stroke-width="1.5"/><line x1="1" y1="6" x2="11" y2="6"
+                                                                                            stroke="currentColor"
+                                                                                            stroke-width="1.5"/></svg>
+          </span>
+                    </button>
+                    <div class="accordion-body">
+                        <p>Мы превращаем статичный логотип в живой символ вашего бренда, используя физику движения и
+                            световые эффекты. Это идеальный способ сделать начало или финал любого ролика запоминающимся
+                            и статусным.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-trigger">
+                        Кинематографичная цветокоррекция
+                        <span class="accordion-icon">
+            <svg width="12" height="12" viewBox="0 0 12 12"><line x1="6" y1="1" x2="6" y2="11" stroke="currentColor"
+                                                                  stroke-width="1.5"/><line x1="1" y1="6" x2="11" y2="6"
+                                                                                            stroke="currentColor"
+                                                                                            stroke-width="1.5"/></svg>
+          </span>
+                    </button>
+                    <div class="accordion-body">
+                        <p>Мы работаем над атмосферой каждого кадра, создавая сочную и профессиональную картинку,
+                            которая соответствует вашему фирменному стилю. Правильный цвет помогает передать нужное
+                            настроение и повышает общую стоимость визуального ряда.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-trigger">
+                        Звуковое оформление и саунд-дизайн
+                        <span class="accordion-icon">
+            <svg width="12" height="12" viewBox="0 0 12 12"><line x1="6" y1="1" x2="6" y2="11" stroke="currentColor"
+                                                                  stroke-width="1.5"/><line x1="1" y1="6" x2="11" y2="6"
+                                                                                            stroke="currentColor"
+                                                                                            stroke-width="1.5"/></svg>
+          </span>
+                    </button>
+                    <div class="accordion-body">
+                        <p>Каждое движение в кадре подкрепляется качественным звуком, создавая полный эффект погружения.
+                            Мы подбираем идеальный ритм и аудиоэффекты, которые усиливают визуальное восприятие
+                            контента.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-trigger">
+                        Динамичный инфо-дизайн
+                        <span class="accordion-icon">
+            <svg width="12" height="12" viewBox="0 0 12 12"><line x1="6" y1="1" x2="6" y2="11" stroke="currentColor"
+                                                                  stroke-width="1.5"/><line x1="1" y1="6" x2="11" y2="6"
+                                                                                            stroke="currentColor"
+                                                                                            stroke-width="1.5"/></svg>
+          </span>
+                    </button>
+                    <div class="accordion-body">
+                        <p>Мы упаковываем сложные данные в понятную и красивую графику прямо внутри видео. Летающие
+                            плашки, текст и иконки помогают зрителю лучше усваивать информацию, не отвлекаясь от
+                            основного сюжета.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="divider"></div>
+
+        <!-- =============================================
+             БРЕНДИНГ
+             ============================================= -->
+        <section class="service-section" id="branding">
+            <div class="service-layout">
+                <h2 class="service-title">Брен&shy;динг</h2>
+                <div class="service-right">
+                    <div class="service-cards-grid"
+                         style="grid-template-columns: 1fr 1fr; grid-template-rows: auto auto;">
+                        <div class="service-card">Logo</div>
+                        <div class="service-card tall" style="grid-row: span 2;">texture</div>
+                        <div class="service-card">Palitra</div>
+                    </div>
+                    <p class="service-desc">
+                        Мы являемся экспертами в разработке уникальных визуальных
+                        стратегий, которые раскрывают истинную суть вашего бизнеса.
+                        Наша команда фокусируется на том, что выделяет вас среди
+                        конкурентов, создавая сильный и аутентичный фундамент бренда —
+                        от разработки логотипа и подбора фирменных цветов до полного
+                        формирования имиджа, который находит отклик у вашей целевой
+                        аудитории.
+                    </p>
+                    <a href="./services/" class="btn-service">Брендинг →</a>
+                </div>
+            </div>
+
+            <div class="accordion">
+                <div class="accordion-item">
+                    <button class="accordion-trigger">
+                        Разработка фирменного стиля
+                        <span class="accordion-icon">
+            <svg width="12" height="12" viewBox="0 0 12 12"><line x1="6" y1="1" x2="6" y2="11" stroke="currentColor"
+                                                                  stroke-width="1.5"/><line x1="1" y1="6" x2="11" y2="6"
+                                                                                            stroke="currentColor"
+                                                                                            stroke-width="1.5"/></svg>
+          </span>
+                    </button>
+                    <div class="accordion-body">
+                        <p>Мы создаём единую визуальную систему: шрифты, цвета и графические элементы, которые делают
+                            ваш бренд узнаваемым на любой платформе.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-trigger">
+                        Дизайн логотипа и айдентика
+                        <span class="accordion-icon">
+            <svg width="12" height="12" viewBox="0 0 12 12"><line x1="6" y1="1" x2="6" y2="11" stroke="currentColor"
+                                                                  stroke-width="1.5"/><line x1="1" y1="6" x2="11" y2="6"
+                                                                                            stroke="currentColor"
+                                                                                            stroke-width="1.5"/></svg>
+          </span>
+                    </button>
+                    <div class="accordion-body">
+                        <p>Создаём уникальные логотипы, которые не просто красиво выглядят, но и закладывают основу для
+                            будущей анимации и видеоконтента.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-trigger">
+                        Ребрендинг и обновление имиджа
+                        <span class="accordion-icon">
+            <svg width="12" height="12" viewBox="0 0 12 12"><line x1="6" y1="1" x2="6" y2="11" stroke="currentColor"
+                                                                  stroke-width="1.5"/><line x1="1" y1="6" x2="11" y2="6"
+                                                                                            stroke="currentColor"
+                                                                                            stroke-width="1.5"/></svg>
+          </span>
+                    </button>
+                    <div class="accordion-body">
+                        <p>Помогаем существующим компаниям зазвучать по-новому, адаптируя их визуальный язык под
+                            современные тренды и запросы рынка.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-trigger">
+                        Упаковка социальных сетей
+                        <span class="accordion-icon">
+            <svg width="12" height="12" viewBox="0 0 12 12"><line x1="6" y1="1" x2="6" y2="11" stroke="currentColor"
+                                                                  stroke-width="1.5"/><line x1="1" y1="6" x2="11" y2="6"
+                                                                                            stroke="currentColor"
+                                                                                            stroke-width="1.5"/></svg>
+          </span>
+                    </button>
+                    <div class="accordion-body">
+                        <p>Разрабатываем целостное оформление ваших профилей, чтобы каждый пост и история работали на
+                            укрепление доверия к бренду.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-trigger">
+                        Визуальные гайдлайны
+                        <span class="accordion-icon">
+            <svg width="12" height="12" viewBox="0 0 12 12"><line x1="6" y1="1" x2="6" y2="11" stroke="currentColor"
+                                                                  stroke-width="1.5"/><line x1="1" y1="6" x2="11" y2="6"
+                                                                                            stroke="currentColor"
+                                                                                            stroke-width="1.5"/></svg>
+          </span>
+                    </button>
+                    <div class="accordion-body">
+                        <p>Мы систематизируем все элементы дизайна в понятные правила использования, чтобы ваш стиль
+                            оставался стабильным и профессиональным в любых руках.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =============================================
+             PHOTO COLLAGE
+             ============================================= -->
+        <section class="photo-collage">
+            <div class="collage-track">
+                <div class="collage-img">
+                    <div class="media-card-placeholder"
+                         style="background:#1a1a1a;color:rgba(255,255,255,0.2);height:100%;display:flex;align-items:center;justify-content:center;">
+                        Фото команды
+                    </div>
+                </div>
+                <div class="collage-img">
+                    <div class="media-card-placeholder"
+                         style="background:#222;color:rgba(255,255,255,0.2);height:100%;display:flex;align-items:center;justify-content:center;">
+                        Рабочий процесс
+                    </div>
+                </div>
+                <div class="collage-img">
+                    <div class="media-card-placeholder"
+                         style="background:#1a1a1a;color:rgba(255,255,255,0.2);height:100%;display:flex;align-items:center;justify-content:center;">
+                        Офис
+                    </div>
+                </div>
+                <div class="collage-img">
+                    <div class="media-card-placeholder"
+                         style="background:#2a2a2a;color:rgba(255,255,255,0.2);height:100%;display:flex;align-items:center;justify-content:center;">
+                        Творчество
+                    </div>
+                </div>
+                <div class="collage-img">
+                    <div class="media-card-placeholder"
+                         style="background:#1a1a1a;color:rgba(255,255,255,0.2);height:100%;display:flex;align-items:center;justify-content:center;">
+                        Фото команды
+                    </div>
+                </div>
+                <div class="collage-img">
+                    <div class="media-card-placeholder"
+                         style="background:#222;color:rgba(255,255,255,0.2);height:100%;display:flex;align-items:center;justify-content:center;">
+                        Рабочий процесс
+                    </div>
+                </div>
+                <div class="collage-img">
+                    <div class="media-card-placeholder"
+                         style="background:#1a1a1a;color:rgba(255,255,255,0.2);height:100%;display:flex;align-items:center;justify-content:center;">
+                        Офис
+                    </div>
+                </div>
+                <div class="collage-img">
+                    <div class="media-card-placeholder"
+                         style="background:#2a2a2a;color:rgba(255,255,255,0.2);height:100%;display:flex;align-items:center;justify-content:center;">
+                        Творчество
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =============================================
+             ЧТО НАС ОТЛИЧАЕТ — sticky scroll
+             ============================================= -->
+        <section class="diff-scroll" id="about-us">
+            <div class="section-label" style="margin-bottom:3rem;">
+                <span class="dot"></span>
+                <span>Что нас отличает?</span>
+            </div>
+
+            <div class="diff-scroll-inner">
+
+                <!-- LEFT: items -->
+                <div class="diff-items">
+
+                    <div class="diff-item" data-visual="1">
+                        <div class="diff-item-num">01</div>
+                        <h3 class="diff-item-title">Свежий взгляд</h3>
+                        <p class="diff-item-text">
+                            Мы не опираемся на старые достижения, а создаём будущее вашего
+                            бренда прямо сейчас. Наша команда постоянно следит за визуальными
+                            трендами 2026 года, внедряя самые смелые решения в видеомонтаж
+                            и дизайн, чтобы вы всегда были на шаг впереди конкурентов.
+                        </p>
+                    </div>
+
+                    <div class="diff-item" data-visual="2">
+                        <div class="diff-item-num">02</div>
+                        <h3 class="diff-item-title">Профессиональные инструменты</h3>
+                        <p class="diff-item-text">
+                            В нашей работе мы используем передовое ПО индустрии: Adobe After
+                            Effects, Premiere Pro, Cinema 4D. Наша «аккредитация» — это качество
+                            финального рендера и техническая безупречность каждого кадра.
+                        </p>
+                    </div>
+
+                    <div class="diff-item" data-visual="3">
+                        <div class="diff-item-num">03</div>
+                        <h3 class="diff-item-title">Индивидуальный подход</h3>
+                        <p class="diff-item-text">
+                            В отличие от крупных агентств с конвейерным подходом, мы уделяем
+                            каждому клиенту 100% внимания. Мы глубоко погружаемся в специфику
+                            вашего бизнеса, пока визуальный образ не станет идеальным.
+                        </p>
+                    </div>
+
+                    <div class="diff-item" data-visual="4">
+                        <div class="diff-item-num">04</div>
+                        <h3 class="diff-item-title">Гарантия результата</h3>
+                        <p class="diff-item-text">
+                            Вы всегда на связи с непосредственным исполнителем. Гарантируем
+                            соблюдение сроков и оперативную обратную связь — мы работаем
+                            на результат, которым вы будете гордиться так же, как и мы.
+                        </p>
+                    </div>
+
+                </div>
+
+                <!-- RIGHT: sticky visuals -->
+                <div class="diff-sticky">
+
+                    <div class="diff-visual diff-visual-1 is-active">
+                        <div class="diff-visual-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"
+                                 stroke-linecap="round">
+                                <circle cx="12" cy="12" r="3"/>
+                                <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/>
+                            </svg>
+                        </div>
+                        <div class="diff-visual-label">Свежий взгляд<br>на ваш бренд</div>
+                        <div class="diff-visual-tags">
+                            <span class="diff-visual-tag">Reels</span>
+                            <span class="diff-visual-tag">Лого</span>
+                            <span class="diff-visual-tag">Анимации</span>
+                            <span class="diff-visual-tag">Дизайн</span>
+                        </div>
+                        <div class="diff-visual-big-num">01</div>
+                    </div>
+
+                    <div class="diff-visual diff-visual-2">
+                        <div class="diff-visual-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"
+                                 stroke-linecap="round">
+                                <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+                            </svg>
+                        </div>
+                        <div class="diff-visual-label">Топовый<br>инструментарий</div>
+                        <div class="diff-visual-tags">
+                            <span class="diff-visual-tag">After Effects</span>
+                            <span class="diff-visual-tag">Premiere Pro</span>
+                            <span class="diff-visual-tag">Cinema 4D</span>
+                        </div>
+                        <div class="diff-visual-big-num">02</div>
+                    </div>
+
+                    <div class="diff-visual diff-visual-3">
+                        <div class="diff-visual-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"
+                                 stroke-linecap="round">
+                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                                <circle cx="12" cy="7" r="4"/>
+                            </svg>
+                        </div>
+                        <div class="diff-visual-label">100% внимания<br>каждому клиенту</div>
+                        <div class="diff-visual-tags">
+                            <span class="diff-visual-tag">Персонально</span>
+                            <span class="diff-visual-tag">Без шаблонов</span>
+                            <span class="diff-visual-tag">Глубокое погружение</span>
+                        </div>
+                        <div class="diff-visual-big-num">03</div>
+                    </div>
+
+                    <div class="diff-visual diff-visual-4">
+                        <div class="diff-visual-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"
+                                 stroke-linecap="round">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                                <polyline points="9 12 11 14 15 10"/>
+                            </svg>
+                        </div>
+                        <div class="diff-visual-label">Гарантия сроков<br>и качества</div>
+                        <div class="diff-visual-tags">
+                            <span class="diff-visual-tag">В срок</span>
+                            <span class="diff-visual-tag">Прямая связь</span>
+                            <span class="diff-visual-tag">Без сюрпризов</span>
+                        </div>
+                        <div class="diff-visual-big-num">04</div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- =============================================
+             PROCESS
+             ============================================= -->
+        <section class="process" id="process">
+            <div class="section-label">
+                <span class="dot"></span>
+                <span>Наш процесс</span>
+            </div>
+
+            <div class="process-steps">
+                <div class="process-step">
+                    <span class="step-number">01</span>
+                    <div class="step-content">
+                        <h3 class="step-title">Бриф</h3>
+                        <p class="step-desc">Вы заполняете бриф, в котором указываете интересующие вас услуги и ключевые
+                            детали проекта.</p>
+                    </div>
+                </div>
+                <div class="process-step">
+                    <span class="step-number">02</span>
+                    <div class="step-content">
+                        <h3 class="step-title">Согласование</h3>
+                        <p class="step-desc">Мы связываемся с вами для уточнения нюансов и согласования всех важных
+                            моментов.</p>
+                    </div>
+                </div>
+                <div class="process-step">
+                    <span class="step-number">03</span>
+                    <div class="step-content">
+                        <h3 class="step-title">Выполнение</h3>
+                        <p class="step-desc">Приступаем к выполнению работы, чтобы реализовать ваши идеи и пожелания в
+                            полном объёме.</p>
+                    </div>
+                </div>
+                <div class="process-step">
+                    <span class="step-number">04</span>
+                    <div class="step-content">
+                        <h3 class="step-title">Результат</h3>
+                        <p class="step-desc">Вы получаете качественный итог, полностью соответствующий вашим
+                            ожиданиям.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =============================================
+             AWARDS PARALLAX
+             ============================================= -->
+        <section class="awards-section" style="background:#111;padding:7rem 2.5rem;overflow:hidden;">
+            <div class="awards-inner"
+                 style="max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:4rem;">
+
+                <!-- Левая колонка: плавающие бейджи -->
+                <div class="awards-badges" style="position:relative;height:400px;">
+
+                    <div class="badge-float" data-depth="0.05"
+                         style="position:absolute;will-change:transform;">
+                        <div class="badge-circle badge-purple"
+                             style="width:148px;height:148px;border-radius:50%;background:#6B3FA0;display:flex;align-items:center;justify-content:center;text-align:center;padding:1.2rem;box-shadow:0 20px 60px rgba(0,0,0,0.5);">
+                            <div style="display:flex;flex-direction:column;align-items:center;gap:6px;">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff"
+                                     stroke-width="1.8">
+                                    <polygon
+                                            points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                                </svg>
+                                <span style="font-size:0.72rem;font-weight:700;color:#fff;text-transform:uppercase;letter-spacing:0.04em;line-height:1.2;">Best UI<br>Design</span>
+                                <span style="font-size:0.58rem;font-weight:600;color:rgba(255,255,255,0.6);letter-spacing:0.1em;text-transform:uppercase;">AWARDS</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="badge-float" data-depth="0.08"
+                         style="position:absolute;will-change:transform;">
+                        <div class="badge-circle badge-white"
+                             style="width:148px;height:148px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;text-align:center;padding:1.2rem;box-shadow:0 20px 60px rgba(0,0,0,0.5);">
+                            <div style="display:flex;flex-direction:column;align-items:center;gap:4px;">
+                                <span style="font-size:2.2rem;font-weight:800;color:#111;line-height:1;">.ch</span>
+                                <span style="font-size:0.58rem;color:#666;text-transform:uppercase;letter-spacing:0.06em;line-height:1.3;">Awwwards<br>Honoree</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="badge-float" data-depth="0.04"
+                         style="position:absolute;will-change:transform;">
+                        <div class="badge-circle badge-light"
+                             style="width:148px;height:148px;border-radius:50%;background:#f2f2f2;display:flex;align-items:center;justify-content:center;text-align:center;padding:1.2rem;box-shadow:0 20px 60px rgba(0,0,0,0.5);">
+                            <div style="display:flex;flex-direction:column;align-items:center;gap:4px;">
+                                <span style="font-size:1.1rem;font-weight:800;color:#111;letter-spacing:0.08em;line-height:1.1;">CSS<br>WINNER</span>
+                                <span style="font-size:0.7rem;color:#FF6630;letter-spacing:2px;">★★★★★</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- декоративные точки -->
+                    <div style="position:absolute;top:8%;left:4%;width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,0.3);"></div>
+                    <div style="position:absolute;top:62%;left:1%;width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,0.15);"></div>
+                    <div style="position:absolute;top:88%;left:52%;width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.12);"></div>
+
+                </div>
+
+                <!-- Правая колонка: текст -->
+                <div class="awards-text" style="display:flex;flex-direction:column;gap:1.8rem;">
+                    <div class="awards-label"
+                         style="display:flex;align-items:center;gap:0.6rem;font-size:0.85rem;color:rgba(255,255,255,0.55);letter-spacing:0.04em;">
+                        <span style="width:8px;height:8px;border-radius:50%;background:#FF3B3B;flex-shrink:0;display:inline-block;"></span>
+                        <span>Многократный Лауреат Премий</span>
+                    </div>
+                    <h2 class="awards-heading"
+                        style="font-size:clamp(2rem,4vw,3.2rem);font-weight:700;color:#fff;line-height:1.15;margin:0;">
+                        Не верьте нам<br>на слово.</h2>
+                    <a href="#about" class="btn-awards"
+                       style="display:inline-flex;align-items:center;justify-content:center;padding:0.9rem 2.2rem;border:1.5px solid rgba(255,255,255,0.35);border-radius:40px;color:#fff;font-size:0.95rem;font-weight:500;text-decoration:none;width:fit-content;transition:background 0.3s,border-color 0.3s;">О
+                        Нас</a>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- =============================================
+             TEAM
+             ============================================= -->
+        <section class="team" id="team">
+            <div class="section-label">
+                <span class="dot"></span>
+                <span>Наша команда</span>
+            </div>
+            <p style="font-size:1.2rem;font-weight:400;color:#333;margin-bottom:0.5rem;">Познакомьтесь с нашими
+                креаторами</p>
+
+            <div class="team-grid">
+                <div class="team-card">
+                    <div class="team-photo">Фото<br>Олег</div>
+                    <div class="team-info">
+                        <h3 class="team-name">Олег</h3>
+
+                    </div>
+                </div>
+                <div class="team-card">
+                    <div class="team-photo">Фото<br>Саша</div>
+                    <div class="team-info">
+                        <h3 class="team-name">Саша</h3>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- =============================================
+         FOOTER
+         ============================================= -->
+    <footer class="footer">
+        <div class="footer-top">
+            <div class="footer-brand">
+                <a href="./" class="logo">
+                    <div class="logo-wrapper">
+                        <span class="logo-text">VISUAL<br>TWINS</span>
+                        <div class="logo-icon">
+                            <img src="./static/images/logo-icon.png" alt="Visual Twins">
+                        </div>
+                    </div>
+                </a>
+                <p class="footer-tagline">Команда, которая помогает вашему бизнесу говорить ярко и просто.</p>
+            </div>
+
+            <div class="footer-col">
+                <h4>Услуги</h4>
+                <ul>
+                    <li><a href="./services/#video">Видеомонтаж</a></li>
+                    <li><a href="./services/#branding">Брендинг</a></li>
+                    <li><a href="./services/#smm">SMM-дизайн</a></li>
+                    <li><a href="./services/#logo">Логотипы</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Компания</h4>
+                <ul>
+                    <li><a href="#about">О нас</a></li>
+                    <li><a href="./portfolio/">Портфолио</a></li>
+                    <li><a href="#team">Команда</a></li>
+                    <li><a href="#process">Процесс</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Контакты</h4>
+                <ul>
+                    <li><a href="./contact/">Написать нам</a></li>
+                    <li><a href="#">Telegram</a></li>
+                    <li><a href="#">Instagram</a></li>
+                    <li><a href="#">ВКонтакте</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <span class="footer-copy">© 2026 Visual Twins. Все права защищены.</span>
+            <div class="footer-socials">
+                <a href="#">Instagram</a>
+                <a href="#">TikTok</a>
+                <a href="#">ВКонтакте</a>
+                <a href="#">Telegram</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+    <!-- INTRO TRANSITION -->
+    <script>
+        (function () {
+            var done = false;
+
+            function startTransition() {
+                if (done) return;
+                done = true;
+
+                var intro = document.getElementById('intro');
+                var introVideo = document.getElementById('intro-video');
+                var introLogo = document.getElementById('intro-logo');
+                var pageContent = document.getElementById('page-content');
+                var headerLogo = document.querySelector('.header .logo-wrapper');
+
+                /* Измеряем позиции до старта анимации.
+                   opacity:0 не убирает элемент из потока, rect вернётся верный. */
+                var srcRect = introLogo.getBoundingClientRect();
+                var dstRect = headerLogo.getBoundingClientRect();
+
+                /* Масштаб: делаем логотип точно шириной хедер-логотипа */
+                var s = dstRect.width / srcRect.width;
+
+                /* GSAP заменяет CSS translate(-50%,-50%) своим трансформом.
+                   Его layout-точка отсчёта — natural top-left (left:50%, top:50%),
+                   поэтому к цели нужно ещё вычесть половину размера самого элемента. */
+                var tx = (dstRect.left + dstRect.width / 2) - window.innerWidth / 2 - srcRect.width / 2;
+                var ty = (dstRect.top + dstRect.height / 2) - window.innerHeight / 2 - srcRect.height / 2;
+
+                gsap.timeline({
+                    onComplete: function () {
+                        intro.style.display = 'none';
+                        document.body.classList.remove('intro-active');
+                    }
+                })
+                    /* 1. Гасим видео */
+                    .to(introVideo, {opacity: 0, duration: 0.35, ease: 'power1.in'})
+
+                    /* 2. Показываем статичный логотип */
+                    .to(introLogo, {opacity: 1, duration: 0.2}, '-=0.1')
+
+                    /* 3. Логотип плавно летит в хедер и уменьшается */
+                    .to(introLogo, {
+                        x: tx,
+                        y: ty,
+                        scale: s,
+                        duration: 0.95,
+                        ease: 'power3.inOut'
+                    }, '+=0.05')
+
+                    /* 4. Страница проявляется во время полёта */
+                    .to(pageContent, {opacity: 1, duration: 0.6, ease: 'power2.out'}, '-=0.65')
+
+                    /* 5. Фон интро исчезает */
+                    .to(intro, {opacity: 0, duration: 0.35, ease: 'power1.in'}, '-=0.3');
+            }
+
+            document.getElementById('intro-video').addEventListener('ended', startTransition);
+
+            /* Запасной таймаут — если видео не загрузилось или длится >12 с */
+            var fallback = setTimeout(startTransition, 12000);
+            document.getElementById('intro-video').addEventListener('ended', function () {
+                clearTimeout(fallback);
+            });
+        })();
+    </script>
+
+    <script src="./static/js/main.js"></script>
+</div>
+>
+</body>
+</html>

@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Услуги — Visual Twins</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="../static/css/style.css"/>
+    <style>
+        .page-hero {
+            padding: 160px 2.5rem 5rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .page-hero-tag {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--orange);
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .page-hero h1 {
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            font-weight: 600;
+            letter-spacing: -0.03em;
+            line-height: 1.08;
+            margin-bottom: 2rem;
+        }
+
+        .page-hero-desc {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: #555;
+            max-width: 600px;
+        }
+
+        .services-list {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 2.5rem 6rem;
+        }
+
+        .service-block {
+            display: grid;
+            grid-template-columns: 1fr 1.6fr;
+            gap: 4rem;
+            padding: 5rem 0;
+            border-top: 1px solid var(--border);
+            align-items: start;
+        }
+
+        .service-block-left {
+        }
+
+        .service-block-number {
+            font-size: 0.8rem;
+            color: rgba(26, 26, 26, 0.3);
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+        }
+
+        .service-block-title {
+            font-size: clamp(2rem, 4vw, 3.2rem);
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+            margin-bottom: 2rem;
+        }
+
+        .service-block-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0 1.75rem;
+            height: 48px;
+            border: 1.5px solid var(--dark);
+            border-radius: 60px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: background 0.3s, color 0.3s;
+            cursor: none;
+        }
+
+        .service-block-cta:hover {
+            background: var(--dark);
+            color: #fff;
+        }
+
+        .service-block-right {
+        }
+
+        .service-block-desc {
+            font-size: 1rem;
+            line-height: 1.75;
+            color: #444;
+            margin-bottom: 2.5rem;
+        }
+
+        .service-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .service-tag {
+            padding: 0.4rem 1rem;
+            border: 1.5px solid var(--border);
+            border-radius: 60px;
+            font-size: 0.82rem;
+            color: #555;
+            transition: border-color 0.2s, color 0.2s;
+        }
+
+        .service-tag:hover {
+            border-color: var(--orange);
+            color: var(--orange);
+        }
+
+        @media (max-width: 768px) {
+            .service-block {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                padding: 3rem 0;
+            }
+
+            .page-hero {
+                padding: 130px 1.5rem 3rem;
+            }
+
+            .services-list {
+                padding: 0 1.5rem 4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="cursor"></div>
+<div class="cursor-follower"></div>
+
+<header class="header">
+    <a href="../" class="logo">
+        <div class="logo-wrapper">
+            <span class="logo-text">VISUAL<br>TWINS</span>
+            <div class="logo-icon">
+                <svg viewBox="0 0 24 24" fill="none">
+                    <path d="M12 2L20 7L12 12L4 7L12 2Z" fill="#FF6630"/>
+                    <path d="M4 7V12L12 17V12L4 7Z" fill="#cc4d1e"/>
+                    <path d="M20 7V12L12 17V12L20 7Z" fill="#e85520"/>
+                </svg>
+            </div>
+        </div>
+    </a>
+    <div class="header-right">
+        <a href="../contact/" class="btn-cta">Начать проект</a>
+        <button class="hamburger" aria-label="Меню"><span></span><span></span><span></span></button>
+    </div>
+</header>
+
+<nav class="mobile-menu">
+    <div class="mobile-nav">
+        <a href="../">Главная</a>
+        <a href="../services/">Услуги</a>
+        <a href="../#portfolio">Работы</a>
+        <a href="../#team">Команда</a>
+        <a href="../contact/">Контакты</a>
+    </div>
+    <div class="menu-footer">
+        <div class="menu-social">
+            <a href="#">Instagram</a>
+            <a href="#">ВКонтакте</a>
+            <a href="#">TikTok</a>
+            <a href="#">Telegram</a>
+        </div>
+    </div>
+</nav>
+
+<main>
+    <div class="page-hero">
+        <p class="page-hero-tag">Наши услуги</p>
+        <h1>Полная<br>упаковка<br>бренда</h1>
+        <p class="page-hero-desc">От современного дизайна до профессионального видеомонтажа — мы создаём визуальный
+            образ, который работает на вас.</p>
+    </div>
+
+    <div class="services-list">
+
+        <div class="service-block" id="video">
+            <div class="service-block-left">
+                <p class="service-block-number">01</p>
+                <h2 class="service-block-title">Видео&shy;монтаж</h2>
+                <a href="../contact/" class="service-block-cta">Заказать →</a>
+            </div>
+            <div class="service-block-right">
+                <p class="service-block-desc">
+                    Мы являемся экспертами в создании динамичного видеоконтента — от
+                    ритмичного монтажа вертикальных и горизонтальных роликов до сложной
+                    анимации логотипов. Наша команда не просто собирает кадры, а закладывает
+                    в них основу будущего визуального кода вашего бренда.
+                </p>
+                <div class="service-tags">
+                    <span class="service-tag">Reels</span>
+                    <span class="service-tag">Horizontal Video</span>
+                    <span class="service-tag">Logo Animation</span>
+                    <span class="service-tag">Цветокоррекция</span>
+                    <span class="service-tag">Саунд-дизайн</span>
+                    <span class="service-tag">Инфо-дизайн</span>
+                    <span class="service-tag">YouTube</span>
+                    <span class="service-tag">TikTok / Shorts</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="service-block" id="branding">
+            <div class="service-block-left">
+                <p class="service-block-number">02</p>
+                <h2 class="service-block-title">Брен&shy;динг</h2>
+                <a href="../contact/" class="service-block-cta">Заказать →</a>
+            </div>
+            <div class="service-block-right">
+                <p class="service-block-desc">
+                    Мы являемся экспертами в разработке уникальных визуальных стратегий,
+                    которые раскрывают истинную суть вашего бизнеса. Создаём сильный и
+                    аутентичный фундамент бренда — от разработки логотипа и подбора
+                    фирменных цветов до полного формирования имиджа.
+                </p>
+                <div class="service-tags">
+                    <span class="service-tag">Фирменный стиль</span>
+                    <span class="service-tag">Логотип</span>
+                    <span class="service-tag">Айдентика</span>
+                    <span class="service-tag">Ребрендинг</span>
+                    <span class="service-tag">Гайдлайны</span>
+                    <span class="service-tag">Палитра</span>
+                    <span class="service-tag">Типографика</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="service-block" id="smm">
+            <div class="service-block-left">
+                <p class="service-block-number">03</p>
+                <h2 class="service-block-title">SMM-<br>дизайн</h2>
+                <a href="../contact/" class="service-block-cta">Заказать →</a>
+            </div>
+            <div class="service-block-right">
+                <p class="service-block-desc">
+                    Мы разрабатываем дизайн и наполняем контентом ваши страницы в Instagram,
+                    ВКонтакте, TikTok и других платформах. Используем современные тренды,
+                    чтобы ваш профиль выглядел актуально и ярко выделялся среди конкурентов.
+                </p>
+                <div class="service-tags">
+                    <span class="service-tag">Instagram</span>
+                    <span class="service-tag">ВКонтакте</span>
+                    <span class="service-tag">TikTok</span>
+                    <span class="service-tag">Посты</span>
+                    <span class="service-tag">Сторис</span>
+                    <span class="service-tag">Обложки</span>
+                    <span class="service-tag">Шаблоны</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="service-block" id="logo">
+            <div class="service-block-left">
+                <p class="service-block-number">04</p>
+                <h2 class="service-block-title">Упаковка<br>профиля</h2>
+                <a href="../contact/" class="service-block-cta">Заказать →</a>
+            </div>
+            <div class="service-block-right">
+                <p class="service-block-desc">
+                    Разрабатываем целостное оформление ваших профилей в социальных сетях,
+                    чтобы каждый пост и история работали на укрепление доверия к бренду.
+                    Единый визуальный код — ключ к узнаваемости.
+                </p>
+                <div class="service-tags">
+                    <span class="service-tag">Шапка профиля</span>
+                    <span class="service-tag">Хайлайты</span>
+                    <span class="service-tag">Ленты</span>
+                    <span class="service-tag">Контент-план</span>
+                    <span class="service-tag">Маска / AR</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</main>
+
+<footer class="footer">
+    <div class="footer-top">
+        <div class="footer-brand">
+            <a href="../" class="logo">
+                <div class="logo-wrapper">
+                    <span class="logo-text">VISUAL<br>TWINS</span>
+                    <div class="logo-icon">
+                        <svg viewBox="0 0 24 24" fill="none">
+                            <path d="M12 2L20 7L12 12L4 7L12 2Z" fill="#FF6630"/>
+                            <path d="M4 7V12L12 17V12L4 7Z" fill="#cc4d1e"/>
+                            <path d="M20 7V12L12 17V12L20 7Z" fill="#e85520"/>
+                        </svg>
+                    </div>
+                </div>
+            </a>
+            <p class="footer-tagline">Команда, которая помогает вашему бизнесу говорить ярко и просто.</p>
+        </div>
+        <div class="footer-col">
+            <h4>Услуги</h4>
+            <ul>
+                <li><a href="#video">Видеомонтаж</a></li>
+                <li><a href="#branding">Брендинг</a></li>
+                <li><a href="#smm">SMM-дизайн</a></li>
+                <li><a href="#logo">Логотипы</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>Компания</h4>
+            <ul>
+                <li><a href="../#about">О нас</a></li>
+                <li><a href="../portfolio/">Портфолио</a></li>
+                <li><a href="../#team">Команда</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>Контакты</h4>
+            <ul>
+                <li><a href="../contact/">Написать нам</a></li>
+                <li><a href="#">Telegram</a></li>
+                <li><a href="#">Instagram</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <span class="footer-copy">© 2026 Visual Twins. Все права защищены.</span>
+        <div class="footer-socials">
+            <a href="#">Instagram</a>
+            <a href="#">TikTok</a>
+            <a href="#">ВКонтакте</a>
+            <a href="#">Telegram</a>
+        </div>
+    </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="../static/js/main.js"></script>
+<script>
+    if (typeof gsap !== 'undefined') {
+        gsap.registerPlugin(ScrollTrigger);
+        gsap.from('.page-hero-tag', {opacity: 0, y: 20, duration: 0.7, delay: 0.2});
+        gsap.from('.page-hero h1', {opacity: 0, y: 60, duration: 1, delay: 0.3, ease: 'power3.out'});
+        gsap.from('.page-hero-desc', {opacity: 0, y: 30, duration: 0.8, delay: 0.6});
+        gsap.utils.toArray('.service-block').forEach(block => {
+            gsap.from(block, {
+                scrollTrigger: {trigger: block, start: 'top 85%'},
+                opacity: 0, y: 50, duration: 0.8, ease: 'power3.out'
+            });
+        });
+    }
+</script>
+</body>
+</html>

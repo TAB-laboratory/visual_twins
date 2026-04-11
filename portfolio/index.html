@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Портфолио — Visual Twins</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="../static/css/style.css"/>
+    <style>
+        .portfolio-hero {
+            padding: 160px 2.5rem 4rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .portfolio-hero-tag {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--orange);
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .portfolio-hero h1 {
+            font-size: clamp(2.5rem, 7vw, 5.5rem);
+            font-weight: 600;
+            letter-spacing: -0.03em;
+            line-height: 1.05;
+        }
+
+        .portfolio-filters {
+            display: flex;
+            gap: 0.6rem;
+            flex-wrap: wrap;
+            padding: 0 2.5rem 3rem;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .filter-btn {
+            padding: 0.5rem 1.25rem;
+            border: 1.5px solid var(--border);
+            border-radius: 60px;
+            font-size: 0.85rem;
+            color: #555;
+            font-family: var(--font);
+            transition: all 0.25s;
+            cursor: none;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--dark);
+            border-color: var(--dark);
+            color: #fff;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            padding: 0 2.5rem 6rem;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .portfolio-item {
+            border-radius: 20px;
+            background: #111;
+            overflow: hidden;
+            cursor: none;
+            position: relative;
+        }
+
+        .portfolio-item.vertical {
+            aspect-ratio: 9/16;
+        }
+
+        .portfolio-item.wide {
+            grid-column: span 2;
+            aspect-ratio: 16/8;
+        }
+
+        .portfolio-item.square {
+            aspect-ratio: 1;
+        }
+
+        .portfolio-item-inner {
+            width: 100%;
+            height: 100%;
+            min-height: 200px;
+            background: #1C1C1C;
+            display: flex;
+            align-items: flex-end;
+            padding: 1.25rem;
+            position: relative;
+            transition: transform 0.5s var(--ease);
+        }
+
+        .portfolio-item:hover .portfolio-item-inner {
+            transform: scale(1.03);
+        }
+
+        .portfolio-item-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(transparent 40%, rgba(0, 0, 0, 0.9));
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 1.5rem;
+            opacity: 0;
+            transition: opacity 0.4s var(--ease);
+        }
+
+        .portfolio-item:hover .portfolio-item-overlay {
+            opacity: 1;
+        }
+
+        .portfolio-item-cat {
+            font-size: 0.75rem;
+            color: var(--orange);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.4rem;
+        }
+
+        .portfolio-item-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 0.25rem;
+        }
+
+        .portfolio-item-desc {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .portfolio-placeholder-label {
+            font-size: 0.85rem;
+            color: var(--red);
+            font-style: italic;
+        }
+
+        @media (max-width: 900px) {
+            .portfolio-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .portfolio-item.wide {
+                grid-column: span 2;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+                padding: 0 1.5rem 4rem;
+            }
+
+            .portfolio-item.wide {
+                grid-column: span 1;
+            }
+
+            .portfolio-filters {
+                padding: 0 1.5rem 2rem;
+            }
+
+            .portfolio-hero {
+                padding: 130px 1.5rem 3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="cursor"></div>
+<div class="cursor-follower"></div>
+
+<header class="header">
+    <a href="../" class="logo">
+        <div class="logo-wrapper">
+            <span class="logo-text">VISUAL<br>TWINS</span>
+            <div class="logo-icon">
+                <svg viewBox="0 0 24 24" fill="none">
+                    <path d="M12 2L20 7L12 12L4 7L12 2Z" fill="#FF6630"/>
+                    <path d="M4 7V12L12 17V12L4 7Z" fill="#cc4d1e"/>
+                    <path d="M20 7V12L12 17V12L20 7Z" fill="#e85520"/>
+                </svg>
+            </div>
+        </div>
+    </a>
+    <div class="header-right">
+        <a href="../contact/" class="btn-cta">Начать проект</a>
+        <button class="hamburger" aria-label="Меню"><span></span><span></span><span></span></button>
+    </div>
+</header>
+
+<nav class="mobile-menu">
+    <div class="mobile-nav">
+        <a href="../">Главная</a>
+        <a href="../services/">Услуги</a>
+        <a href="../portfolio/">Работы</a>
+        <a href="../#team">Команда</a>
+        <a href="../contact/">Контакты</a>
+    </div>
+    <div class="menu-footer">
+        <div class="menu-social">
+            <a href="#">Instagram</a>
+            <a href="#">ВКонтакте</a>
+            <a href="#">TikTok</a>
+            <a href="#">Telegram</a>
+        </div>
+    </div>
+</nav>
+
+<main>
+    <div class="portfolio-hero">
+        <p class="portfolio-hero-tag">Наши работы</p>
+        <h1>Портфолио</h1>
+    </div>
+
+    <div class="portfolio-filters">
+        <button class="filter-btn active" data-filter="all">Все</button>
+        <button class="filter-btn" data-filter="video">Видеомонтаж</button>
+        <button class="filter-btn" data-filter="branding">Брендинг</button>
+        <button class="filter-btn" data-filter="smm">SMM</button>
+        <button class="filter-btn" data-filter="logo">Логотипы</button>
+    </div>
+
+    <div class="portfolio-grid">
+        <div class="portfolio-item vertical" data-cat="video">
+            <div class="portfolio-item-inner">
+                <span class="portfolio-placeholder-label">Reels</span>
+            </div>
+            <div class="portfolio-item-overlay">
+                <p class="portfolio-item-cat">Видеомонтаж</p>
+                <h3 class="portfolio-item-title">Название бренда</h3>
+                <p class="portfolio-item-desc">Вертикальный ролик для Instagram Reels</p>
+            </div>
+        </div>
+
+        <div class="portfolio-item wide" data-cat="branding">
+            <div class="portfolio-item-inner">
+                <span class="portfolio-placeholder-label">Фирменный стиль</span>
+            </div>
+            <div class="portfolio-item-overlay">
+                <p class="portfolio-item-cat">Брендинг</p>
+                <h3 class="portfolio-item-title">Sasha</h3>
+                <p class="portfolio-item-desc">Разработка фирменного стиля с нуля</p>
+            </div>
+        </div>
+
+        <div class="portfolio-item vertical" data-cat="logo">
+            <div class="portfolio-item-inner">
+                <span class="portfolio-placeholder-label">Logo Animation</span>
+            </div>
+            <div class="portfolio-item-overlay">
+                <p class="portfolio-item-cat">Анимация логотипа</p>
+                <h3 class="portfolio-item-title">Название бренда</h3>
+                <p class="portfolio-item-desc">Анимированный логотип для роликов</p>
+            </div>
+        </div>
+
+        <div class="portfolio-item square" data-cat="smm">
+            <div class="portfolio-item-inner">
+                <span class="portfolio-placeholder-label">SMM</span>
+            </div>
+            <div class="portfolio-item-overlay">
+                <p class="portfolio-item-cat">SMM-дизайн</p>
+                <h3 class="portfolio-item-title">Название бренда</h3>
+                <p class="portfolio-item-desc">Оформление профиля Instagram</p>
+            </div>
+        </div>
+
+        <div class="portfolio-item square" data-cat="branding">
+            <div class="portfolio-item-inner">
+                <span class="portfolio-placeholder-label">Ребрендинг</span>
+            </div>
+            <div class="portfolio-item-overlay">
+                <p class="portfolio-item-cat">Брендинг</p>
+                <h3 class="portfolio-item-title">Sasha</h3>
+                <p class="portfolio-item-desc">Полный ребрендинг компании</p>
+            </div>
+        </div>
+
+        <div class="portfolio-item wide" data-cat="video">
+            <div class="portfolio-item-inner">
+                <span class="portfolio-placeholder-label">Horizontal Video</span>
+            </div>
+            <div class="portfolio-item-overlay">
+                <p class="portfolio-item-cat">Видеомонтаж</p>
+                <h3 class="portfolio-item-title">Название видеоролика</h3>
+                <p class="portfolio-item-desc">Рекламный горизонтальный ролик</p>
+            </div>
+        </div>
+
+        <div class="portfolio-item vertical" data-cat="branding">
+            <div class="portfolio-item-inner">
+                <span class="portfolio-placeholder-label">Векторная графика</span>
+            </div>
+            <div class="portfolio-item-overlay">
+                <p class="portfolio-item-cat">Иллюстрации</p>
+                <h3 class="portfolio-item-title">Sasha</h3>
+                <p class="portfolio-item-desc">Векторные иллюстрации для бренда</p>
+            </div>
+        </div>
+
+        <div class="portfolio-item square" data-cat="smm">
+            <div class="portfolio-item-inner">
+                <span class="portfolio-placeholder-label">Stories</span>
+            </div>
+            <div class="portfolio-item-overlay">
+                <p class="portfolio-item-cat">SMM-дизайн</p>
+                <h3 class="portfolio-item-title">Название бренда</h3>
+                <p class="portfolio-item-desc">Шаблоны для Instagram Stories</p>
+            </div>
+        </div>
+
+        <div class="portfolio-item square" data-cat="video">
+            <div class="portfolio-item-inner">
+                <span class="portfolio-placeholder-label">Reels</span>
+            </div>
+            <div class="portfolio-item-overlay">
+                <p class="portfolio-item-cat">Видеомонтаж</p>
+                <h3 class="portfolio-item-title">Название бренда</h3>
+                <p class="portfolio-item-desc">Ролик для TikTok / Shorts</p>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer class="footer">
+    <div class="footer-top">
+        <div class="footer-brand">
+            <a href="../" class="logo">
+                <div class="logo-wrapper">
+                    <span class="logo-text">VISUAL<br>TWINS</span>
+                    <div class="logo-icon">
+                        <svg viewBox="0 0 24 24" fill="none">
+                            <path d="M12 2L20 7L12 12L4 7L12 2Z" fill="#FF6630"/>
+                            <path d="M4 7V12L12 17V12L4 7Z" fill="#cc4d1e"/>
+                            <path d="M20 7V12L12 17V12L20 7Z" fill="#e85520"/>
+                        </svg>
+                    </div>
+                </div>
+            </a>
+            <p class="footer-tagline">Команда, которая помогает вашему бизнесу говорить ярко и просто.</p>
+        </div>
+        <div class="footer-col">
+            <h4>Услуги</h4>
+            <ul>
+                <li><a href="../services/#video">Видеомонтаж</a></li>
+                <li><a href="../services/#branding">Брендинг</a></li>
+                <li><a href="../services/#smm">SMM-дизайн</a></li>
+                <li><a href="../services/#logo">Логотипы</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>Компания</h4>
+            <ul>
+                <li><a href="../#about">О нас</a></li>
+                <li><a href="../portfolio/">Портфолио</a></li>
+                <li><a href="../#team">Команда</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>Контакты</h4>
+            <ul>
+                <li><a href="../contact/">Написать нам</a></li>
+                <li><a href="#">Telegram</a></li>
+                <li><a href="#">Instagram</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <span class="footer-copy">© 2026 Visual Twins. Все права защищены.</span>
+        <div class="footer-socials">
+            <a href="#">Instagram</a>
+            <a href="#">TikTok</a>
+            <a href="#">ВКонтакте</a>
+            <a href="#">Telegram</a>
+        </div>
+    </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="../static/js/main.js"></script>
+<script>
+    // Portfolio filter
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            const filter = btn.dataset.filter;
+            document.querySelectorAll('.portfolio-item').forEach(item => {
+                const show = filter === 'all' || item.dataset.cat === filter;
+                item.style.display = show ? '' : 'none';
+                if (show && typeof gsap !== 'undefined') {
+                    gsap.from(item, {opacity: 0, scale: 0.95, duration: 0.4, ease: 'power2.out'});
+                }
+            });
+        });
+    });
+
+    if (typeof gsap !== 'undefined') {
+        gsap.registerPlugin(ScrollTrigger);
+        gsap.from('.portfolio-hero-tag', {opacity: 0, y: 20, duration: 0.6, delay: 0.2});
+        gsap.from('.portfolio-hero h1', {opacity: 0, y: 60, duration: 1, delay: 0.3, ease: 'power3.out'});
+        gsap.from('.portfolio-item', {
+            scrollTrigger: {trigger: '.portfolio-grid', start: 'top 85%'},
+            opacity: 0, y: 50, duration: 0.7, stagger: 0.08, ease: 'power3.out'
+        });
+    }
+</script>
+</body>
+</html>

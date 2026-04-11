@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Контакты — Visual Twins</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="../static/css/style.css"/>
+    <style>
+        .contact-page {
+            min-height: 100vh;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            padding-top: 80px;
+        }
+
+        .contact-left {
+            background: var(--dark);
+            padding: 6rem 4rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            color: #fff;
+        }
+
+        .contact-left-content {
+        }
+
+        .contact-tag {
+            font-size: 0.82rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--orange);
+            font-weight: 600;
+            margin-bottom: 2rem;
+        }
+
+        .contact-heading {
+            font-size: clamp(2.5rem, 4vw, 4rem);
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-subtext {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.55);
+            max-width: 380px;
+        }
+
+        .contact-links {
+            margin-top: 4rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+
+        .contact-link-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.2rem;
+        }
+
+        .contact-link-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        .contact-link-value {
+            font-size: 1rem;
+            color: #fff;
+            transition: color 0.2s;
+        }
+
+        .contact-link-value:hover {
+            color: var(--orange);
+        }
+
+        .contact-socials {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .contact-socials a {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.45);
+            transition: color 0.2s;
+        }
+
+        .contact-socials a:hover {
+            color: #fff;
+        }
+
+        .contact-right {
+            padding: 6rem 4rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .contact-form-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-form-sub {
+            font-size: 0.95rem;
+            color: #777;
+            margin-bottom: 2.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: #999;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-input, .form-textarea, .form-select {
+            width: 100%;
+            padding: 0.9rem 1rem;
+            border: 1.5px solid var(--border);
+            border-radius: 12px;
+            font-family: var(--font);
+            font-size: 0.95rem;
+            color: var(--dark);
+            background: #fff;
+            transition: border-color 0.25s;
+            outline: none;
+            appearance: none;
+        }
+
+        .form-input:focus, .form-textarea:focus, .form-select:focus {
+            border-color: var(--dark);
+        }
+
+        .form-textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-services {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .service-checkbox {
+            display: none;
+        }
+
+        .service-checkbox-label {
+            padding: 0.45rem 1rem;
+            border: 1.5px solid var(--border);
+            border-radius: 60px;
+            font-size: 0.82rem;
+            color: #666;
+            cursor: none;
+            transition: all 0.25s;
+            user-select: none;
+        }
+
+        .service-checkbox:checked + .service-checkbox-label {
+            background: var(--dark);
+            border-color: var(--dark);
+            color: #fff;
+        }
+
+        .service-checkbox-label:hover {
+            border-color: #aaa;
+            color: var(--dark);
+        }
+
+        .btn-submit {
+            width: 100%;
+            height: 56px;
+            background: var(--dark);
+            color: #fff;
+            border: none;
+            border-radius: 60px;
+            font-family: var(--font);
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: none;
+            transition: background 0.3s;
+            margin-top: 0.5rem;
+        }
+
+        .btn-submit:hover {
+            background: var(--orange);
+        }
+
+        .form-success {
+            display: none;
+            text-align: center;
+            padding: 3rem;
+            background: #f0fff4;
+            border-radius: 20px;
+            margin-top: 1rem;
+        }
+
+        .form-success h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: #1a7a3a;
+        }
+
+        .form-success p {
+            color: #555;
+        }
+
+        @media (max-width: 900px) {
+            .contact-page {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-left {
+                padding: 4rem 2rem 3rem;
+            }
+
+            .contact-right {
+                padding: 3rem 2rem 5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="cursor"></div>
+<div class="cursor-follower"></div>
+
+<header class="header dark-header">
+    <a href="../" class="logo">
+        <div class="logo-wrapper">
+            <span class="logo-text">VISUAL<br>TWINS</span>
+            <div class="logo-icon">
+                <img src="../static/images/logo-icon.png" alt="Visual Twins">
+            </div>
+        </div>
+    </a>
+    <div class="header-right">
+        <button class="hamburger" aria-label="Меню"><span></span><span></span><span></span></button>
+    </div>
+</header>
+
+<nav class="mobile-menu">
+    <div class="mobile-nav">
+        <a href="../">Главная</a>
+        <a href="../services/">Услуги</a>
+        <a href="../portfolio/">Работы</a>
+        <a href="../#team">Команда</a>
+        <a href="../contact/">Контакты</a>
+    </div>
+    <div class="menu-footer">
+        <div class="menu-social">
+            <a href="#">Instagram</a>
+            <a href="#">ВКонтакте</a>
+            <a href="#">TikTok</a>
+            <a href="#">Telegram</a>
+        </div>
+    </div>
+</nav>
+
+<div class="contact-page">
+    <div class="contact-left">
+        <div class="contact-left-content">
+            <p class="contact-tag">Начать проект</p>
+            <h1 class="contact-heading">Давайте<br>создадим<br>что-то<br>крутое</h1>
+            <p class="contact-subtext">Расскажите нам о своём проекте — мы свяжемся с вами в течение 24 часов и обсудим
+                все детали.</p>
+        </div>
+
+        <div>
+            <div class="contact-links">
+                <div class="contact-link-item">
+                    <span class="contact-link-label">Telegram</span>
+                    <a href="#" class="contact-link-value">@visualtwins</a>
+                </div>
+                <div class="contact-link-item">
+                    <span class="contact-link-label">Email</span>
+                    <a href="mailto:hello@visualtwins.ru" class="contact-link-value">hello@visualtwins.ru</a>
+                </div>
+                <div class="contact-link-item">
+                    <span class="contact-link-label">Instagram</span>
+                    <a href="#" class="contact-link-value">@visual.twins</a>
+                </div>
+            </div>
+            <div class="contact-socials" style="margin-top:2rem;">
+                <a href="#">Instagram</a>
+                <a href="#">TikTok</a>
+                <a href="#">ВКонтакте</a>
+                <a href="#">Telegram</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="contact-right">
+        <h2 class="contact-form-title">Заполните бриф</h2>
+        <p class="contact-form-sub">Чем подробнее — тем точнее мы поймём задачу.</p>
+
+        <form id="contact-form">
+            <div class="form-group">
+                <label class="form-label" for="name">Ваше имя</label>
+                <input class="form-input" type="text" id="name" name="name" placeholder="Введите ваше имя" required/>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label" for="contact">Telegram / Instagram / Email</label>
+                <input class="form-input" type="text" id="contact" name="contact" placeholder="@username или email"
+                       required/>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label" for="brand">Название бренда / компании</label>
+                <input class="form-input" type="text" id="brand" name="brand" placeholder="Название вашего проекта"/>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Интересующие услуги</label>
+                <div class="form-services">
+                    <input type="checkbox" class="service-checkbox" id="s-video" name="services" value="video"/>
+                    <label class="service-checkbox-label" for="s-video">Видеомонтаж</label>
+
+                    <input type="checkbox" class="service-checkbox" id="s-reels" name="services" value="reels"/>
+                    <label class="service-checkbox-label" for="s-reels">Reels</label>
+
+                    <input type="checkbox" class="service-checkbox" id="s-logo" name="services" value="logo"/>
+                    <label class="service-checkbox-label" for="s-logo">Логотип</label>
+
+                    <input type="checkbox" class="service-checkbox" id="s-brand" name="services" value="branding"/>
+                    <label class="service-checkbox-label" for="s-brand">Брендинг</label>
+
+                    <input type="checkbox" class="service-checkbox" id="s-smm" name="services" value="smm"/>
+                    <label class="service-checkbox-label" for="s-smm">SMM-дизайн</label>
+
+                    <input type="checkbox" class="service-checkbox" id="s-anim" name="services" value="animation"/>
+                    <label class="service-checkbox-label" for="s-anim">Анимация</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label" for="details">Расскажите о проекте</label>
+                <textarea class="form-textarea" id="details" name="details"
+                          placeholder="Что нужно сделать, сроки, бюджет — любые детали помогут нам подготовиться"></textarea>
+            </div>
+
+            <button type="submit" class="btn-submit">Отправить бриф →</button>
+        </form>
+
+        <div class="form-success" id="form-success">
+            <h3>Отлично! Бриф получен.</h3>
+            <p>Мы свяжемся с вами в течение 24 часов. Ожидайте!</p>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="../static/js/main.js"></script>
+<script>
+    // Form submit (frontend only demo)
+    document.getElementById('contact-form').addEventListener('submit', e => {
+        e.preventDefault();
+        const form = document.getElementById('contact-form');
+        const success = document.getElementById('form-success');
+        if (typeof gsap !== 'undefined') {
+            gsap.to(form, {
+                opacity: 0, y: -20, duration: 0.4, onComplete: () => {
+                    form.style.display = 'none';
+                    success.style.display = 'block';
+                    gsap.from(success, {opacity: 0, y: 20, duration: 0.5});
+                }
+            });
+        } else {
+            form.style.display = 'none';
+            success.style.display = 'block';
+        }
+    });
+
+    // Animate contact page
+    if (typeof gsap !== 'undefined') {
+        gsap.from('.contact-tag', {opacity: 0, y: 20, duration: 0.6, delay: 0.3});
+        gsap.from('.contact-heading', {opacity: 0, y: 60, duration: 1, delay: 0.4, ease: 'power3.out'});
+        gsap.from('.contact-subtext', {opacity: 0, y: 30, duration: 0.7, delay: 0.65});
+        gsap.from('.contact-links', {opacity: 0, y: 30, duration: 0.7, delay: 0.85});
+        gsap.from('.contact-form-title', {opacity: 0, y: 40, duration: 0.8, delay: 0.5, ease: 'power3.out'});
+        gsap.from('.form-group', {opacity: 0, y: 25, duration: 0.6, stagger: 0.1, delay: 0.7});
+    }
+</script>
+</body>
+</html>
