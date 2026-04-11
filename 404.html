@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <base href="/visual_twins/">
+    <title>404 — Visual Twins</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="static/css/style.css"/>
+    <style>
+        .not-found {
+            padding: 160px 2.5rem 8rem;
+            max-width: 1000px;
+            margin: 0 auto;
+            min-height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+        }
+
+        .not-found-bg {
+            position: absolute;
+            font-size: clamp(160px, 30vw, 380px);
+            font-weight: 700;
+            letter-spacing: -0.05em;
+            color: transparent;
+            -webkit-text-stroke: 1px rgba(26, 26, 26, 0.07);
+            user-select: none;
+            pointer-events: none;
+            top: 50%;
+            left: -0.02em;
+            transform: translateY(-50%);
+            line-height: 1;
+        }
+
+        .not-found-tag {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--orange);
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .not-found h1 {
+            font-size: clamp(2.5rem, 7vw, 5.5rem);
+            font-weight: 600;
+            letter-spacing: -0.03em;
+            line-height: 1.05;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .not-found-sub {
+            font-size: 1.05rem;
+            color: var(--grey);
+            line-height: 1.7;
+            max-width: 420px;
+            margin-bottom: 2.5rem;
+            position: relative;
+        }
+
+        .not-found-actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            position: relative;
+        }
+
+        @media (max-width: 600px) {
+            .not-found {
+                padding: 130px 1.5rem 5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="cursor"></div>
+<div class="cursor-follower"></div>
+
+<header class="header">
+    <a href="" class="logo">
+        <div class="logo-wrapper">
+            <span class="logo-text">VISUAL<br>TWINS</span>
+            <div class="logo-icon">
+                <svg viewBox="0 0 24 24" fill="none">
+                    <path d="M12 2L20 7L12 12L4 7L12 2Z" fill="#FF6630"/>
+                    <path d="M4 7V12L12 17V12L4 7Z" fill="#cc4d1e"/>
+                    <path d="M20 7V12L12 17V12L20 7Z" fill="#e85520"/>
+                </svg>
+            </div>
+        </div>
+    </a>
+    <div class="header-right">
+        <a href="contact/" class="btn-cta">Начать проект</a>
+        <button class="hamburger" aria-label="Меню"><span></span><span></span><span></span></button>
+    </div>
+</header>
+
+<nav class="mobile-menu">
+    <div class="mobile-nav">
+        <a href="">Главная</a>
+        <a href="services/">Услуги</a>
+        <a href="portfolio/">Работы</a>
+        <a href="team/">Команда</a>
+        <a href="contact/">Контакты</a>
+    </div>
+    <div class="menu-footer">
+        <div class="menu-social">
+            <a href="#">Instagram</a>
+            <a href="#">ВКонтакте</a>
+            <a href="#">TikTok</a>
+            <a href="#">Telegram</a>
+        </div>
+    </div>
+</nav>
+
+<main>
+    <div class="not-found">
+        <span class="not-found-bg">404</span>
+        <p class="not-found-tag">Страница не найдена</p>
+        <h1>Здесь ничего<br>нет (пока)</h1>
+        <p class="not-found-sub">Такой страницы не существует или она была удалена. Зато у нас есть всё остальное.</p>
+        <div class="not-found-actions">
+            <a href="" class="btn-solid">← На главную</a>
+            <a href="portfolio/" class="btn-outline">Посмотреть работы</a>
+        </div>
+    </div>
+</main>
+
+<footer class="footer">
+    <div class="footer-top">
+        <div class="footer-brand">
+            <a href="" class="logo">
+                <div class="logo-wrapper">
+                    <span class="logo-text">VISUAL<br>TWINS</span>
+                    <div class="logo-icon">
+                        <svg viewBox="0 0 24 24" fill="none">
+                            <path d="M12 2L20 7L12 12L4 7L12 2Z" fill="#FF6630"/>
+                            <path d="M4 7V12L12 17V12L4 7Z" fill="#cc4d1e"/>
+                            <path d="M20 7V12L12 17V12L20 7Z" fill="#e85520"/>
+                        </svg>
+                    </div>
+                </div>
+            </a>
+            <p class="footer-tagline">Команда, которая помогает вашему бизнесу говорить ярко и просто.</p>
+        </div>
+        <div class="footer-col">
+            <h4>Услуги</h4>
+            <ul>
+                <li><a href="services/#video">Видеомонтаж</a></li>
+                <li><a href="services/#branding">Брендинг</a></li>
+                <li><a href="services/#smm">SMM-дизайн</a></li>
+                <li><a href="services/#logo">Логотипы</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>Компания</h4>
+            <ul>
+                <li><a href="about/">О нас</a></li>
+                <li><a href="portfolio/">Портфолио</a></li>
+                <li><a href="team/">Команда</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>Контакты</h4>
+            <ul>
+                <li><a href="contact/">Написать нам</a></li>
+                <li><a href="#">Telegram</a></li>
+                <li><a href="#">Instagram</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <span class="footer-copy">© 2026 Visual Twins. Все права защищены.</span>
+        <div class="footer-socials">
+            <a href="#">Instagram</a>
+            <a href="#">TikTok</a>
+            <a href="#">ВКонтакте</a>
+            <a href="#">Telegram</a>
+        </div>
+    </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="static/js/main.js"></script>
+<script>
+    if (typeof gsap !== 'undefined') {
+        gsap.from('.not-found-tag', {opacity: 0, y: 20, duration: 0.6, delay: 0.2});
+        gsap.from('.not-found h1', {opacity: 0, y: 60, duration: 1, delay: 0.3, ease: 'power3.out'});
+        gsap.from('.not-found-sub', {opacity: 0, y: 30, duration: 0.7, delay: 0.5});
+        gsap.from('.not-found-actions', {opacity: 0, y: 25, duration: 0.6, delay: 0.7});
+        gsap.from('.not-found-bg', {opacity: 0, x: -40, duration: 1.2, delay: 0.1, ease: 'power3.out'});
+    }
+</script>
+</body>
+</html>
