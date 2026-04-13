@@ -11,36 +11,35 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
     <link rel="stylesheet" href="./static/css/style.css"/>
     <style>
-        /* ---- INTRO OVERLAY ---- */
+
         #intro {
             position: fixed;
             inset: 0;
             z-index: 9999;
             background: #fff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             overflow: hidden;
         }
 
         #intro-video {
+            position: absolute;
+            inset: 0;
             width: 100%;
             height: 100%;
             object-fit: cover;
             display: block;
         }
 
-        /* пока интро активно — страница не скроллится */
+
         body.intro-active {
             overflow: hidden;
         }
 
-        /* главный контент скрыт до конца интро */
+
         #page-content {
             opacity: 0;
         }
 
-        /* ---- INTRO LOGO (анимируется в хедер) ---- */
+
         #intro-logo {
             position: absolute;
             top: 50%;
@@ -102,27 +101,31 @@
         }
 
         @media (max-width: 480px) {
+            #intro-logo {
+                max-width: calc(100vw - 32px);
+            }
+
             #intro-logo .il-wrapper {
                 padding: 8px 12px 8px 16px;
                 gap: 8px;
+                white-space: normal;
             }
 
             #intro-logo .il-icon {
-                width: 56px;
-                height: 56px;
+                width: 50px;
+                height: 50px;
+                flex-shrink: 0;
             }
 
             #intro-logo .il-text {
-                font-size: 1.5rem;
+                font-size: 1.4rem;
             }
         }
     </style>
 </head>
 <body class="intro-active">
 
-<!-- =============================================
-     INTRO SPLASH
-     ============================================= -->
+
 <div id="intro">
     <video
             id="intro-video"
@@ -133,7 +136,7 @@
             preload="auto"
     ></video>
 
-    <!-- Статичный логотип — появляется после видео и анимируется в хедер -->
+
     <div id="intro-logo">
         <div class="il-wrapper">
             <span class="il-text">VISUAL<br>TWINS</span>
@@ -146,13 +149,11 @@
 
 <div id="page-content">
 
-    <!-- Custom Cursor -->
+
     <div class="cursor"></div>
     <div class="cursor-follower"></div>
 
-    <!-- =============================================
-         HEADER
-         ============================================= -->
+
     <header class="header">
         <a href="./" class="logo">
             <div class="logo-wrapper">
@@ -173,30 +174,28 @@
         </div>
     </header>
 
-    <!-- Mobile Menu -->
+
     <nav class="mobile-menu">
         <div class="mobile-nav">
             <a href="./">Главная</a>
             <a href="./services/">Услуги</a>
             <a href="./portfolio/">Работы</a>
-            <a href="#team">Команда</a>
+            <a href="./team/">Команда</a>
             <a href="./contact/">Контакты</a>
         </div>
         <div class="menu-footer">
             <div class="menu-social">
                 <a href="#">Instagram</a>
-                <a href="#">ВКонтакте</a>
+                <a href="https://vk.com/visualtwins" target="_blank">ВКонтакте</a>
                 <a href="#">TikTok</a>
-                <a href="#">Telegram</a>
+                <a href="https://t.me/VisualTwins" target="_blank">Telegram</a>
             </div>
         </div>
     </nav>
 
     <main>
 
-        <!-- =============================================
-             HERO
-             ============================================= -->
+
         <section class="hero" id="home">
             <canvas id="hero-canvas" class="hero-canvas"></canvas>
             <div class="hero-content">
@@ -220,9 +219,7 @@
             </div>
         </section>
 
-        <!-- =============================================
-             ABOUT PREVIEW
-             ============================================= -->
+
         <section class="about-preview" id="about">
             <div class="about-media">
                 <div class="media-grid">
@@ -269,84 +266,105 @@
             </div>
         </section>
 
-        <!-- =============================================
-             OUR WORKS
-             ============================================= -->
+
         <section class="our-works" id="works">
             <div class="section-label">
                 <span class="dot"></span>
                 <span>Что мы умеем лучше всего</span>
             </div>
-            <p class="section-subtitle">Упаковка брендов: от современного дизайна до профессионального видеомонтажа.</p>
+            <p class="section-subtitle">Visual Twins — команда, которая превращает идеи в визуальные шедевры, цепляющие внимание и вызывающие доверие.</p>
 
             <div class="works-grid">
+
                 <div class="work-card vertical">
                     <div class="work-card-inner">
-                        <span class="work-card-label">Reels</span>
+                        <video autoplay loop muted playsinline><source src="./static/video/reels-fscr1.mp4" type="video/mp4"></video>
                     </div>
                     <div class="work-card-info">
-                        <div class="work-card-title">Название бренда</div>
+                        <div class="work-card-title">Reels</div>
                         <div class="work-card-desc">Вертикальный ролик для соцсетей</div>
                     </div>
                 </div>
 
                 <div class="work-card vertical">
                     <div class="work-card-inner">
-                        <span class="work-card-label">Logo Animation</span>
+                        <video autoplay loop muted playsinline><source src="./static/video/reels-8.mp4" type="video/mp4"></video>
                     </div>
                     <div class="work-card-info">
-                        <div class="work-card-title">Название бренда</div>
+                        <div class="work-card-title">Reels</div>
+                        <div class="work-card-desc">Контент для Instagram</div>
+                    </div>
+                </div>
+
+                <div class="work-card vertical">
+                    <div class="work-card-inner">
+                        <video autoplay loop muted playsinline><source src="./static/video/reels-6.mp4" type="video/mp4"></video>
+                    </div>
+                    <div class="work-card-info">
+                        <div class="work-card-title">Reels</div>
+                        <div class="work-card-desc">Вертикальный ролик для соцсетей</div>
+                    </div>
+                </div>
+
+                <div class="work-card vertical">
+                    <div class="work-card-inner">
+                        <video autoplay loop muted playsinline><source src="./static/video/reels-fscr2.mp4" type="video/mp4"></video>
+                    </div>
+                    <div class="work-card-info">
+                        <div class="work-card-title">Reels</div>
+                        <div class="work-card-desc">Контент для соцсетей</div>
+                    </div>
+                </div>
+
+
+                <div class="work-card wide">
+                    <div class="work-card-inner">
+                        <video autoplay loop muted playsinline><source src="./static/video/work-008.mp4" type="video/mp4"></video>
+                    </div>
+                    <div class="work-card-info">
+                        <div class="work-card-title">Logo Animation</div>
                         <div class="work-card-desc">Анимация логотипа</div>
                     </div>
                 </div>
 
-                <div class="work-card vertical">
-                    <div class="work-card-inner">
-                        <span class="work-card-label">Фирменный стиль</span>
-                    </div>
-                    <div class="work-card-info">
-                        <div class="work-card-title">Sasha</div>
-                        <div class="work-card-desc">Разработка фирменного стиля</div>
-                    </div>
-                </div>
-
-                <div class="work-card wide">
-                    <div class="work-card-inner">
-                        <span class="work-card-label">Horizontal Video</span>
-                    </div>
-                    <div class="work-card-info">
-                        <div class="work-card-title">Название видеоролика</div>
-                        <div class="work-card-desc">Горизонтальный рекламный ролик</div>
-                    </div>
-                </div>
 
                 <div class="work-card vertical">
                     <div class="work-card-inner">
-                        <span class="work-card-label">Ребрендинг</span>
+                        <video autoplay loop muted playsinline><source src="./static/video/reels-9.mp4" type="video/mp4"></video>
                     </div>
                     <div class="work-card-info">
-                        <div class="work-card-title">Sasha</div>
-                        <div class="work-card-desc">Полный ребрендинг</div>
+                        <div class="work-card-title">Reels</div>
+                        <div class="work-card-desc">Вертикальный ролик для соцсетей</div>
                     </div>
                 </div>
 
-                <div class="work-card vertical">
+                <div class="work-card landscape">
                     <div class="work-card-inner">
-                        <span class="work-card-label">Векторная графика</span>
+                        <video autoplay loop muted playsinline><source src="./static/video/work-018.mp4" type="video/mp4"></video>
                     </div>
                     <div class="work-card-info">
-                        <div class="work-card-title">Sasha</div>
-                        <div class="work-card-desc">Векторные иллюстрации</div>
+                        <div class="work-card-title">Logo Animation</div>
+                        <div class="work-card-desc">Анимация логотипа</div>
                     </div>
                 </div>
 
-                <div class="work-card vertical">
+                <div class="work-card half">
                     <div class="work-card-inner">
-                        <span class="work-card-label">Reels</span>
+                        <video autoplay loop muted playsinline><source src="./static/video/work-037.mp4" type="video/mp4"></video>
                     </div>
                     <div class="work-card-info">
-                        <div class="work-card-title">Название бренда</div>
-                        <div class="work-card-desc">Контент для Instagram</div>
+                        <div class="work-card-title">Logo Animation</div>
+                        <div class="work-card-desc">Анимация логотипа</div>
+                    </div>
+                </div>
+
+                <div class="work-card half">
+                    <div class="work-card-inner">
+                        <video autoplay loop muted playsinline><source src="./static/video/work-039.mp4" type="video/mp4"></video>
+                    </div>
+                    <div class="work-card-info">
+                        <div class="work-card-title">Logo Animation</div>
+                        <div class="work-card-desc">Анимация логотипа</div>
                     </div>
                 </div>
             </div>
@@ -356,18 +374,40 @@
             </div>
         </section>
 
-        <!-- =============================================
-             ВИДЕОМОНТАЖ
-             ============================================= -->
+
         <section class="service-section" id="video">
             <div class="service-layout">
                 <h2 class="service-title">Видео&shy;монтаж</h2>
                 <div class="service-right">
-                    <div class="service-cards-grid">
-                        <div class="service-card">Reels</div>
-                        <div class="service-card">Reels</div>
-                        <div class="service-card">Horizont Video</div>
-                        <div class="service-card">Logo Animation</div>
+                    <div class="video-grid">
+                        <div class="vg-card vg-reel1">
+                            <video autoplay loop muted playsinline><source src="./static/video/reels-6.mp4" type="video/mp4"></video>
+                            <span class="vg-label">Reels</span>
+                        </div>
+                        <div class="vg-card vg-wide1">
+                            <video autoplay loop muted playsinline><source src="./static/video/work-046.mp4" type="video/mp4"></video>
+                            <span class="vg-label">Horizont Video</span>
+                        </div>
+                        <div class="vg-card vg-wide2">
+                            <video autoplay loop muted playsinline><source src="./static/video/work-039.mp4" type="video/mp4"></video>
+                            <span class="vg-label">Logo Animation</span>
+                        </div>
+                        <div class="vg-card vg-reel2">
+                            <video autoplay loop muted playsinline><source src="./static/video/reels-9.mp4" type="video/mp4"></video>
+                            <span class="vg-label">Reels</span>
+                        </div>
+                        <div class="vg-card vg-sq1">
+                            <video autoplay loop muted playsinline><source src="./static/video/work-045.mp4" type="video/mp4"></video>
+                            <span class="vg-label">Motion</span>
+                        </div>
+                        <div class="vg-card vg-sq2">
+                            <video autoplay loop muted playsinline><source src="./static/video/work-051.mp4" type="video/mp4"></video>
+                            <span class="vg-label">Branding</span>
+                        </div>
+                        <div class="vg-card vg-sq3">
+                            <video autoplay loop muted playsinline><source src="./static/video/work-052.mp4" type="video/mp4"></video>
+                            <span class="vg-label">Design</span>
+                        </div>
                     </div>
                     <p class="service-desc">
                         Мы являемся экспертами в создании динамичного видеоконтента — от
@@ -484,18 +524,24 @@
 
         <div class="divider"></div>
 
-        <!-- =============================================
-             БРЕНДИНГ
-             ============================================= -->
+
         <section class="service-section" id="branding">
             <div class="service-layout">
                 <h2 class="service-title">Брен&shy;динг</h2>
                 <div class="service-right">
-                    <div class="service-cards-grid"
-                         style="grid-template-columns: 1fr 1fr; grid-template-rows: auto auto;">
-                        <div class="service-card">Logo</div>
-                        <div class="service-card tall" style="grid-row: span 2;">texture</div>
-                        <div class="service-card">Palitra</div>
+                    <div class="brand-row">
+                        <div class="brand-item">
+                            <video autoplay loop muted playsinline><source src="./static/video/work-048.mp4" type="video/mp4"></video>
+                            <span class="service-card-label">Logo</span>
+                        </div>
+                        <div class="brand-item">
+                            <video autoplay loop muted playsinline><source src="./static/video/work-051.mp4" type="video/mp4"></video>
+                            <span class="service-card-label">Branding</span>
+                        </div>
+                        <div class="brand-item">
+                            <video autoplay loop muted playsinline><source src="./static/video/work-052.mp4" type="video/mp4"></video>
+                            <span class="service-card-label">Style</span>
+                        </div>
                     </div>
                     <p class="service-desc">
                         Мы являемся экспертами в разработке уникальных визуальных
@@ -589,65 +635,51 @@
             </div>
         </section>
 
-        <!-- =============================================
-             PHOTO COLLAGE
-             ============================================= -->
+
         <section class="photo-collage">
             <div class="collage-track">
-                <div class="collage-img">
-                    <div class="media-card-placeholder"
-                         style="background:#1a1a1a;color:rgba(255,255,255,0.2);height:100%;display:flex;align-items:center;justify-content:center;">
-                        Фото команды
-                    </div>
+
+                <div class="collage-img vertical">
+                    <a href="./portfolio/"><video autoplay loop muted playsinline><source src="./static/video/reels-fscr1.mp4" type="video/mp4"></video></a>
                 </div>
                 <div class="collage-img">
-                    <div class="media-card-placeholder"
-                         style="background:#222;color:rgba(255,255,255,0.2);height:100%;display:flex;align-items:center;justify-content:center;">
-                        Рабочий процесс
-                    </div>
+                    <a href="./portfolio/"><video autoplay loop muted playsinline><source src="./static/video/work-046.mp4" type="video/mp4"></video></a>
+                </div>
+                <div class="collage-img vertical">
+                    <a href="./portfolio/"><video autoplay loop muted playsinline><source src="./static/video/reels-8.mp4" type="video/mp4"></video></a>
                 </div>
                 <div class="collage-img">
-                    <div class="media-card-placeholder"
-                         style="background:#1a1a1a;color:rgba(255,255,255,0.2);height:100%;display:flex;align-items:center;justify-content:center;">
-                        Офис
-                    </div>
+                    <a href="./portfolio/"><video autoplay loop muted playsinline><source src="./static/video/work-039.mp4" type="video/mp4"></video></a>
+                </div>
+                <div class="collage-img vertical">
+                    <a href="./portfolio/"><video autoplay loop muted playsinline><source src="./static/video/reels-fscr2.mp4" type="video/mp4"></video></a>
                 </div>
                 <div class="collage-img">
-                    <div class="media-card-placeholder"
-                         style="background:#2a2a2a;color:rgba(255,255,255,0.2);height:100%;display:flex;align-items:center;justify-content:center;">
-                        Творчество
-                    </div>
+                    <a href="./portfolio/"><video autoplay loop muted playsinline><source src="./static/video/work-037.mp4" type="video/mp4"></video></a>
+                </div>
+
+                <div class="collage-img vertical">
+                    <a href="./portfolio/"><video autoplay loop muted playsinline><source src="./static/video/reels-fscr1.mp4" type="video/mp4"></video></a>
                 </div>
                 <div class="collage-img">
-                    <div class="media-card-placeholder"
-                         style="background:#1a1a1a;color:rgba(255,255,255,0.2);height:100%;display:flex;align-items:center;justify-content:center;">
-                        Фото команды
-                    </div>
+                    <a href="./portfolio/"><video autoplay loop muted playsinline><source src="./static/video/work-046.mp4" type="video/mp4"></video></a>
+                </div>
+                <div class="collage-img vertical">
+                    <a href="./portfolio/"><video autoplay loop muted playsinline><source src="./static/video/reels-8.mp4" type="video/mp4"></video></a>
                 </div>
                 <div class="collage-img">
-                    <div class="media-card-placeholder"
-                         style="background:#222;color:rgba(255,255,255,0.2);height:100%;display:flex;align-items:center;justify-content:center;">
-                        Рабочий процесс
-                    </div>
+                    <a href="./portfolio/"><video autoplay loop muted playsinline><source src="./static/video/work-039.mp4" type="video/mp4"></video></a>
+                </div>
+                <div class="collage-img vertical">
+                    <a href="./portfolio/"><video autoplay loop muted playsinline><source src="./static/video/reels-fscr2.mp4" type="video/mp4"></video></a>
                 </div>
                 <div class="collage-img">
-                    <div class="media-card-placeholder"
-                         style="background:#1a1a1a;color:rgba(255,255,255,0.2);height:100%;display:flex;align-items:center;justify-content:center;">
-                        Офис
-                    </div>
-                </div>
-                <div class="collage-img">
-                    <div class="media-card-placeholder"
-                         style="background:#2a2a2a;color:rgba(255,255,255,0.2);height:100%;display:flex;align-items:center;justify-content:center;">
-                        Творчество
-                    </div>
+                    <a href="./portfolio/"><video autoplay loop muted playsinline><source src="./static/video/work-037.mp4" type="video/mp4"></video></a>
                 </div>
             </div>
         </section>
 
-        <!-- =============================================
-             ЧТО НАС ОТЛИЧАЕТ — sticky scroll
-             ============================================= -->
+
         <section class="diff-scroll" id="about-us">
             <div class="section-label" style="margin-bottom:3rem;">
                 <span class="dot"></span>
@@ -656,7 +688,7 @@
 
             <div class="diff-scroll-inner">
 
-                <!-- LEFT: items -->
+
                 <div class="diff-items">
 
                     <div class="diff-item" data-visual="1">
@@ -702,7 +734,7 @@
 
                 </div>
 
-                <!-- RIGHT: sticky visuals -->
+
                 <div class="diff-sticky">
 
                     <div class="diff-visual diff-visual-1 is-active">
@@ -777,9 +809,7 @@
             </div>
         </section>
 
-        <!-- =============================================
-             PROCESS
-             ============================================= -->
+
         <section class="process" id="process">
             <div class="section-label">
                 <span class="dot"></span>
@@ -822,14 +852,12 @@
             </div>
         </section>
 
-        <!-- =============================================
-             AWARDS PARALLAX
-             ============================================= -->
+
         <section class="awards-section" style="background:#111;padding:7rem 2.5rem;overflow:hidden;">
             <div class="awards-inner"
                  style="max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:4rem;">
 
-                <!-- Левая колонка: плавающие бейджи -->
+
                 <div class="awards-badges" style="position:relative;height:400px;">
 
                     <div class="badge-float" data-depth="0.05"
@@ -870,14 +898,14 @@
                         </div>
                     </div>
 
-                    <!-- декоративные точки -->
+
                     <div style="position:absolute;top:8%;left:4%;width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,0.3);"></div>
                     <div style="position:absolute;top:62%;left:1%;width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,0.15);"></div>
                     <div style="position:absolute;top:88%;left:52%;width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.12);"></div>
 
                 </div>
 
-                <!-- Правая колонка: текст -->
+
                 <div class="awards-text" style="display:flex;flex-direction:column;gap:1.8rem;">
                     <div class="awards-label"
                          style="display:flex;align-items:center;gap:0.6rem;font-size:0.85rem;color:rgba(255,255,255,0.55);letter-spacing:0.04em;">
@@ -895,9 +923,7 @@
             </div>
         </section>
 
-        <!-- =============================================
-             TEAM
-             ============================================= -->
+
         <section class="team" id="team">
             <div class="section-label">
                 <span class="dot"></span>
@@ -926,9 +952,7 @@
 
     </main>
 
-    <!-- =============================================
-         FOOTER
-         ============================================= -->
+
     <footer class="footer">
         <div class="footer-top">
             <div class="footer-brand">
@@ -958,7 +982,7 @@
                 <ul>
                     <li><a href="#about">О нас</a></li>
                     <li><a href="./portfolio/">Портфолио</a></li>
-                    <li><a href="#team">Команда</a></li>
+                    <li><a href="./team/">Команда</a></li>
                     <li><a href="#process">Процесс</a></li>
                 </ul>
             </div>
@@ -967,9 +991,9 @@
                 <h4>Контакты</h4>
                 <ul>
                     <li><a href="./contact/">Написать нам</a></li>
-                    <li><a href="#">Telegram</a></li>
+                    <li><a href="https://t.me/VisualTwins" target="_blank">Telegram</a></li>
                     <li><a href="#">Instagram</a></li>
-                    <li><a href="#">ВКонтакте</a></li>
+                    <li><a href="https://vk.com/visualtwins" target="_blank">ВКонтакте</a></li>
                 </ul>
             </div>
         </div>
@@ -979,17 +1003,15 @@
             <div class="footer-socials">
                 <a href="#">Instagram</a>
                 <a href="#">TikTok</a>
-                <a href="#">ВКонтакте</a>
-                <a href="#">Telegram</a>
+                <a href="https://vk.com/visualtwins" target="_blank">ВКонтакте</a>
+                <a href="https://t.me/VisualTwins" target="_blank">Telegram</a>
             </div>
         </div>
     </footer>
 
-    <!-- GSAP -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
-    <!-- INTRO TRANSITION -->
     <script>
         (function () {
             var done = false;
@@ -1002,62 +1024,61 @@
                 var introVideo = document.getElementById('intro-video');
                 var introLogo = document.getElementById('intro-logo');
                 var pageContent = document.getElementById('page-content');
-                var headerLogo = document.querySelector('.header .logo-wrapper');
 
-                /* Измеряем позиции до старта анимации.
-                   opacity:0 не убирает элемент из потока, rect вернётся верный. */
-                var srcRect = introLogo.getBoundingClientRect();
-                var dstRect = headerLogo.getBoundingClientRect();
+                if (typeof gsap === 'undefined') {
+                    intro.style.display = 'none';
+                    pageContent.style.opacity = '1';
+                    document.body.classList.remove('intro-active');
+                    return;
+                }
 
-                /* Масштаб: делаем логотип точно шириной хедер-логотипа */
-                var s = dstRect.width / srcRect.width;
+                requestAnimationFrame(function () {
+                    var headerLogo = document.querySelector('.header .logo-wrapper');
+                    var srcRect = introLogo.getBoundingClientRect();
+                    var dstRect = headerLogo ? headerLogo.getBoundingClientRect() : null;
+                    var valid = dstRect && dstRect.width > 0 && srcRect.width > 0;
 
-                /* GSAP заменяет CSS translate(-50%,-50%) своим трансформом.
-                   Его layout-точка отсчёта — natural top-left (left:50%, top:50%),
-                   поэтому к цели нужно ещё вычесть половину размера самого элемента. */
-                var tx = (dstRect.left + dstRect.width / 2) - window.innerWidth / 2 - srcRect.width / 2;
-                var ty = (dstRect.top + dstRect.height / 2) - window.innerHeight / 2 - srcRect.height / 2;
+                    var tl = gsap.timeline({
+                        onComplete: function () {
+                            intro.style.display = 'none';
+                            document.body.classList.remove('intro-active');
+                        }
+                    });
 
-                gsap.timeline({
-                    onComplete: function () {
-                        intro.style.display = 'none';
-                        document.body.classList.remove('intro-active');
+                    tl.to(introVideo, {opacity: 0, duration: 0.35, ease: 'power1.in'})
+                      .to(introLogo, {opacity: 1, duration: 0.2}, '-=0.1');
+
+                    if (valid) {
+                        var s = dstRect.width / srcRect.width;
+                        var dx = (dstRect.left + dstRect.width / 2) - (srcRect.left + srcRect.width / 2);
+                        var dy = (dstRect.top + dstRect.height / 2) - (srcRect.top + srcRect.height / 2);
+
+                        tl.to(introLogo, {
+                            x: '+=' + dx,
+                            y: '+=' + dy,
+                            scale: s,
+                            transformOrigin: 'center center',
+                            duration: 0.95,
+                            ease: 'power3.inOut'
+                        }, '+=0.05');
+                    } else {
+                        tl.to(introLogo, {opacity: 0, scale: 0.85, duration: 0.5, delay: 0.3});
                     }
-                })
-                    /* 1. Гасим видео */
-                    .to(introVideo, {opacity: 0, duration: 0.35, ease: 'power1.in'})
 
-                    /* 2. Показываем статичный логотип */
-                    .to(introLogo, {opacity: 1, duration: 0.2}, '-=0.1')
-
-                    /* 3. Логотип плавно летит в хедер и уменьшается */
-                    .to(introLogo, {
-                        x: tx,
-                        y: ty,
-                        scale: s,
-                        duration: 0.95,
-                        ease: 'power3.inOut'
-                    }, '+=0.05')
-
-                    /* 4. Страница проявляется во время полёта */
-                    .to(pageContent, {opacity: 1, duration: 0.6, ease: 'power2.out'}, '-=0.65')
-
-                    /* 5. Фон интро исчезает */
-                    .to(intro, {opacity: 0, duration: 0.35, ease: 'power1.in'}, '-=0.3');
+                    tl.to(pageContent, {opacity: 1, duration: 0.6, ease: 'power2.out'}, '-=0.65')
+                      .to(intro, {opacity: 0, duration: 0.35, ease: 'power1.in'}, '-=0.3');
+                });
             }
 
-            document.getElementById('intro-video').addEventListener('ended', startTransition);
-
-            /* Запасной таймаут — если видео не загрузилось или длится >12 с */
             var fallback = setTimeout(startTransition, 12000);
             document.getElementById('intro-video').addEventListener('ended', function () {
                 clearTimeout(fallback);
+                startTransition();
             });
         })();
     </script>
 
     <script src="./static/js/main.js"></script>
 </div>
->
 </body>
 </html>
