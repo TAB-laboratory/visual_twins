@@ -203,6 +203,24 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
 
+        // Video bento grid — stagger pop one by one
+        const videoGrid = document.querySelector('.video-grid');
+        if (videoGrid) {
+            gsap.to('.vg-card', {
+                scrollTrigger: {trigger: videoGrid, start: 'top 82%'},
+                opacity: 1,
+                scale: 1,
+                duration: 0.45,
+                stagger: {
+                    each: 0.09,
+                    from: 'start'
+                },
+                ease: 'back.out(1.4)',
+                clearProps: 'transform'
+            });
+            gsap.set('.vg-card', {opacity: 0, scale: 0.82, y: 20});
+        }
+
         // Differentiators — sticky scroll
         const diffItems = document.querySelectorAll('.diff-item');
         const diffVisuals = document.querySelectorAll('.diff-visual');
