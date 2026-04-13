@@ -1,8 +1,4 @@
-/* =============================================
-   VISUAL TWINS — Main Stylesheet
-   ============================================= */
 
-/* --- Variables --- */
 :root {
     --orange: #FF6630;
     --pink: #E8196E;
@@ -17,7 +13,7 @@
     --ease: cubic-bezier(0.215, 0.61, 0.355, 1);
 }
 
-/* --- Reset --- */
+
 *, *::before, *::after {
     box-sizing: border-box;
     margin: 0;
@@ -58,9 +54,7 @@ button {
     font-family: var(--font);
 }
 
-/* =============================================
-   CUSTOM CURSOR
-   ============================================= */
+
 .cursor {
     position: fixed;
     top: 0;
@@ -109,9 +103,7 @@ body.dark-cursor .cursor-follower {
     border-color: #fff;
 }
 
-/* =============================================
-   HEADER
-   ============================================= */
+
 .header {
     position: fixed;
     top: 0;
@@ -137,7 +129,7 @@ body.dark-cursor .cursor-follower {
     backdrop-filter: blur(16px);
 }
 
-/* Logo */
+
 .logo {
     display: flex;
     align-items: center;
@@ -186,7 +178,7 @@ body.dark-cursor .cursor-follower {
     display: block;
 }
 
-/* Nav right */
+
 .header-right {
     display: flex;
     align-items: center;
@@ -260,9 +252,7 @@ body.dark-cursor .cursor-follower {
     transform: translateY(-8px) rotate(-45deg);
 }
 
-/* =============================================
-   MOBILE MENU
-   ============================================= */
+
 .mobile-menu {
     position: fixed;
     inset: 0;
@@ -355,9 +345,7 @@ body.dark-cursor .cursor-follower {
     color: #fff;
 }
 
-/* =============================================
-   HERO SECTION
-   ============================================= */
+
 .hero {
     min-height: 100vh;
     display: flex;
@@ -491,9 +479,7 @@ body.dark-cursor .cursor-follower {
     }
 }
 
-/* =============================================
-   ABOUT PREVIEW
-   ============================================= */
+
 .about-preview {
     padding: 6rem 2.5rem;
     display: grid;
@@ -618,9 +604,7 @@ body.dark-cursor .cursor-follower {
     border-top: 1px solid var(--border);
 }
 
-/* =============================================
-   SECTION LABEL (orange dot prefix)
-   ============================================= */
+
 .section-label {
     display: flex;
     align-items: baseline;
@@ -645,9 +629,7 @@ body.dark-cursor .cursor-follower {
     margin-bottom: 3rem;
 }
 
-/* =============================================
-   OUR WORKS (dark)
-   ============================================= */
+
 .our-works {
     background: var(--dark);
     padding: 5rem 2.5rem;
@@ -781,9 +763,7 @@ body.dark-cursor .cursor-follower {
     border-color: rgba(255, 255, 255, 0.7);
 }
 
-/* =============================================
-   SERVICE SECTIONS (Видеомонтаж / Брендинг)
-   ============================================= */
+
 .service-section {
     padding: 6rem 2.5rem;
     max-width: 1300px;
@@ -857,9 +837,7 @@ body.dark-cursor .cursor-follower {
     text-shadow: 0 1px 4px rgba(0,0,0,0.5);
 }
 
-/* =============================================
-   VIDEO BENTO GRID
-   ============================================= */
+
 .video-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -924,9 +902,7 @@ body.dark-cursor .cursor-follower {
     aspect-ratio: 9/16;
 }
 
-/* =============================================
-   BRANDING ROW — natural video proportions
-   ============================================= */
+
 .brand-row {
     display: flex;
     gap: 0.75rem;
@@ -986,7 +962,7 @@ body.dark-cursor .cursor-follower {
     color: #fff;
 }
 
-/* Accordion */
+
 .accordion {
     border-top: 1px solid var(--border);
     margin-top: 3rem;
@@ -1043,9 +1019,7 @@ body.dark-cursor .cursor-follower {
     color: #555;
 }
 
-/* =============================================
-   PHOTO COLLAGE
-   ============================================= */
+
 .photo-collage {
     width: 100%;
     overflow: hidden;
@@ -1105,9 +1079,7 @@ body.dark-cursor .cursor-follower {
     animation-play-state: paused;
 }
 
-/* =============================================
-   DIFFERENTIATORS — sticky scroll
-   ============================================= */
+
 .diff-scroll {
     padding: 5rem 2.5rem;
     max-width: 1300px;
@@ -1121,7 +1093,7 @@ body.dark-cursor .cursor-follower {
     align-items: start;
 }
 
-/* LEFT — items list */
+
 .diff-items {
     padding-top: 1rem;
 }
@@ -1166,7 +1138,7 @@ body.dark-cursor .cursor-follower {
     max-width: 420px;
 }
 
-/* RIGHT — sticky visual */
+
 .diff-sticky {
     position: sticky;
     top: calc(50vh - 240px);
@@ -1194,7 +1166,7 @@ body.dark-cursor .cursor-follower {
     transform: scale(1);
 }
 
-/* Visual colour themes */
+
 .diff-visual-1 {
     background: linear-gradient(135deg, #FF6630 0%, #e04010 100%);
     color: #fff;
@@ -1215,7 +1187,7 @@ body.dark-cursor .cursor-follower {
     color: #fff;
 }
 
-/* Visual content */
+
 .diff-visual-icon {
     width: 90px;
     height: 90px;
@@ -1272,9 +1244,6 @@ body.dark-cursor .cursor-follower {
     white-space: nowrap;
 }
 
-/* =============================================
-   PROCESS
-   ============================================= */
 .process {
     padding: 5rem 2.5rem;
     max-width: 1200px;
@@ -1332,9 +1301,6 @@ body.dark-cursor .cursor-follower {
     color: #555;
 }
 
-/* =============================================
-   AWARDS PARALLAX
-   ============================================= */
 .awards-section {
     background: #111;
     padding: 7rem 2.5rem;
@@ -1350,7 +1316,7 @@ body.dark-cursor .cursor-follower {
     gap: 4rem;
 }
 
-/* --- badges area --- */
+
 .awards-badges {
     position: relative;
     height: 380px;
@@ -1462,7 +1428,7 @@ body.dark-cursor .cursor-follower {
     background: rgba(255, 255, 255, 0.35);
 }
 
-/* --- text area --- */
+
 .awards-text {
     display: flex;
     flex-direction: column;
@@ -1533,9 +1499,7 @@ body.dark-cursor .cursor-follower {
     }
 }
 
-/* =============================================
-   TEAM
-   ============================================= */
+
 .team {
     padding: 5rem 2.5rem;
     max-width: 1100px;
@@ -1601,9 +1565,7 @@ body.dark-cursor .cursor-follower {
     color: #555;
 }
 
-/* =============================================
-   FOOTER
-   ============================================= */
+
 .footer {
     background: var(--dark);
     color: #fff;
@@ -1686,9 +1648,7 @@ body.dark-cursor .cursor-follower {
     color: #fff;
 }
 
-/* =============================================
-   SECTION DIVIDER
-   ============================================= */
+
 .divider {
     width: 100%;
     height: 1px;
@@ -1696,9 +1656,7 @@ body.dark-cursor .cursor-follower {
     margin: 0 auto;
 }
 
-/* =============================================
-   GSAP ANIMATION STATES
-   ============================================= */
+
 .fade-up {
     opacity: 0;
     transform: translateY(50px);
@@ -1718,18 +1676,14 @@ body.dark-cursor .cursor-follower {
     transform: translateX(60px);
 }
 
-/* =============================================
-   RESPONSIVE
-   ============================================= */
 
-/* ---- Ultra-wide 1440px+ ---- */
 @media (min-width: 1440px) {
     .our-works    { padding: 5rem 5rem; }
     .service-section { padding: 6rem 4rem; }
     .about-preview   { padding: 6rem 4rem; }
 }
 
-/* ---- Tablet landscape 1100px ---- */
+
 @media (max-width: 1100px) {
     .about-preview { grid-template-columns: 1fr; gap: 2.5rem; }
 
@@ -1749,28 +1703,28 @@ body.dark-cursor .cursor-follower {
     .diff-sticky { display: none; }
 }
 
-/* ---- Tablet portrait 768px ---- */
+
 @media (max-width: 768px) {
     body { cursor: auto; }
     button { cursor: pointer; }
     .cursor, .cursor-follower { display: none; }
 
-    /* Header */
+
     .header { padding: 0 1.25rem; height: 64px; }
     .logo-wrapper { padding: 5px 10px 5px 14px; gap: 8px; }
     .logo-icon { width: 42px; height: 42px; }
     .logo-text { font-size: 0.8rem; }
     .btn-cta { display: none; }
 
-    /* Hero */
+
     .hero { padding: 96px 1.25rem 3rem; }
     .scroll-indicator { display: none; }
 
-    /* About */
+
     .about-preview { padding: 3.5rem 1.25rem; }
     .media-grid { grid-template-columns: 1fr 1fr; }
 
-    /* Works */
+
     .our-works { padding: 3.5rem 1.25rem; }
     .works-grid { grid-template-columns: 1fr 1fr; gap: 0.6rem; }
     .work-card.vertical { aspect-ratio: 4/3; }
@@ -1779,7 +1733,7 @@ body.dark-cursor .cursor-follower {
     .work-card.half { grid-column: span 2; aspect-ratio: 16/9; }
     .work-card-info { transform: translateY(0); }
 
-    /* Video bento */
+
     .video-grid {
         grid-template-columns: 1fr 1fr;
         grid-template-rows: auto;
@@ -1795,7 +1749,7 @@ body.dark-cursor .cursor-follower {
     .vg-sq1, .vg-sq2 { aspect-ratio: 1; }
     .vg-sq3 { display: none; }
 
-    /* Services */
+
     .service-section { padding: 3.5rem 1.25rem; }
     .service-layout { grid-template-columns: 1fr; gap: 2rem; }
     .service-title { position: static; font-size: clamp(2rem, 7vw, 2.8rem); }
@@ -1803,25 +1757,25 @@ body.dark-cursor .cursor-follower {
     .service-card.wide { aspect-ratio: 16/7; }
     .service-card.tall { grid-row: auto !important; aspect-ratio: 1; }
 
-    /* Branding row */
+
     .brand-row { gap: 0.5rem; }
 
 
-    /* Photo collage */
+
     .photo-collage { height: 50vw; min-height: 220px; }
     .collage-img { height: calc(50vw - 1.5rem); min-height: 200px; }
 
-    /* Diff */
+
     .diff-scroll { padding: 3.5rem 1.25rem; }
     .diff-item { opacity: 1; }
     .diff-item-text { max-width: 100%; }
     .diff-item-title { font-size: 1.3rem; }
 
-    /* Process */
+
     .process { padding: 3.5rem 1.25rem; }
     .process-step { grid-template-columns: 40px 1fr; }
 
-    /* Awards */
+
     .awards-section { padding: 3.5rem 1.25rem !important; }
     .awards-inner { grid-template-columns: 1fr !important; gap: 2rem !important; }
     .awards-badges { height: 220px !important; }
@@ -1830,31 +1784,30 @@ body.dark-cursor .cursor-follower {
     .badge-float:nth-child(3) { top: 140px !important; left: 30px !important; }
     .badge-circle { width: 110px !important; height: 110px !important; }
 
-    /* Team */
+
     .team { padding: 3.5rem 1.25rem; }
     .team-grid { grid-template-columns: 1fr; gap: 2rem; }
     .team-card { grid-template-columns: 110px 1fr; }
 
-    /* Footer */
+
     .footer { padding: 3rem 1.25rem 1.5rem; }
     .footer-top { grid-template-columns: 1fr; gap: 2rem; }
     .footer-bottom { flex-direction: column; gap: 1rem; text-align: center; }
 }
 
-/* ---- Mobile 480px ---- */
+
 @media (max-width: 480px) {
-    /* Header */
-    .logo-wrapper { padding: 4px 8px 4px 12px; gap: 6px; }
+      .logo-wrapper { padding: 4px 8px 4px 12px; gap: 6px; }
     .logo-icon { width: 36px; height: 36px; }
     .logo-text { font-size: 0.72rem; }
 
-    /* Works — 1 col */
+
     .works-grid { grid-template-columns: 1fr; gap: 0.5rem; }
     .work-card.wide,
     .work-card.landscape,
     .work-card.half { grid-column: span 1; aspect-ratio: 16/9; }
 
-    /* Video bento — 1 col */
+
     .video-grid {
         grid-template-columns: 1fr;
         grid-template-areas:
@@ -1869,33 +1822,33 @@ body.dark-cursor .cursor-follower {
     .vg-reel2, .vg-sq2, .vg-sq3 { display: none; }
     .vg-sq1 { aspect-ratio: 16/9; }
 
-    /* Services — 1 col */
+
     .service-cards-grid { grid-template-columns: 1fr; }
     .service-card { aspect-ratio: 16/9; }
     .service-card.tall { aspect-ratio: 16/9 !important; }
 
-    /* Branding row — stack vertically */
+
     .brand-row { flex-direction: column; }
     .brand-item { flex: none; width: 100%; }
 
 
-    /* Photo collage */
+
     .photo-collage { height: 42vw; min-height: 180px; }
     .collage-img { height: calc(42vw - 1rem); min-height: 160px; }
 
-    /* Team */
+
     .team-card { grid-template-columns: 1fr; }
     .team-photo { aspect-ratio: 16/9; }
 
-    /* Awards */
+
     .badge-circle { width: 88px !important; height: 88px !important; }
     .awards-badges { height: 180px !important; }
 
-    /* Footer */
+
     .footer-top { gap: 1.5rem; }
 }
 
-/* ---- Very small phones 360px ---- */
+
 @media (max-width: 360px) {
     .hero { padding: 88px 1rem 2.5rem; }
     .our-works, .service-section, .about-preview,

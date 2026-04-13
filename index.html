@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
     <link rel="stylesheet" href="./static/css/style.css"/>
     <style>
-        /* ---- INTRO OVERLAY ---- */
+
         #intro {
             position: fixed;
             inset: 0;
@@ -29,17 +29,17 @@
             display: block;
         }
 
-        /* пока интро активно — страница не скроллится */
+
         body.intro-active {
             overflow: hidden;
         }
 
-        /* главный контент скрыт до конца интро */
+
         #page-content {
             opacity: 0;
         }
 
-        /* ---- INTRO LOGO (анимируется в хедер) ---- */
+
         #intro-logo {
             position: absolute;
             top: 50%;
@@ -125,9 +125,7 @@
 </head>
 <body class="intro-active">
 
-<!-- =============================================
-     INTRO SPLASH
-     ============================================= -->
+
 <div id="intro">
     <video
             id="intro-video"
@@ -138,7 +136,7 @@
             preload="auto"
     ></video>
 
-    <!-- Статичный логотип — появляется после видео и анимируется в хедер -->
+
     <div id="intro-logo">
         <div class="il-wrapper">
             <span class="il-text">VISUAL<br>TWINS</span>
@@ -151,13 +149,11 @@
 
 <div id="page-content">
 
-    <!-- Custom Cursor -->
+
     <div class="cursor"></div>
     <div class="cursor-follower"></div>
 
-    <!-- =============================================
-         HEADER
-         ============================================= -->
+
     <header class="header">
         <a href="./" class="logo">
             <div class="logo-wrapper">
@@ -178,7 +174,7 @@
         </div>
     </header>
 
-    <!-- Mobile Menu -->
+
     <nav class="mobile-menu">
         <div class="mobile-nav">
             <a href="./">Главная</a>
@@ -199,9 +195,7 @@
 
     <main>
 
-        <!-- =============================================
-             HERO
-             ============================================= -->
+
         <section class="hero" id="home">
             <canvas id="hero-canvas" class="hero-canvas"></canvas>
             <div class="hero-content">
@@ -225,9 +219,7 @@
             </div>
         </section>
 
-        <!-- =============================================
-             ABOUT PREVIEW
-             ============================================= -->
+
         <section class="about-preview" id="about">
             <div class="about-media">
                 <div class="media-grid">
@@ -274,9 +266,7 @@
             </div>
         </section>
 
-        <!-- =============================================
-             OUR WORKS
-             ============================================= -->
+
         <section class="our-works" id="works">
             <div class="section-label">
                 <span class="dot"></span>
@@ -285,7 +275,7 @@
             <p class="section-subtitle">Visual Twins — команда, которая превращает идеи в визуальные шедевры, цепляющие внимание и вызывающие доверие.</p>
 
             <div class="works-grid">
-                <!-- Ряд 1: 4 вертикальных рилса -->
+
                 <div class="work-card vertical">
                     <div class="work-card-inner">
                         <video autoplay loop muted playsinline><source src="./static/video/reels-fscr1.mp4" type="video/mp4"></video>
@@ -326,7 +316,7 @@
                     </div>
                 </div>
 
-                <!-- Ряд 2: широкая логоанимация -->
+
                 <div class="work-card wide">
                     <div class="work-card-inner">
                         <video autoplay loop muted playsinline><source src="./static/video/work-008.mp4" type="video/mp4"></video>
@@ -337,7 +327,7 @@
                     </div>
                 </div>
 
-                <!-- Ряд 3: 1 рилс + логоанимация -->
+
                 <div class="work-card vertical">
                     <div class="work-card-inner">
                         <video autoplay loop muted playsinline><source src="./static/video/reels-9.mp4" type="video/mp4"></video>
@@ -384,9 +374,7 @@
             </div>
         </section>
 
-        <!-- =============================================
-             ВИДЕОМОНТАЖ
-             ============================================= -->
+
         <section class="service-section" id="video">
             <div class="service-layout">
                 <h2 class="service-title">Видео&shy;монтаж</h2>
@@ -536,9 +524,7 @@
 
         <div class="divider"></div>
 
-        <!-- =============================================
-             БРЕНДИНГ
-             ============================================= -->
+
         <section class="service-section" id="branding">
             <div class="service-layout">
                 <h2 class="service-title">Брен&shy;динг</h2>
@@ -649,12 +635,10 @@
             </div>
         </section>
 
-        <!-- =============================================
-             PHOTO COLLAGE
-             ============================================= -->
+
         <section class="photo-collage">
             <div class="collage-track">
-                <!-- Копия 1 -->
+
                 <div class="collage-img vertical">
                     <a href="./portfolio/"><video autoplay loop muted playsinline><source src="./static/video/reels-fscr1.mp4" type="video/mp4"></video></a>
                 </div>
@@ -673,7 +657,7 @@
                 <div class="collage-img">
                     <a href="./portfolio/"><video autoplay loop muted playsinline><source src="./static/video/work-037.mp4" type="video/mp4"></video></a>
                 </div>
-                <!-- Копия 2 (для бесконечного скролла) -->
+
                 <div class="collage-img vertical">
                     <a href="./portfolio/"><video autoplay loop muted playsinline><source src="./static/video/reels-fscr1.mp4" type="video/mp4"></video></a>
                 </div>
@@ -695,9 +679,7 @@
             </div>
         </section>
 
-        <!-- =============================================
-             ЧТО НАС ОТЛИЧАЕТ — sticky scroll
-             ============================================= -->
+
         <section class="diff-scroll" id="about-us">
             <div class="section-label" style="margin-bottom:3rem;">
                 <span class="dot"></span>
@@ -706,7 +688,7 @@
 
             <div class="diff-scroll-inner">
 
-                <!-- LEFT: items -->
+
                 <div class="diff-items">
 
                     <div class="diff-item" data-visual="1">
@@ -752,7 +734,7 @@
 
                 </div>
 
-                <!-- RIGHT: sticky visuals -->
+
                 <div class="diff-sticky">
 
                     <div class="diff-visual diff-visual-1 is-active">
@@ -827,9 +809,7 @@
             </div>
         </section>
 
-        <!-- =============================================
-             PROCESS
-             ============================================= -->
+
         <section class="process" id="process">
             <div class="section-label">
                 <span class="dot"></span>
@@ -872,14 +852,12 @@
             </div>
         </section>
 
-        <!-- =============================================
-             AWARDS PARALLAX
-             ============================================= -->
+
         <section class="awards-section" style="background:#111;padding:7rem 2.5rem;overflow:hidden;">
             <div class="awards-inner"
                  style="max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:4rem;">
 
-                <!-- Левая колонка: плавающие бейджи -->
+
                 <div class="awards-badges" style="position:relative;height:400px;">
 
                     <div class="badge-float" data-depth="0.05"
@@ -920,14 +898,14 @@
                         </div>
                     </div>
 
-                    <!-- декоративные точки -->
+
                     <div style="position:absolute;top:8%;left:4%;width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,0.3);"></div>
                     <div style="position:absolute;top:62%;left:1%;width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,0.15);"></div>
                     <div style="position:absolute;top:88%;left:52%;width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.12);"></div>
 
                 </div>
 
-                <!-- Правая колонка: текст -->
+
                 <div class="awards-text" style="display:flex;flex-direction:column;gap:1.8rem;">
                     <div class="awards-label"
                          style="display:flex;align-items:center;gap:0.6rem;font-size:0.85rem;color:rgba(255,255,255,0.55);letter-spacing:0.04em;">
@@ -945,9 +923,7 @@
             </div>
         </section>
 
-        <!-- =============================================
-             TEAM
-             ============================================= -->
+
         <section class="team" id="team">
             <div class="section-label">
                 <span class="dot"></span>
@@ -976,9 +952,7 @@
 
     </main>
 
-    <!-- =============================================
-         FOOTER
-         ============================================= -->
+
     <footer class="footer">
         <div class="footer-top">
             <div class="footer-brand">
@@ -1035,11 +1009,9 @@
         </div>
     </footer>
 
-    <!-- GSAP -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
-    <!-- INTRO TRANSITION -->
     <script>
         (function () {
             var done = false;
@@ -1052,62 +1024,61 @@
                 var introVideo = document.getElementById('intro-video');
                 var introLogo = document.getElementById('intro-logo');
                 var pageContent = document.getElementById('page-content');
-                var headerLogo = document.querySelector('.header .logo-wrapper');
 
-                /* Измеряем позиции до старта анимации.
-                   opacity:0 не убирает элемент из потока, rect вернётся верный. */
-                var srcRect = introLogo.getBoundingClientRect();
-                var dstRect = headerLogo.getBoundingClientRect();
+                if (typeof gsap === 'undefined') {
+                    intro.style.display = 'none';
+                    pageContent.style.opacity = '1';
+                    document.body.classList.remove('intro-active');
+                    return;
+                }
 
-                /* Масштаб: делаем логотип точно шириной хедер-логотипа */
-                var s = dstRect.width / srcRect.width;
+                requestAnimationFrame(function () {
+                    var headerLogo = document.querySelector('.header .logo-wrapper');
+                    var srcRect = introLogo.getBoundingClientRect();
+                    var dstRect = headerLogo ? headerLogo.getBoundingClientRect() : null;
+                    var valid = dstRect && dstRect.width > 0 && srcRect.width > 0;
 
-                /* GSAP заменяет CSS translate(-50%,-50%) своим трансформом.
-                   Его layout-точка отсчёта — natural top-left (left:50%, top:50%),
-                   поэтому к цели нужно ещё вычесть половину размера самого элемента. */
-                var tx = (dstRect.left + dstRect.width / 2) - window.innerWidth / 2 - srcRect.width / 2;
-                var ty = (dstRect.top + dstRect.height / 2) - window.innerHeight / 2 - srcRect.height / 2;
+                    var tl = gsap.timeline({
+                        onComplete: function () {
+                            intro.style.display = 'none';
+                            document.body.classList.remove('intro-active');
+                        }
+                    });
 
-                gsap.timeline({
-                    onComplete: function () {
-                        intro.style.display = 'none';
-                        document.body.classList.remove('intro-active');
+                    tl.to(introVideo, {opacity: 0, duration: 0.35, ease: 'power1.in'})
+                      .to(introLogo, {opacity: 1, duration: 0.2}, '-=0.1');
+
+                    if (valid) {
+                        var s = dstRect.width / srcRect.width;
+                        var dx = (dstRect.left + dstRect.width / 2) - (srcRect.left + srcRect.width / 2);
+                        var dy = (dstRect.top + dstRect.height / 2) - (srcRect.top + srcRect.height / 2);
+
+                        tl.to(introLogo, {
+                            x: '+=' + dx,
+                            y: '+=' + dy,
+                            scale: s,
+                            transformOrigin: 'center center',
+                            duration: 0.95,
+                            ease: 'power3.inOut'
+                        }, '+=0.05');
+                    } else {
+                        tl.to(introLogo, {opacity: 0, scale: 0.85, duration: 0.5, delay: 0.3});
                     }
-                })
-                    /* 1. Гасим видео */
-                    .to(introVideo, {opacity: 0, duration: 0.35, ease: 'power1.in'})
 
-                    /* 2. Показываем статичный логотип */
-                    .to(introLogo, {opacity: 1, duration: 0.2}, '-=0.1')
-
-                    /* 3. Логотип плавно летит в хедер и уменьшается */
-                    .to(introLogo, {
-                        x: tx,
-                        y: ty,
-                        scale: s,
-                        duration: 0.95,
-                        ease: 'power3.inOut'
-                    }, '+=0.05')
-
-                    /* 4. Страница проявляется во время полёта */
-                    .to(pageContent, {opacity: 1, duration: 0.6, ease: 'power2.out'}, '-=0.65')
-
-                    /* 5. Фон интро исчезает */
-                    .to(intro, {opacity: 0, duration: 0.35, ease: 'power1.in'}, '-=0.3');
+                    tl.to(pageContent, {opacity: 1, duration: 0.6, ease: 'power2.out'}, '-=0.65')
+                      .to(intro, {opacity: 0, duration: 0.35, ease: 'power1.in'}, '-=0.3');
+                });
             }
 
-            document.getElementById('intro-video').addEventListener('ended', startTransition);
-
-            /* Запасной таймаут — если видео не загрузилось или длится >12 с */
             var fallback = setTimeout(startTransition, 12000);
             document.getElementById('intro-video').addEventListener('ended', function () {
                 clearTimeout(fallback);
+                startTransition();
             });
         })();
     </script>
 
     <script src="./static/js/main.js"></script>
 </div>
->
 </body>
 </html>

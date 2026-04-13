@@ -157,11 +157,11 @@
             display: block;
         }
 
-        /* ---- КУРСОР: белый на тёмном ---- */
+
         .cursor { background: #fff; mix-blend-mode: difference; }
         .cursor-follower { border-color: #fff; mix-blend-mode: difference; }
 
-        /* ---- ВИДЕО МОДАЛКА ---- */
+
         .video-modal {
             position: fixed;
             inset: 0;
@@ -297,8 +297,7 @@
     </div>
 
     <div class="portfolio-grid">
-        <!-- Ряд 1: wide(2) + одна(1) -->
-        <div class="portfolio-item wide" data-cat="logo">
+              <div class="portfolio-item wide" data-cat="logo">
             <div class="portfolio-item-inner">
                 <video src="../static/video/work-008.mp4" autoplay muted loop playsinline></video>
             </div>
@@ -320,8 +319,7 @@
             </div>
         </div>
 
-        <!-- Ряд 2: одна(1) + wide(2) -->
-        <div class="portfolio-item" data-cat="logo">
+              <div class="portfolio-item" data-cat="logo">
             <div class="portfolio-item-inner">
                 <video src="../static/video/work-037.mp4" autoplay muted loop playsinline></video>
             </div>
@@ -343,7 +341,7 @@
             </div>
         </div>
 
-        <!-- Ряд 3: wide(2) + одна(1) -->
+
         <div class="portfolio-item wide" data-cat="logo">
             <div class="portfolio-item-inner">
                 <video src="../static/video/work-045.mp4" autoplay muted loop playsinline></video>
@@ -366,7 +364,7 @@
             </div>
         </div>
 
-        <!-- Ряд 4: одна(1) + wide(2) -->
+
         <div class="portfolio-item" data-cat="logo">
             <div class="portfolio-item-inner">
                 <video src="../static/video/work-048.mp4" autoplay muted loop playsinline></video>
@@ -389,7 +387,7 @@
             </div>
         </div>
 
-        <!-- Ряд 5: полная ширина -->
+
         <div class="portfolio-item wide" data-cat="logo" style="grid-column: span 3;">
             <div class="portfolio-item-inner">
                 <video src="../static/video/work-052.mp4" autoplay muted loop playsinline></video>
@@ -401,7 +399,7 @@
             </div>
         </div>
 
-        <!-- Reels — вертикальные ролики -->
+
         <div class="portfolio-item vertical" data-cat="video">
             <div class="portfolio-item-inner">
                 <video src="../static/video/reels-fscr1.mp4" autoplay muted loop playsinline></video>
@@ -458,7 +456,7 @@
         </div>
     </div>
 
-    <!-- Модалка для просмотра видео со звуком -->
+
     <div class="video-modal" id="videoModal">
         <button class="video-modal-close" id="modalClose">✕</button>
         <div class="video-modal-inner">
@@ -559,7 +557,7 @@
 })();
 </script>
 <script>
-    // Portfolio filter
+
     document.querySelectorAll('.filter-btn').forEach(btn => {
         btn.addEventListener('click', () => {
             document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));

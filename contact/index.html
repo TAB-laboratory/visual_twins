@@ -373,7 +373,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="../static/js/main.js"></script>
 <script>
-    // Form submit (frontend only demo)
     document.getElementById('contact-form').addEventListener('submit', e => {
         e.preventDefault();
         const form = document.getElementById('contact-form');
@@ -392,7 +391,7 @@
         }
     });
 
-    // Animate contact page
+
     if (typeof gsap !== 'undefined') {
         gsap.from('.contact-tag', {opacity: 0, y: 20, duration: 0.6, delay: 0.3});
         gsap.from('.contact-heading', {opacity: 0, y: 60, duration: 1, delay: 0.4, ease: 'power3.out'});
