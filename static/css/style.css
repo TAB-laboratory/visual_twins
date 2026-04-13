@@ -914,34 +914,6 @@ body.dark-cursor .cursor-follower {
 .vg-sq2   { grid-area: sq2; }
 .vg-sq3   { grid-area: sq3; }
 
-/* Tablet */
-@media (max-width: 768px) {
-    .video-grid {
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: 200px 200px 200px 160px;
-        grid-template-areas:
-            "reel1 wide1"
-            "wide2 reel2"
-            "wide2 reel2"
-            "sq1   sq2";
-    }
-    .vg-sq3 { display: none; }
-}
-
-/* Mobile */
-@media (max-width: 480px) {
-    .video-grid {
-        grid-template-columns: 1fr;
-        grid-template-rows: repeat(5, 200px);
-        grid-template-areas:
-            "wide1"
-            "reel1"
-            "wide2"
-            "reel2"
-            "sq1";
-    }
-    .vg-sq2, .vg-sq3 { display: none; }
-}
 
 .service-card.wide {
     grid-column: span 2;
@@ -1712,361 +1684,184 @@ body.dark-cursor .cursor-follower {
 /* =============================================
    RESPONSIVE
    ============================================= */
-/* Wide screens — comfortable breathing room */
+
+/* ---- Ultra-wide 1440px+ ---- */
 @media (min-width: 1440px) {
-    .our-works {
-        padding: 5rem 5rem;
-    }
-
-    .service-section {
-        padding: 6rem 4rem;
-    }
-
-    .about-preview {
-        padding: 6rem 4rem;
-    }
+    .our-works    { padding: 5rem 5rem; }
+    .service-section { padding: 6rem 4rem; }
+    .about-preview   { padding: 6rem 4rem; }
 }
 
-/* Tablet — collapse works, about, footer, diff */
+/* ---- Tablet landscape 1100px ---- */
 @media (max-width: 1100px) {
-    .about-preview {
-        grid-template-columns: 1fr;
-        gap: 2.5rem;
-    }
+    .about-preview { grid-template-columns: 1fr; gap: 2.5rem; }
 
-    .works-grid {
-        grid-template-columns: 1fr 1fr;
-    }
-
-    .work-card.vertical {
-        aspect-ratio: 4/3;
-    }
-
+    .works-grid { grid-template-columns: 1fr 1fr; }
+    .work-card.vertical { aspect-ratio: 4/3; }
     .work-card.wide,
     .work-card.landscape,
-    .work-card.half {
-        grid-column: span 2;
+    .work-card.half { grid-column: span 2; }
+
+    .video-grid {
+        grid-template-rows: 220px 220px 160px;
     }
 
-    .footer-top {
-        grid-template-columns: 1fr 1fr;
-        gap: 2rem;
-    }
+    .footer-top { grid-template-columns: 1fr 1fr; gap: 2rem; }
 
-    .diff-scroll-inner {
-        grid-template-columns: 1fr;
-        gap: 3rem;
-    }
-
-    .diff-sticky {
-        display: none;
-    }
+    .diff-scroll-inner { grid-template-columns: 1fr; gap: 3rem; }
+    .diff-sticky { display: none; }
 }
 
+/* ---- Tablet portrait 768px ---- */
 @media (max-width: 768px) {
-    /* Restore normal cursor on touch devices */
-    body {
-        cursor: auto;
-    }
-
-    button {
-        cursor: pointer;
-    }
-
-    .cursor, .cursor-follower {
-        display: none;
-    }
+    body { cursor: auto; }
+    button { cursor: pointer; }
+    .cursor, .cursor-follower { display: none; }
 
     /* Header */
-    .header {
-        padding: 0 1.25rem;
-        height: 68px;
-    }
-
-    .logo-wrapper {
-        padding: 5px 10px 5px 14px;
-        gap: 8px;
-    }
-
-    .logo-icon {
-        width: 44px;
-        height: 44px;
-    }
-
-    .logo-text {
-        font-size: 0.82rem;
-    }
-
-    .btn-cta {
-        display: none;
-    }
+    .header { padding: 0 1.25rem; height: 64px; }
+    .logo-wrapper { padding: 5px 10px 5px 14px; gap: 8px; }
+    .logo-icon { width: 42px; height: 42px; }
+    .logo-text { font-size: 0.8rem; }
+    .btn-cta { display: none; }
 
     /* Hero */
-    .hero {
-        padding: 100px 1.25rem 3.5rem;
-    }
-
-    .scroll-indicator {
-        display: none;
-    }
+    .hero { padding: 96px 1.25rem 3rem; }
+    .scroll-indicator { display: none; }
 
     /* About */
-    .about-preview {
-        padding: 4rem 1.25rem;
-    }
-
-    .media-grid {
-        grid-template-columns: 1fr 1fr;
-    }
+    .about-preview { padding: 3.5rem 1.25rem; }
+    .media-grid { grid-template-columns: 1fr 1fr; }
 
     /* Works */
-    .our-works {
-        padding: 4rem 1.25rem;
-    }
-
-    .works-grid {
-        grid-template-columns: 1fr 1fr;
-        gap: 0.75rem;
-    }
-
-    .work-card.vertical {
-        aspect-ratio: 4/3;
-    }
-
+    .our-works { padding: 3.5rem 1.25rem; }
+    .works-grid { grid-template-columns: 1fr 1fr; gap: 0.6rem; }
+    .work-card.vertical { aspect-ratio: 4/3; }
     .work-card.wide,
     .work-card.landscape,
-    .work-card.half {
-        grid-column: span 2;
-        aspect-ratio: 16/9;
-    }
+    .work-card.half { grid-column: span 2; aspect-ratio: 16/9; }
+    .work-card-info { transform: translateY(0); }
 
-    .work-card-info {
-        transform: translateY(0);
+    /* Video bento */
+    .video-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto;
+        gap: 0.6rem;
+        grid-template-areas:
+            "reel1 reel2"
+            "wide1 wide1"
+            "wide2 wide2"
+            "sq1   sq2";
     }
+    .vg-reel1, .vg-reel2 { aspect-ratio: 4/3; }
+    .vg-wide1, .vg-wide2 { aspect-ratio: 16/9; grid-column: span 2; }
+    .vg-sq1, .vg-sq2 { aspect-ratio: 1; }
+    .vg-sq3 { display: none; }
 
     /* Services */
-    .service-section {
-        padding: 4rem 1.25rem;
-    }
-
-    .service-layout {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-    }
-
-    .service-title {
-        position: static;
-        font-size: 2.2rem;
-    }
-
-    .service-cards-grid {
-        grid-template-columns: 1fr 1fr;
-    }
-
-    .service-card.wide {
-        aspect-ratio: 16/7;
-    }
-
-    .service-card.tall {
-        grid-row: auto !important;
-        aspect-ratio: 1;
-    }
-
-    /* Photo collage — reduce on tablet */
-    .photo-collage {
-        height: 50vh;
-        min-height: 300px;
-    }
-
-    .collage-img {
-        height: calc(50vh - 2rem);
-        min-height: 280px;
-    }
-
-    /* Footer */
-    .footer {
-        padding: 3rem 1.25rem 1.5rem;
-    }
-
-    /* Differentiators */
-    .diff-scroll {
-        padding: 4rem 1.25rem;
-    }
-
-    .diff-item {
-        opacity: 1;
-    }
-
-    .diff-item-text {
-        max-width: 100%;
-    }
-
-    .diff-item-title {
-        font-size: 1.3rem;
-    }
-
-    /* Process */
-    .process {
-        padding: 4rem 1.25rem;
-    }
-
-    .process-step {
-        grid-template-columns: 40px 1fr;
-    }
-
-    /* Awards */
-    .awards-section {
-        padding: 4rem 1.25rem !important;
-    }
-
-    .awards-inner {
-        grid-template-columns: 1fr !important;
-        gap: 2.5rem !important;
-    }
-
-    .awards-badges {
-        height: 220px !important;
-    }
-
-    .badge-float:nth-child(1) {
-        top: 20px !important;
-        left: 20px !important;
-    }
-
-    .badge-float:nth-child(2) {
-        top: 70px !important;
-        left: 50% !important;
-        transform: translateX(-20%) !important;
-    }
-
-    .badge-float:nth-child(3) {
-        top: 140px !important;
-        left: 30px !important;
-    }
-
-    .badge-circle {
-        width: 110px !important;
-        height: 110px !important;
-    }
-
-    /* Team */
-    .team {
-        padding: 4rem 1.25rem;
-    }
-
-    .team-grid {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-    }
-
-    .team-card {
-        grid-template-columns: 120px 1fr;
-    }
-
-    /* Footer */
-    .footer {
-        padding: 3rem 1.25rem 1.5rem;
-    }
-
-    .footer-top {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-    }
-
-    .footer-bottom {
-        flex-direction: column;
-        gap: 1rem;
-        text-align: center;
-    }
+    .service-section { padding: 3.5rem 1.25rem; }
+    .service-layout { grid-template-columns: 1fr; gap: 2rem; }
+    .service-title { position: static; font-size: clamp(2rem, 7vw, 2.8rem); }
+    .service-cards-grid { grid-template-columns: 1fr 1fr; }
+    .service-card.wide { aspect-ratio: 16/7; }
+    .service-card.tall { grid-row: auto !important; aspect-ratio: 1; }
 
     /* Photo collage */
-    .photo-collage {
-        height: 45vw;
-        min-height: 200px;
-    }
+    .photo-collage { height: 50vw; min-height: 220px; }
+    .collage-img { height: calc(50vw - 1.5rem); min-height: 200px; }
 
-    .collage-img {
-        height: calc(45vw - 1.5rem);
-        min-height: 180px;
-    }
-}
+    /* Diff */
+    .diff-scroll { padding: 3.5rem 1.25rem; }
+    .diff-item { opacity: 1; }
+    .diff-item-text { max-width: 100%; }
+    .diff-item-title { font-size: 1.3rem; }
 
-@media (max-width: 480px) {
-    /* Header */
-    .logo-wrapper {
-        padding: 4px 8px 4px 12px;
-        gap: 6px;
-    }
+    /* Process */
+    .process { padding: 3.5rem 1.25rem; }
+    .process-step { grid-template-columns: 40px 1fr; }
 
-    .logo-icon {
-        width: 38px;
-        height: 38px;
-    }
-
-    .logo-text {
-        font-size: 0.75rem;
-    }
-
-    /* Works — single col on phones */
-    .works-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .work-card.vertical {
-        aspect-ratio: 4/3;
-    }
-
-    .work-card.wide,
-    .work-card.landscape,
-    .work-card.half {
-        grid-column: span 1;
-        aspect-ratio: 16/9;
-    }
-
-    /* Service cards */
-    .service-cards-grid {
-        grid-template-columns: 1fr 1fr;
-    }
-
-    /* Footer — full stack */
-    .footer-top {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-    }
-
-    .footer-bottom {
-        flex-direction: column;
-        gap: 1rem;
-        text-align: center;
-    }
-
-    /* Photo collage — shorter on phones */
-    .photo-collage {
-        height: 40vh;
-        min-height: 240px;
-    }
-
-    .collage-img {
-        height: calc(40vh - 2rem);
-        min-height: 220px;
-    }
+    /* Awards */
+    .awards-section { padding: 3.5rem 1.25rem !important; }
+    .awards-inner { grid-template-columns: 1fr !important; gap: 2rem !important; }
+    .awards-badges { height: 220px !important; }
+    .badge-float:nth-child(1) { top: 20px !important; left: 20px !important; }
+    .badge-float:nth-child(2) { top: 70px !important; left: 50% !important; transform: translateX(-20%) !important; }
+    .badge-float:nth-child(3) { top: 140px !important; left: 30px !important; }
+    .badge-circle { width: 110px !important; height: 110px !important; }
 
     /* Team */
-    .team-card {
+    .team { padding: 3.5rem 1.25rem; }
+    .team-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .team-card { grid-template-columns: 110px 1fr; }
+
+    /* Footer */
+    .footer { padding: 3rem 1.25rem 1.5rem; }
+    .footer-top { grid-template-columns: 1fr; gap: 2rem; }
+    .footer-bottom { flex-direction: column; gap: 1rem; text-align: center; }
+}
+
+/* ---- Mobile 480px ---- */
+@media (max-width: 480px) {
+    /* Header */
+    .logo-wrapper { padding: 4px 8px 4px 12px; gap: 6px; }
+    .logo-icon { width: 36px; height: 36px; }
+    .logo-text { font-size: 0.72rem; }
+
+    /* Works — 1 col */
+    .works-grid { grid-template-columns: 1fr; gap: 0.5rem; }
+    .work-card.wide,
+    .work-card.landscape,
+    .work-card.half { grid-column: span 1; aspect-ratio: 16/9; }
+
+    /* Video bento — 1 col */
+    .video-grid {
         grid-template-columns: 1fr;
+        grid-template-areas:
+            "wide1"
+            "reel1"
+            "wide2"
+            "sq1";
+        gap: 0.5rem;
     }
+    .vg-wide1, .vg-wide2 { aspect-ratio: 16/9; grid-column: span 1; }
+    .vg-reel1 { aspect-ratio: 4/3; }
+    .vg-reel2, .vg-sq2, .vg-sq3 { display: none; }
+    .vg-sq1 { aspect-ratio: 16/9; }
 
-    .team-photo {
-        aspect-ratio: 16/9;
-    }
+    /* Services — 1 col */
+    .service-cards-grid { grid-template-columns: 1fr; }
+    .service-card { aspect-ratio: 16/9; }
+    .service-card.tall { aspect-ratio: 16/9 !important; }
 
-    /* Awards badges smaller */
-    .badge-circle {
-        width: 90px !important;
-        height: 90px !important;
-    }
+    /* Photo collage */
+    .photo-collage { height: 42vw; min-height: 180px; }
+    .collage-img { height: calc(42vw - 1rem); min-height: 160px; }
 
-    .awards-badges {
-        height: 180px !important;
-    }
+    /* Team */
+    .team-card { grid-template-columns: 1fr; }
+    .team-photo { aspect-ratio: 16/9; }
+
+    /* Awards */
+    .badge-circle { width: 88px !important; height: 88px !important; }
+    .awards-badges { height: 180px !important; }
+
+    /* Footer */
+    .footer-top { gap: 1.5rem; }
+}
+
+/* ---- Very small phones 360px ---- */
+@media (max-width: 360px) {
+    .hero { padding: 88px 1rem 2.5rem; }
+    .our-works, .service-section, .about-preview,
+    .diff-scroll, .process, .team { padding: 3rem 1rem; }
+    .footer { padding: 2.5rem 1rem 1.5rem; }
+
+    .logo-wrapper { padding: 3px 6px 3px 10px; gap: 5px; }
+    .logo-icon { width: 30px; height: 30px; }
+    .logo-text { font-size: 0.65rem; }
+
+    .mobile-nav a { font-size: 1.8rem; }
+
+    .video-grid { gap: 0.4rem; }
+    .works-grid { gap: 0.4rem; }
 }
