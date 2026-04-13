@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Команда — Visual Twins</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="../static/css/style.css"/>
+  <style>
+    /* ---- HERO ---- */
+    .team-hero {
+      min-height: 52vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 0 4rem 4rem;
+      background: var(--dark);
+      position: relative;
+      overflow: hidden;
+      padding-top: 80px;
+    }
+    .team-hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 70% 50%, rgba(255,102,48,0.12) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .team-hero-tag {
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--orange);
+      font-weight: 600;
+      margin-bottom: 1.25rem;
+      position: relative;
+      z-index: 1;
+    }
+    .team-hero-title {
+      font-size: clamp(3rem, 7vw, 6.5rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 0.95;
+      color: #fff;
+      position: relative;
+      z-index: 1;
+    }
+    .team-hero-title span {
+      color: var(--orange);
+    }
+    .team-hero-sub {
+      margin-top: 2rem;
+      font-size: 1rem;
+      color: rgba(255,255,255,0.45);
+      max-width: 460px;
+      line-height: 1.7;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ---- GRID ---- */
+    .team-section {
+      padding: 6rem 4rem;
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 2.5rem;
+    }
+
+    /* ---- CARD ---- */
+    .team-card {
+      border: 1.5px solid var(--border);
+      border-radius: 24px;
+      overflow: hidden;
+      transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease);
+      background: #fff;
+    }
+    .team-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 24px 60px rgba(26,26,26,0.1);
+    }
+    .team-card-photo {
+      width: 100%;
+      aspect-ratio: 4/5;
+      overflow: hidden;
+      background: #f0f0f0;
+      position: relative;
+    }
+    .team-card-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      transition: transform 0.6s var(--ease);
+      display: block;
+    }
+    .team-card:hover .team-card-photo img {
+      transform: scale(1.04);
+    }
+    .team-card-photo .photo-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
+      font-size: 5rem;
+      color: #ccc;
+      letter-spacing: 0;
+    }
+
+    .team-card-body {
+      padding: 2rem;
+    }
+    .team-card-role {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--orange);
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+    .team-card-name {
+      font-size: 1.55rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.9rem;
+      line-height: 1.15;
+    }
+    .team-card-desc {
+      font-size: 0.93rem;
+      color: #666;
+      line-height: 1.75;
+      margin-bottom: 1.75rem;
+    }
+    .team-card-skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: 1.75rem;
+    }
+    .team-card-skill {
+      padding: 0.3rem 0.85rem;
+      border: 1.5px solid var(--border);
+      border-radius: 60px;
+      font-size: 0.78rem;
+      color: #555;
+      font-weight: 500;
+    }
+    .team-card-socials {
+      display: flex;
+      gap: 0.75rem;
+    }
+    .team-card-socials a {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.4rem 1rem;
+      border-radius: 60px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      border: 1.5px solid var(--border);
+      color: var(--dark);
+      transition: background 0.25s, color 0.25s, border-color 0.25s;
+    }
+    .team-card-socials a:hover {
+      background: var(--dark);
+      color: #fff;
+      border-color: var(--dark);
+    }
+
+    /* ---- BOTTOM CTA ---- */
+    .team-cta {
+      padding: 5rem 4rem;
+      background: var(--dark);
+      text-align: center;
+    }
+    .team-cta-label {
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--orange);
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+    }
+    .team-cta h2 {
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: -0.03em;
+      margin-bottom: 2.5rem;
+    }
+    .team-cta .btn-cta {
+      font-size: 1rem;
+      height: 54px;
+      padding: 0 2.5rem;
+    }
+
+    @media (max-width: 900px) {
+      .team-hero { padding: 80px 2rem 3rem; }
+      .team-section { padding: 4rem 2rem; }
+      .team-grid { grid-template-columns: 1fr; }
+      .team-cta { padding: 4rem 2rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="cursor"></div>
+<div class="cursor-follower"></div>
+
+<header class="header dark-header">
+  <a href="../" class="logo">
+    <div class="logo-wrapper">
+      <span class="logo-text">VISUAL<br>TWINS</span>
+      <div class="logo-icon">
+        <img src="../static/images/logo-icon.png" alt="Visual Twins">
+      </div>
+    </div>
+  </a>
+  <div class="header-right">
+    <button class="hamburger" aria-label="Меню"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<nav class="mobile-menu">
+  <div class="mobile-nav">
+    <a href="../">Главная</a>
+    <a href="../services/">Услуги</a>
+    <a href="../portfolio/">Работы</a>
+    <a href="../team/" class="active">Команда</a>
+    <a href="../contact/">Контакты</a>
+  </div>
+  <div class="menu-footer">
+    <div class="menu-social">
+      <a href="#">Instagram</a>
+      <a href="#">ВКонтакте</a>
+      <a href="#">TikTok</a>
+      <a href="#">Telegram</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="team-hero">
+  <p class="team-hero-tag">Visual Twins — Команда</p>
+  <h1 class="team-hero-title">Люди,<br>которые<br><span>создают</span></h1>
+  <p class="team-hero-sub">Небольшая команда с большим вкусом. Мы не просто делаем красиво — мы делаем так, чтобы это работало.</p>
+</section>
+
+<!-- TEAM GRID -->
+<section class="team-section">
+  <div class="team-grid">
+
+    <!-- Участник 1 -->
+    <div class="team-card">
+      <div class="team-card-photo">
+        <div class="photo-placeholder">👤</div>
+      </div>
+      <div class="team-card-body">
+        <p class="team-card-role">Co-founder · Креативный директор</p>
+        <h2 class="team-card-name">Имя Фамилия</h2>
+        <p class="team-card-desc">
+          Отвечает за визуальную идеологию студии. Придумывает концепции, которые запоминаются, и следит за тем, чтобы каждый проект был сделан с душой.
+        </p>
+        <div class="team-card-skills">
+          <span class="team-card-skill">Брендинг</span>
+          <span class="team-card-skill">Видеопроизводство</span>
+          <span class="team-card-skill">Анимация</span>
+        </div>
+        <div class="team-card-socials">
+          <a href="#">Telegram</a>
+          <a href="#">Instagram</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Участник 2 -->
+    <div class="team-card">
+      <div class="team-card-photo">
+        <div class="photo-placeholder">👤</div>
+      </div>
+      <div class="team-card-body">
+        <p class="team-card-role">Co-founder · Дизайнер</p>
+        <h2 class="team-card-name">Имя Фамилия</h2>
+        <p class="team-card-desc">
+          Переводит смыслы в формы. Создаёт фирменные стили, SMM-контент и всё, что должно выглядеть стильно на любом носителе.
+        </p>
+        <div class="team-card-skills">
+          <span class="team-card-skill">SMM-дизайн</span>
+          <span class="team-card-skill">Логотипы</span>
+          <span class="team-card-skill">Reels</span>
+        </div>
+        <div class="team-card-socials">
+          <a href="#">Telegram</a>
+          <a href="#">Instagram</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="team-cta">
+  <p class="team-cta-label">Работать вместе</p>
+  <h2>Готовы к проекту?</h2>
+  <a href="../contact/" class="btn-cta">Написать нам →</a>
+</section>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="../static/js/main.js"></script>
+<script>
+  if (typeof gsap !== 'undefined') {
+    gsap.from('.team-hero-tag',   { opacity: 0, y: 20, duration: 0.6, delay: 0.2 });
+    gsap.from('.team-hero-title', { opacity: 0, y: 60, duration: 1,   delay: 0.35, ease: 'power3.out' });
+    gsap.from('.team-hero-sub',   { opacity: 0, y: 30, duration: 0.7, delay: 0.6 });
+    gsap.from('.team-card',       { opacity: 0, y: 50, duration: 0.7, stagger: 0.15, delay: 0.5, ease: 'power3.out' });
+  }
+</script>
+</body>
+</html>

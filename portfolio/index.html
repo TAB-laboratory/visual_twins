@@ -74,13 +74,15 @@
             position: relative;
         }
 
+        .portfolio-item { aspect-ratio: 16/9; }
+
         .portfolio-item.vertical {
             aspect-ratio: 9/16;
         }
 
         .portfolio-item.wide {
             grid-column: span 2;
-            aspect-ratio: 16/8;
+            aspect-ratio: 16/9;
         }
 
         .portfolio-item.square {
@@ -97,6 +99,7 @@
             padding: 1.25rem;
             position: relative;
             transition: transform 0.5s var(--ease);
+            overflow: hidden;
         }
 
         .portfolio-item:hover .portfolio-item-inner {
@@ -145,6 +148,70 @@
             font-style: italic;
         }
 
+        .portfolio-item-inner video {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* ---- КУРСОР: белый на тёмном ---- */
+        .cursor { background: #fff; mix-blend-mode: difference; }
+        .cursor-follower { border-color: #fff; mix-blend-mode: difference; }
+
+        /* ---- ВИДЕО МОДАЛКА ---- */
+        .video-modal {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            background: rgba(0,0,0,0.92);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+        .video-modal.active { opacity: 1; pointer-events: all; }
+        .video-modal-inner {
+            position: relative;
+            width: 90vw;
+            max-width: 1100px;
+            max-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .video-modal-inner video {
+            width: 100%;
+            max-height: 90vh;
+            object-fit: contain;
+            border-radius: 16px;
+            display: block;
+        }
+        .video-modal-close {
+            position: fixed;
+            top: 1.5rem;
+            right: 1.5rem;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.12);
+            border: 1.5px solid rgba(255,255,255,0.25);
+            color: #fff;
+            font-size: 1.4rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background 0.2s;
+            z-index: 10000;
+        }
+        .video-modal-close:hover { background: rgba(255,255,255,0.25); }
+        .portfolio-item { cursor: pointer; }
+
         @media (max-width: 900px) {
             .portfolio-grid {
                 grid-template-columns: 1fr 1fr;
@@ -153,6 +220,8 @@
             .portfolio-item.wide {
                 grid-column: span 2;
             }
+
+            .portfolio-item[style*="span 3"] { grid-column: span 2 !important; }
         }
 
         @media (max-width: 600px) {
@@ -161,8 +230,9 @@
                 padding: 0 1.5rem 4rem;
             }
 
-            .portfolio-item.wide {
-                grid-column: span 1;
+            .portfolio-item.wide,
+            .portfolio-item[style*="span 3"] {
+                grid-column: span 1 !important;
             }
 
             .portfolio-filters {
@@ -203,7 +273,7 @@
         <a href="../">Главная</a>
         <a href="../services/">Услуги</a>
         <a href="../portfolio/">Работы</a>
-        <a href="../#team">Команда</a>
+        <a href="../team/">Команда</a>
         <a href="../contact/">Контакты</a>
     </div>
     <div class="menu-footer">
@@ -231,103 +301,172 @@
     </div>
 
     <div class="portfolio-grid">
+        <!-- Ряд 1: wide(2) + одна(1) -->
+        <div class="portfolio-item wide" data-cat="logo">
+            <div class="portfolio-item-inner">
+                <video src="../static/video/work-008.mp4" autoplay muted loop playsinline></video>
+            </div>
+            <div class="portfolio-item-overlay">
+                <p class="portfolio-item-cat">Логотип</p>
+                <h3 class="portfolio-item-title">Project 008</h3>
+                <p class="portfolio-item-desc">Анимация логотипа</p>
+            </div>
+        </div>
+
+        <div class="portfolio-item" data-cat="logo">
+            <div class="portfolio-item-inner">
+                <video src="../static/video/work-018.mp4" autoplay muted loop playsinline></video>
+            </div>
+            <div class="portfolio-item-overlay">
+                <p class="portfolio-item-cat">Логотип</p>
+                <h3 class="portfolio-item-title">Project 018</h3>
+                <p class="portfolio-item-desc">Анимация логотипа</p>
+            </div>
+        </div>
+
+        <!-- Ряд 2: одна(1) + wide(2) -->
+        <div class="portfolio-item" data-cat="logo">
+            <div class="portfolio-item-inner">
+                <video src="../static/video/work-037.mp4" autoplay muted loop playsinline></video>
+            </div>
+            <div class="portfolio-item-overlay">
+                <p class="portfolio-item-cat">Логотип</p>
+                <h3 class="portfolio-item-title">Project 037</h3>
+                <p class="portfolio-item-desc">Анимация логотипа</p>
+            </div>
+        </div>
+
+        <div class="portfolio-item wide" data-cat="logo">
+            <div class="portfolio-item-inner">
+                <video src="../static/video/work-039.mp4" autoplay muted loop playsinline></video>
+            </div>
+            <div class="portfolio-item-overlay">
+                <p class="portfolio-item-cat">Логотип</p>
+                <h3 class="portfolio-item-title">Project 039</h3>
+                <p class="portfolio-item-desc">Анимация логотипа</p>
+            </div>
+        </div>
+
+        <!-- Ряд 3: wide(2) + одна(1) -->
+        <div class="portfolio-item wide" data-cat="logo">
+            <div class="portfolio-item-inner">
+                <video src="../static/video/work-045.mp4" autoplay muted loop playsinline></video>
+            </div>
+            <div class="portfolio-item-overlay">
+                <p class="portfolio-item-cat">Логотип</p>
+                <h3 class="portfolio-item-title">Project 045</h3>
+                <p class="portfolio-item-desc">Анимация логотипа</p>
+            </div>
+        </div>
+
+        <div class="portfolio-item" data-cat="logo">
+            <div class="portfolio-item-inner">
+                <video src="../static/video/work-046.mp4" autoplay muted loop playsinline></video>
+            </div>
+            <div class="portfolio-item-overlay">
+                <p class="portfolio-item-cat">Логотип</p>
+                <h3 class="portfolio-item-title">Project 046</h3>
+                <p class="portfolio-item-desc">Анимация логотипа</p>
+            </div>
+        </div>
+
+        <!-- Ряд 4: одна(1) + wide(2) -->
+        <div class="portfolio-item" data-cat="logo">
+            <div class="portfolio-item-inner">
+                <video src="../static/video/work-048.mp4" autoplay muted loop playsinline></video>
+            </div>
+            <div class="portfolio-item-overlay">
+                <p class="portfolio-item-cat">Логотип</p>
+                <h3 class="portfolio-item-title">Project 048</h3>
+                <p class="portfolio-item-desc">Анимация логотипа</p>
+            </div>
+        </div>
+
+        <div class="portfolio-item wide" data-cat="logo">
+            <div class="portfolio-item-inner">
+                <video src="../static/video/work-051.mp4" autoplay muted loop playsinline></video>
+            </div>
+            <div class="portfolio-item-overlay">
+                <p class="portfolio-item-cat">Логотип</p>
+                <h3 class="portfolio-item-title">Project 051</h3>
+                <p class="portfolio-item-desc">Анимация логотипа</p>
+            </div>
+        </div>
+
+        <!-- Ряд 5: полная ширина -->
+        <div class="portfolio-item wide" data-cat="logo" style="grid-column: span 3;">
+            <div class="portfolio-item-inner">
+                <video src="../static/video/work-052.mp4" autoplay muted loop playsinline></video>
+            </div>
+            <div class="portfolio-item-overlay">
+                <p class="portfolio-item-cat">Логотип</p>
+                <h3 class="portfolio-item-title">Project 052</h3>
+                <p class="portfolio-item-desc">Анимация логотипа</p>
+            </div>
+        </div>
+
+        <!-- Reels — вертикальные ролики -->
         <div class="portfolio-item vertical" data-cat="video">
             <div class="portfolio-item-inner">
-                <span class="portfolio-placeholder-label">Reels</span>
+                <video src="../static/video/reels-fscr1.mp4" autoplay muted loop playsinline></video>
             </div>
             <div class="portfolio-item-overlay">
-                <p class="portfolio-item-cat">Видеомонтаж</p>
-                <h3 class="portfolio-item-title">Название бренда</h3>
-                <p class="portfolio-item-desc">Вертикальный ролик для Instagram Reels</p>
+                <p class="portfolio-item-cat">Reels</p>
+                <h3 class="portfolio-item-title">FSCR 1</h3>
+                <p class="portfolio-item-desc">Вертикальный ролик</p>
             </div>
         </div>
 
-        <div class="portfolio-item wide" data-cat="branding">
+        <div class="portfolio-item vertical" data-cat="video">
             <div class="portfolio-item-inner">
-                <span class="portfolio-placeholder-label">Фирменный стиль</span>
+                <video src="../static/video/reels-fscr2.mp4" autoplay muted loop playsinline></video>
             </div>
             <div class="portfolio-item-overlay">
-                <p class="portfolio-item-cat">Брендинг</p>
-                <h3 class="portfolio-item-title">Sasha</h3>
-                <p class="portfolio-item-desc">Разработка фирменного стиля с нуля</p>
+                <p class="portfolio-item-cat">Reels</p>
+                <h3 class="portfolio-item-title">FSCR 2</h3>
+                <p class="portfolio-item-desc">Вертикальный ролик</p>
             </div>
         </div>
 
-        <div class="portfolio-item vertical" data-cat="logo">
+        <div class="portfolio-item vertical" data-cat="video">
             <div class="portfolio-item-inner">
-                <span class="portfolio-placeholder-label">Logo Animation</span>
+                <video src="../static/video/reels-6.mp4" autoplay muted loop playsinline></video>
             </div>
             <div class="portfolio-item-overlay">
-                <p class="portfolio-item-cat">Анимация логотипа</p>
-                <h3 class="portfolio-item-title">Название бренда</h3>
-                <p class="portfolio-item-desc">Анимированный логотип для роликов</p>
+                <p class="portfolio-item-cat">Reels</p>
+                <h3 class="portfolio-item-title">Reels 6</h3>
+                <p class="portfolio-item-desc">Вертикальный ролик</p>
             </div>
         </div>
 
-        <div class="portfolio-item square" data-cat="smm">
+        <div class="portfolio-item vertical" data-cat="video">
             <div class="portfolio-item-inner">
-                <span class="portfolio-placeholder-label">SMM</span>
+                <video src="../static/video/reels-8.mp4" autoplay muted loop playsinline></video>
             </div>
             <div class="portfolio-item-overlay">
-                <p class="portfolio-item-cat">SMM-дизайн</p>
-                <h3 class="portfolio-item-title">Название бренда</h3>
-                <p class="portfolio-item-desc">Оформление профиля Instagram</p>
+                <p class="portfolio-item-cat">Reels</p>
+                <h3 class="portfolio-item-title">Reels 8</h3>
+                <p class="portfolio-item-desc">Вертикальный ролик</p>
             </div>
         </div>
 
-        <div class="portfolio-item square" data-cat="branding">
+        <div class="portfolio-item vertical" data-cat="video">
             <div class="portfolio-item-inner">
-                <span class="portfolio-placeholder-label">Ребрендинг</span>
+                <video src="../static/video/reels-9.mp4" autoplay muted loop playsinline></video>
             </div>
             <div class="portfolio-item-overlay">
-                <p class="portfolio-item-cat">Брендинг</p>
-                <h3 class="portfolio-item-title">Sasha</h3>
-                <p class="portfolio-item-desc">Полный ребрендинг компании</p>
+                <p class="portfolio-item-cat">Reels</p>
+                <h3 class="portfolio-item-title">Reels 9</h3>
+                <p class="portfolio-item-desc">Вертикальный ролик</p>
             </div>
         </div>
+    </div>
 
-        <div class="portfolio-item wide" data-cat="video">
-            <div class="portfolio-item-inner">
-                <span class="portfolio-placeholder-label">Horizontal Video</span>
-            </div>
-            <div class="portfolio-item-overlay">
-                <p class="portfolio-item-cat">Видеомонтаж</p>
-                <h3 class="portfolio-item-title">Название видеоролика</h3>
-                <p class="portfolio-item-desc">Рекламный горизонтальный ролик</p>
-            </div>
-        </div>
-
-        <div class="portfolio-item vertical" data-cat="branding">
-            <div class="portfolio-item-inner">
-                <span class="portfolio-placeholder-label">Векторная графика</span>
-            </div>
-            <div class="portfolio-item-overlay">
-                <p class="portfolio-item-cat">Иллюстрации</p>
-                <h3 class="portfolio-item-title">Sasha</h3>
-                <p class="portfolio-item-desc">Векторные иллюстрации для бренда</p>
-            </div>
-        </div>
-
-        <div class="portfolio-item square" data-cat="smm">
-            <div class="portfolio-item-inner">
-                <span class="portfolio-placeholder-label">Stories</span>
-            </div>
-            <div class="portfolio-item-overlay">
-                <p class="portfolio-item-cat">SMM-дизайн</p>
-                <h3 class="portfolio-item-title">Название бренда</h3>
-                <p class="portfolio-item-desc">Шаблоны для Instagram Stories</p>
-            </div>
-        </div>
-
-        <div class="portfolio-item square" data-cat="video">
-            <div class="portfolio-item-inner">
-                <span class="portfolio-placeholder-label">Reels</span>
-            </div>
-            <div class="portfolio-item-overlay">
-                <p class="portfolio-item-cat">Видеомонтаж</p>
-                <h3 class="portfolio-item-title">Название бренда</h3>
-                <p class="portfolio-item-desc">Ролик для TikTok / Shorts</p>
-            </div>
+    <!-- Модалка для просмотра видео со звуком -->
+    <div class="video-modal" id="videoModal">
+        <button class="video-modal-close" id="modalClose">✕</button>
+        <div class="video-modal-inner">
+            <video id="modalVideo" controls playsinline></video>
         </div>
     </div>
 </main>
@@ -363,7 +502,7 @@
             <ul>
                 <li><a href="../#about">О нас</a></li>
                 <li><a href="../portfolio/">Портфолио</a></li>
-                <li><a href="../#team">Команда</a></li>
+                <li><a href="../team/">Команда</a></li>
             </ul>
         </div>
         <div class="footer-col">
@@ -389,6 +528,43 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script src="../static/js/main.js"></script>
+<script>
+(function () {
+    var modal      = document.getElementById('videoModal');
+    var modalVideo = document.getElementById('modalVideo');
+    var closeBtn   = document.getElementById('modalClose');
+
+    function openModal(src) {
+        modalVideo.src = src;
+        modalVideo.load();
+        modalVideo.play();
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+        modal.classList.remove('active');
+        modalVideo.pause();
+        modalVideo.src = '';
+        document.body.style.overflow = '';
+    }
+
+    document.querySelectorAll('.portfolio-item').forEach(function (item) {
+        item.addEventListener('click', function () {
+            var previewVideo = item.querySelector('.portfolio-item-inner video');
+            if (previewVideo) openModal(previewVideo.src);
+        });
+    });
+
+    closeBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', function (e) {
+        if (e.target === modal) closeModal();
+    });
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') closeModal();
+    });
+})();
+</script>
 <script>
     // Portfolio filter
     document.querySelectorAll('.filter-btn').forEach(btn => {
