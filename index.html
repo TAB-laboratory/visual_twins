@@ -17,13 +17,12 @@
             inset: 0;
             z-index: 9999;
             background: #fff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             overflow: hidden;
         }
 
         #intro-video {
+            position: absolute;
+            inset: 0;
             width: 100%;
             height: 100%;
             object-fit: cover;
@@ -102,18 +101,24 @@
         }
 
         @media (max-width: 480px) {
+            #intro-logo {
+                max-width: calc(100vw - 32px);
+            }
+
             #intro-logo .il-wrapper {
                 padding: 8px 12px 8px 16px;
                 gap: 8px;
+                white-space: normal;
             }
 
             #intro-logo .il-icon {
-                width: 56px;
-                height: 56px;
+                width: 50px;
+                height: 50px;
+                flex-shrink: 0;
             }
 
             #intro-logo .il-text {
-                font-size: 1.5rem;
+                font-size: 1.4rem;
             }
         }
     </style>
@@ -352,6 +357,26 @@
                         <div class="work-card-desc">Анимация логотипа</div>
                     </div>
                 </div>
+
+                <div class="work-card half">
+                    <div class="work-card-inner">
+                        <video autoplay loop muted playsinline><source src="./static/video/work-037.mp4" type="video/mp4"></video>
+                    </div>
+                    <div class="work-card-info">
+                        <div class="work-card-title">Logo Animation</div>
+                        <div class="work-card-desc">Анимация логотипа</div>
+                    </div>
+                </div>
+
+                <div class="work-card half">
+                    <div class="work-card-inner">
+                        <video autoplay loop muted playsinline><source src="./static/video/work-039.mp4" type="video/mp4"></video>
+                    </div>
+                    <div class="work-card-info">
+                        <div class="work-card-title">Logo Animation</div>
+                        <div class="work-card-desc">Анимация логотипа</div>
+                    </div>
+                </div>
             </div>
 
             <div class="works-cta">
@@ -367,10 +392,22 @@
                 <h2 class="service-title">Видео&shy;монтаж</h2>
                 <div class="service-right">
                     <div class="service-cards-grid">
-                        <div class="service-card">Reels</div>
-                        <div class="service-card">Reels</div>
-                        <div class="service-card">Horizont Video</div>
-                        <div class="service-card">Logo Animation</div>
+                        <div class="service-card">
+                            <video autoplay loop muted playsinline><source src="./static/video/reels-6.mp4" type="video/mp4"></video>
+                            <span class="service-card-label">Reels</span>
+                        </div>
+                        <div class="service-card">
+                            <video autoplay loop muted playsinline><source src="./static/video/reels-9.mp4" type="video/mp4"></video>
+                            <span class="service-card-label">Reels</span>
+                        </div>
+                        <div class="service-card">
+                            <video autoplay loop muted playsinline><source src="./static/video/work-046.mp4" type="video/mp4"></video>
+                            <span class="service-card-label">Horizont Video</span>
+                        </div>
+                        <div class="service-card">
+                            <video autoplay loop muted playsinline><source src="./static/video/work-045.mp4" type="video/mp4"></video>
+                            <span class="service-card-label">Logo Animation</span>
+                        </div>
                     </div>
                     <p class="service-desc">
                         Мы являемся экспертами в создании динамичного видеоконтента — от
@@ -496,9 +533,18 @@
                 <div class="service-right">
                     <div class="service-cards-grid"
                          style="grid-template-columns: 1fr 1fr; grid-template-rows: auto auto;">
-                        <div class="service-card">Logo</div>
-                        <div class="service-card tall" style="grid-row: span 2;">texture</div>
-                        <div class="service-card">Palitra</div>
+                        <div class="service-card">
+                            <video autoplay loop muted playsinline><source src="./static/video/work-048.mp4" type="video/mp4"></video>
+                            <span class="service-card-label">Logo</span>
+                        </div>
+                        <div class="service-card tall" style="grid-row: span 2;">
+                            <video autoplay loop muted playsinline><source src="./static/video/work-051.mp4" type="video/mp4"></video>
+                            <span class="service-card-label">Branding</span>
+                        </div>
+                        <div class="service-card">
+                            <video autoplay loop muted playsinline><source src="./static/video/work-052.mp4" type="video/mp4"></video>
+                            <span class="service-card-label">Style</span>
+                        </div>
                     </div>
                     <p class="service-desc">
                         Мы являемся экспертами в разработке уникальных визуальных
