@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
     animateFollower();
 
     // Hover states
-    const hoverEls = document.querySelectorAll('a, button, .work-card, .diff-item, .accordion-trigger, .btn-cta, .btn-outline, .btn-solid, .btn-outline-light, .btn-service, .service-card, .team-photo');
+    const hoverEls = document.querySelectorAll('a, button, .work-card, .diff-item, .accordion-trigger, .btn-cta, .btn-outline, .btn-solid, .btn-outline-light, .btn-service, .service-card, .team-photo, .swap-cell, .brand-item, .vg-card');
     hoverEls.forEach(el => {
         el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
         el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
@@ -202,6 +202,32 @@ document.addEventListener('DOMContentLoaded', () => {
                 delay: 0.3
             });
         });
+
+        // SMM swap grid entrance
+        const swapGrid = document.querySelector('.swap-grid');
+        if (swapGrid) {
+            gsap.from('.swap-cell', {
+                scrollTrigger: {trigger: swapGrid, start: 'top 82%'},
+                opacity: 0,
+                scale: 0.88,
+                duration: 0.5,
+                stagger: 0.1,
+                ease: 'back.out(1.4)',
+            });
+        }
+
+        // Branding row entrance
+        const brandRow = document.querySelector('.brand-row');
+        if (brandRow) {
+            gsap.from('.brand-item', {
+                scrollTrigger: {trigger: brandRow, start: 'top 82%'},
+                opacity: 0,
+                y: 30,
+                duration: 0.6,
+                stagger: 0.12,
+                ease: 'power3.out',
+            });
+        }
 
         // Video bento grid — stagger pop one by one
         const videoGrid = document.querySelector('.video-grid');
@@ -482,6 +508,68 @@ document.addEventListener('DOMContentLoaded', () => {
             stagger: 0.12,
             ease: 'power3.out',
         });
+    }
+
+    // =============================================
+    // SMM SWAP GRID — cycle videos automatically
+    // =============================================
+    const swapCells = document.querySelectorAll('.swap-cell');
+    if (swapCells.length) {
+        const videoPool = [
+            './static/video/reels-fscr1.mp4',
+            './static/video/reels-fscr2.mp4',
+            './static/video/reels-6.mp4',
+            './static/video/reels-8.mp4',
+            './static/video/reels-9.mp4',
+            './static/video/work-008.mp4',
+            './static/video/work-018.mp4',
+            './static/video/work-037.mp4',
+            './static/video/work-039.mp4',
+            './static/video/work-045.mp4',
+            './static/video/work-046.mp4',
+            './static/video/work-048.mp4',
+            './static/video/work-051.mp4',
+            './static/video/work-052.mp4',
+        ];
+
+        // Track which pool index is in each cell
+        const cellPoolIdx = [0, 6, 7, 3];
+
+        function swapCell(cellIndex) {
+            const cell = swapCells[cellIndex];
+            const vid = cell.querySelector('video');
+
+            // Pick a random video not currently displayed
+            let next;
+            let tries = 0;
+            do {
+                next = Math.floor(Math.random() * videoPool.length);
+                tries++;
+            } while (cellPoolIdx.includes(next) && tries < 30);
+
+            // Fade out
+            vid.classList.add('swapping');
+
+            setTimeout(() => {
+                // Swap source
+                const src = vid.querySelector('source');
+                src.src = videoPool[next];
+                vid.load();
+                vid.play().catch(() => {});
+                cellPoolIdx[cellIndex] = next;
+
+                // Fade back in
+                vid.classList.remove('swapping');
+            }, 460);
+        }
+
+        // Swap one random cell every 2.4 seconds
+        let swapCellIdx = 0;
+        setInterval(() => {
+            // Cycle through cells in order so all refresh evenly
+            swapCell(swapCellIdx % swapCells.length);
+            swapCellIdx++;
+        }, 2400);
     }
 
 });
