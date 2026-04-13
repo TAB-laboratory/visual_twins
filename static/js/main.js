@@ -203,19 +203,6 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
 
-        // SMM swap grid entrance
-        const swapGrid = document.querySelector('.swap-grid');
-        if (swapGrid) {
-            gsap.from('.swap-cell', {
-                scrollTrigger: {trigger: swapGrid, start: 'top 82%'},
-                opacity: 0,
-                scale: 0.88,
-                duration: 0.5,
-                stagger: 0.1,
-                ease: 'back.out(1.4)',
-            });
-        }
-
         // Branding row entrance
         const brandRow = document.querySelector('.brand-row');
         if (brandRow) {
@@ -511,10 +498,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // =============================================
-    // SMM SWAP GRID — cycle videos automatically
+    // VIDEO BENTO — cycle through all videos in order
     // =============================================
-    const swapCells = document.querySelectorAll('.swap-cell');
-    if (swapCells.length) {
+    const vgCards = document.querySelectorAll('.vg-card');
+    if (vgCards.length) {
         const videoPool = [
             './static/video/reels-fscr1.mp4',
             './static/video/reels-fscr2.mp4',
@@ -532,44 +519,33 @@ document.addEventListener('DOMContentLoaded', () => {
             './static/video/work-052.mp4',
         ];
 
-        // Track which pool index is in each cell
-        const cellPoolIdx = [0, 6, 7, 3];
+        // Start pool pointer after the videos already shown in the grid
+        let poolPtr = 7;
 
-        function swapCell(cellIndex) {
-            const cell = swapCells[cellIndex];
-            const vid = cell.querySelector('video');
-
-            // Pick a random video not currently displayed
-            let next;
-            let tries = 0;
-            do {
-                next = Math.floor(Math.random() * videoPool.length);
-                tries++;
-            } while (cellPoolIdx.includes(next) && tries < 30);
+        function cycleCard(card) {
+            const vid = card.querySelector('video');
+            if (!vid) return;
 
             // Fade out
-            vid.classList.add('swapping');
+            vid.style.transition = 'opacity 0.5s ease';
+            vid.style.opacity = '0';
 
             setTimeout(() => {
-                // Swap source
                 const src = vid.querySelector('source');
-                src.src = videoPool[next];
+                src.src = videoPool[poolPtr % videoPool.length];
+                poolPtr++;
                 vid.load();
                 vid.play().catch(() => {});
-                cellPoolIdx[cellIndex] = next;
-
-                // Fade back in
-                vid.classList.remove('swapping');
-            }, 460);
+                vid.style.opacity = '1';
+            }, 520);
         }
 
-        // Swap one random cell every 2.4 seconds
-        let swapCellIdx = 0;
+        // Rotate through cards one by one, each card swaps every (N * interval) ms
+        let cardPtr = 0;
         setInterval(() => {
-            // Cycle through cells in order so all refresh evenly
-            swapCell(swapCellIdx % swapCells.length);
-            swapCellIdx++;
-        }, 2400);
+            cycleCard(vgCards[cardPtr % vgCards.length]);
+            cardPtr++;
+        }, 2200);
     }
 
 });
