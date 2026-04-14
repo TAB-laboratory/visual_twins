@@ -66,6 +66,15 @@
             margin: 0 auto;
         }
 
+        .portfolio-grid.logo-mode {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .portfolio-grid.logo-mode .portfolio-item {
+            grid-column: span 1 !important;
+            aspect-ratio: 16/9;
+        }
+
         .portfolio-item {
             border-radius: 20px;
             background: #111;
@@ -297,7 +306,7 @@
     </div>
 
     <div class="portfolio-grid">
-              <div class="portfolio-item wide" data-cat="logo">
+        <div class="portfolio-item" data-cat="logo">
             <div class="portfolio-item-inner">
                 <video src="../static/video/work-008.mp4" autoplay muted loop playsinline></video>
             </div>
@@ -330,7 +339,7 @@
             </div>
         </div>
 
-        <div class="portfolio-item wide" data-cat="logo">
+        <div class="portfolio-item" data-cat="logo">
             <div class="portfolio-item-inner">
                 <video src="../static/video/work-039.mp4" autoplay muted loop playsinline></video>
             </div>
@@ -342,7 +351,7 @@
         </div>
 
 
-        <div class="portfolio-item wide" data-cat="logo">
+        <div class="portfolio-item" data-cat="logo">
             <div class="portfolio-item-inner">
                 <video src="../static/video/work-045.mp4" autoplay muted loop playsinline></video>
             </div>
@@ -376,7 +385,7 @@
             </div>
         </div>
 
-        <div class="portfolio-item wide" data-cat="logo">
+        <div class="portfolio-item" data-cat="logo">
             <div class="portfolio-item-inner">
                 <video src="../static/video/work-051.mp4" autoplay muted loop playsinline></video>
             </div>
@@ -388,7 +397,7 @@
         </div>
 
 
-        <div class="portfolio-item wide" data-cat="logo" style="grid-column: span 3;">
+        <div class="portfolio-item" data-cat="logo">
             <div class="portfolio-item-inner">
                 <video src="../static/video/work-052.mp4" autoplay muted loop playsinline></video>
             </div>
@@ -558,11 +567,16 @@
 </script>
 <script>
 
+    const portfolioGrid = document.querySelector('.portfolio-grid');
+
     document.querySelectorAll('.filter-btn').forEach(btn => {
         btn.addEventListener('click', () => {
             document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
             const filter = btn.dataset.filter;
+
+            portfolioGrid.classList.toggle('logo-mode', filter === 'logo');
+
             document.querySelectorAll('.portfolio-item').forEach(item => {
                 const show = filter === 'all' || item.dataset.cat === filter;
                 item.style.display = show ? '' : 'none';

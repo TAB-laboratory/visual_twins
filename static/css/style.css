@@ -453,12 +453,6 @@ body.dark-cursor .cursor-follower {
     text-transform: uppercase;
 }
 
-.scroll-line {
-    width: 1px;
-    height: 40px;
-    background: var(--dark);
-    animation: scrollLine 1.8s infinite;
-}
 
 @keyframes scrollLine {
     0% {
@@ -1032,7 +1026,7 @@ body.dark-cursor .cursor-follower {
     display: flex;
     gap: 1rem;
     padding: 1rem;
-    animation: marqueeScroll 30s linear infinite;
+    animation: marqueeScroll 20s linear infinite;
     width: max-content;
 }
 

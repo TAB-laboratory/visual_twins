@@ -150,6 +150,73 @@
         .form-textarea {
             resize: vertical;
             min-height: 120px;
+            padding-bottom: 2.6rem;
+        }
+
+        .form-textarea-wrap {
+            position: relative;
+        }
+
+        .attach-btn {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: none;
+            border: none;
+            padding: 4px 6px;
+            color: #aaa;
+            cursor: pointer;
+            transition: color 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.78rem;
+            font-family: var(--font);
+            border-radius: 6px;
+        }
+
+        .attach-btn:hover {
+            color: var(--dark);
+        }
+
+        .attach-list {
+            margin-top: 0.5rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+        }
+
+        .attach-tag {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.78rem;
+            background: #f2f2f2;
+            border-radius: 8px;
+            padding: 4px 10px 4px 8px;
+            color: var(--dark);
+            max-width: 200px;
+        }
+
+        .attach-tag span {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .attach-tag-remove {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #aaa;
+            font-size: 0.85rem;
+            padding: 0;
+            line-height: 1;
+            flex-shrink: 0;
+        }
+
+        .attach-tag-remove:hover {
+            color: var(--dark);
         }
 
         .form-services {
@@ -356,8 +423,19 @@
 
             <div class="form-group">
                 <label class="form-label" for="details">Расскажите о проекте</label>
-                <textarea class="form-textarea" id="details" name="details"
-                          placeholder="Что нужно сделать, сроки, бюджет — любые детали помогут нам подготовиться"></textarea>
+                <div class="form-textarea-wrap">
+                    <textarea class="form-textarea" id="details" name="details"
+                              placeholder="Что нужно сделать, сроки, бюджет — любые детали помогут нам подготовиться"></textarea>
+                    <button type="button" class="attach-btn" id="attach-btn" title="Прикрепить файл">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66L9.41 17.41a2 2 0 0 1-2.83-2.83l8.49-8.48"/>
+                        </svg>
+                        Прикрепить файл
+                    </button>
+                </div>
+                <input type="file" id="file-input" name="files" multiple
+                       accept="image/*,video/*,.pdf,.doc,.docx,.zip" style="display:none">
+                <div class="attach-list" id="attach-list"></div>
             </div>
 
             <button type="submit" class="btn-submit">Отправить бриф →</button>
@@ -373,21 +451,86 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="../static/js/main.js"></script>
 <script>
-    document.getElementById('contact-form').addEventListener('submit', e => {
+    // ── Telegram настройки ──────────────────────────────────────
+    var TG_TOKEN   = 'YOUR_BOT_TOKEN';   // токен от @BotFather
+    var TG_CHAT_ID = 'YOUR_CHAT_ID';     // твой chat_id
+    // ────────────────────────────────────────────────────────────
+
+    document.getElementById('contact-form').addEventListener('submit', async function (e) {
         e.preventDefault();
-        const form = document.getElementById('contact-form');
-        const success = document.getElementById('form-success');
-        if (typeof gsap !== 'undefined') {
-            gsap.to(form, {
-                opacity: 0, y: -20, duration: 0.4, onComplete: () => {
-                    form.style.display = 'none';
-                    success.style.display = 'block';
-                    gsap.from(success, {opacity: 0, y: 20, duration: 0.5});
-                }
+
+        var form       = document.getElementById('contact-form');
+        var success    = document.getElementById('form-success');
+        var submitBtn  = form.querySelector('.btn-submit');
+        var origText   = submitBtn.textContent;
+
+        submitBtn.textContent = 'Отправляем...';
+        submitBtn.disabled    = true;
+
+        // Собираем данные формы
+        var name     = form.querySelector('#name').value.trim();
+        var contact  = form.querySelector('#contact').value.trim();
+        var brand    = form.querySelector('#brand').value.trim();
+        var details  = form.querySelector('#details').value.trim();
+        var services = Array.from(form.querySelectorAll('input[name="services"]:checked'))
+                           .map(function (cb) { return cb.value; }).join(', ') || '—';
+
+        var text = [
+            '📋 *Новая заявка с сайта Visual Twins*',
+            '',
+            '👤 *Имя:* ' + name,
+            '📱 *Контакт:* ' + contact,
+            '🏢 *Бренд:* ' + (brand || '—'),
+            '🎯 *Услуги:* ' + services,
+            '📝 *О проекте:* ' + (details || '—'),
+        ].join('\n');
+
+        var apiBase = 'https://api.telegram.org/bot' + TG_TOKEN;
+
+        try {
+            // Отправляем текст
+            await fetch(apiBase + '/sendMessage', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({chat_id: TG_CHAT_ID, text: text, parse_mode: 'Markdown'})
             });
-        } else {
-            form.style.display = 'none';
-            success.style.display = 'block';
+
+            // Отправляем файлы (если есть)
+            if (selectedFiles && selectedFiles.length > 0) {
+                for (var i = 0; i < selectedFiles.length; i++) {
+                    var fd = new FormData();
+                    fd.append('chat_id', TG_CHAT_ID);
+                    var file = selectedFiles[i];
+                    var isVideo = file.type.startsWith('video/');
+                    var isPhoto = file.type.startsWith('image/');
+                    var endpoint = isVideo ? '/sendVideo' : isPhoto ? '/sendPhoto' : '/sendDocument';
+                    var field    = isVideo ? 'video'      : isPhoto ? 'photo'      : 'document';
+                    if (i === 0) fd.append('caption', '📎 Файлы к заявке от ' + name);
+                    fd.append(field, file);
+                    await fetch(apiBase + endpoint, {method: 'POST', body: fd});
+                }
+            }
+
+            // Успех
+            if (typeof gsap !== 'undefined') {
+                gsap.to(form, {
+                    opacity: 0, y: -20, duration: 0.4, onComplete: function () {
+                        form.style.display = 'none';
+                        success.style.display = 'block';
+                        gsap.from(success, {opacity: 0, y: 20, duration: 0.5});
+                    }
+                });
+            } else {
+                form.style.display = 'none';
+                success.style.display = 'block';
+            }
+
+        } catch (err) {
+            submitBtn.textContent = 'Ошибка — попробуйте ещё раз';
+            submitBtn.disabled = false;
+            setTimeout(function () {
+                submitBtn.textContent = origText;
+            }, 3000);
         }
     });
 
@@ -400,6 +543,47 @@
         gsap.from('.contact-form-title', {opacity: 0, y: 40, duration: 0.8, delay: 0.5, ease: 'power3.out'});
         gsap.from('.form-group', {opacity: 0, y: 25, duration: 0.6, stagger: 0.1, delay: 0.7});
     }
+
+    // Скрепка — прикрепление файлов
+    var selectedFiles = [];
+    (function () {
+        var attachBtn  = document.getElementById('attach-btn');
+        var fileInput  = document.getElementById('file-input');
+        var attachList = document.getElementById('attach-list');
+
+        attachBtn.addEventListener('click', function () { fileInput.click(); });
+
+        fileInput.addEventListener('change', function () {
+            Array.from(fileInput.files).forEach(function (file) {
+                // не добавлять дубли
+                if (!selectedFiles.find(function (f) { return f.name === file.name && f.size === file.size; })) {
+                    selectedFiles.push(file);
+                }
+            });
+            fileInput.value = '';
+            renderList();
+        });
+
+        function renderList() {
+            attachList.innerHTML = '';
+            selectedFiles.forEach(function (file, i) {
+                var tag = document.createElement('div');
+                tag.className = 'attach-tag';
+                tag.innerHTML =
+                    '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66L9.41 17.41a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg>' +
+                    '<span>' + file.name + '</span>' +
+                    '<button type="button" class="attach-tag-remove" data-i="' + i + '">✕</button>';
+                attachList.appendChild(tag);
+            });
+
+            attachList.querySelectorAll('.attach-tag-remove').forEach(function (btn) {
+                btn.addEventListener('click', function () {
+                    selectedFiles.splice(parseInt(btn.dataset.i), 1);
+                    renderList();
+                });
+            });
+        }
+    })();
 </script>
 </body>
 </html>

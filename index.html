@@ -40,6 +40,7 @@
         }
 
 
+        /* Статичный логотип — точная копия последнего кадра видео */
         #intro-logo {
             position: absolute;
             top: 50%;
@@ -53,19 +54,20 @@
             display: flex;
             align-items: center;
             border: 1.5px solid #1A1A1A;
-            border-radius: 60px;
-            padding: 14px 20px 14px 32px;
-            gap: 20px;
+            border-radius: 100px;
+            padding: 14px 0 14px 36px;
+            gap: 24px;
             white-space: nowrap;
             background: #fff;
         }
 
         #intro-logo .il-icon {
-            width: 130px;
-            height: 130px;
+            width: 138px;
+            height: 138px;
             border-radius: 50%;
             overflow: hidden;
             flex-shrink: 0;
+            margin-right: -18px; /* иконка выходит за правый край пилюли */
         }
 
         #intro-logo .il-icon img {
@@ -79,52 +81,27 @@
             font-size: 3.2rem;
             font-weight: 700;
             line-height: 1.15;
-            letter-spacing: 0.06em;
+            letter-spacing: 0.1em;
             text-transform: uppercase;
             color: #1A1A1A;
         }
 
         @media (max-width: 768px) {
-            #intro-logo .il-wrapper {
-                padding: 10px 16px 10px 22px;
-                gap: 12px;
-            }
-
-            #intro-logo .il-icon {
-                width: 72px;
-                height: 72px;
-            }
-
-            #intro-logo .il-text {
-                font-size: 1.9rem;
-            }
+            #intro-logo .il-wrapper { padding: 10px 0 10px 22px; gap: 14px; }
+            #intro-logo .il-icon    { width: 78px; height: 78px; margin-right: -10px; }
+            #intro-logo .il-text   { font-size: 1.9rem; }
         }
 
         @media (max-width: 480px) {
-            #intro-logo {
-                max-width: calc(100vw - 32px);
-            }
-
-            #intro-logo .il-wrapper {
-                padding: 8px 12px 8px 16px;
-                gap: 8px;
-                white-space: normal;
-            }
-
-            #intro-logo .il-icon {
-                width: 50px;
-                height: 50px;
-                flex-shrink: 0;
-            }
-
-            #intro-logo .il-text {
-                font-size: 1.4rem;
-            }
+            #intro-logo             { max-width: calc(100vw - 32px); }
+            #intro-logo .il-wrapper { padding: 8px 0 8px 16px; gap: 10px; white-space: normal; }
+            #intro-logo .il-icon    { width: 54px; height: 54px; margin-right: -8px; }
+            #intro-logo .il-text   { font-size: 1.4rem; }
         }
+
     </style>
 </head>
 <body class="intro-active">
-
 
 <div id="intro">
     <video
@@ -135,7 +112,6 @@
             playsinline
             preload="auto"
     ></video>
-
 
     <div id="intro-logo">
         <div class="il-wrapper">
@@ -213,10 +189,7 @@
                     <a href="./contact/" class="btn-solid">Начать проект</a>
                 </div>
             </div>
-            <div class="scroll-indicator">
-                <div class="scroll-line"></div>
-                <span>Scroll</span>
-            </div>
+
         </section>
 
 
@@ -858,6 +831,7 @@
                  style="max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:4rem;">
 
 
+                <!-- ЗАКОММЕНТИРОВАНО: плавающие кружки-бейджи
                 <div class="awards-badges" style="position:relative;height:400px;">
 
                     <div class="badge-float" data-depth="0.05"
@@ -904,6 +878,7 @@
                     <div style="position:absolute;top:88%;left:52%;width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.12);"></div>
 
                 </div>
+                -->
 
 
                 <div class="awards-text" style="display:flex;flex-direction:column;gap:1.8rem;">
@@ -1020,9 +995,9 @@
                 if (done) return;
                 done = true;
 
-                var intro = document.getElementById('intro');
+                var intro      = document.getElementById('intro');
                 var introVideo = document.getElementById('intro-video');
-                var introLogo = document.getElementById('intro-logo');
+                var introLogo  = document.getElementById('intro-logo');
                 var pageContent = document.getElementById('page-content');
 
                 if (typeof gsap === 'undefined') {
@@ -1034,9 +1009,9 @@
 
                 requestAnimationFrame(function () {
                     var headerLogo = document.querySelector('.header .logo-wrapper');
-                    var srcRect = introLogo.getBoundingClientRect();
-                    var dstRect = headerLogo ? headerLogo.getBoundingClientRect() : null;
-                    var valid = dstRect && dstRect.width > 0 && srcRect.width > 0;
+                    var srcRect    = introLogo.getBoundingClientRect();
+                    var dstRect    = headerLogo ? headerLogo.getBoundingClientRect() : null;
+                    var valid      = dstRect && dstRect.width > 0 && srcRect.width > 0;
 
                     var tl = gsap.timeline({
                         onComplete: function () {
@@ -1045,28 +1020,33 @@
                         }
                     });
 
+                    // Видео гаснет → появляется лого
                     tl.to(introVideo, {opacity: 0, duration: 0.35, ease: 'power1.in'})
-                      .to(introLogo, {opacity: 1, duration: 0.2}, '-=0.1');
+                      .to(introLogo,  {opacity: 1, duration: 0.2},  '-=0.1');
 
                     if (valid) {
-                        var s = dstRect.width / srcRect.width;
-                        var dx = (dstRect.left + dstRect.width / 2) - (srcRect.left + srcRect.width / 2);
-                        var dy = (dstRect.top + dstRect.height / 2) - (srcRect.top + srcRect.height / 2);
+                        var srcCX = srcRect.left + srcRect.width  / 2;
+                        var srcCY = srcRect.top  + srcRect.height / 2;
+                        var dstCX = dstRect.left + dstRect.width  / 2;
+                        var dstCY = dstRect.top  + dstRect.height / 2;
+                        var s     = dstRect.width / srcRect.width;
+                        var dx    = dstCX - srcCX;
+                        var dy    = dstCY - srcCY;
 
+                        // Лого уменьшается и летит прямо в хедер
                         tl.to(introLogo, {
-                            x: '+=' + dx,
-                            y: '+=' + dy,
-                            scale: s,
+                            x: '+=' + dx, y: '+=' + dy, scale: s,
                             transformOrigin: 'center center',
-                            duration: 0.95,
+                            duration: 0.9,
                             ease: 'power3.inOut'
                         }, '+=0.05');
+
                     } else {
-                        tl.to(introLogo, {opacity: 0, scale: 0.85, duration: 0.5, delay: 0.3});
+                        tl.to(introLogo, {scale: 0.85, opacity: 0, duration: 0.5, delay: 0.2});
                     }
 
-                    tl.to(pageContent, {opacity: 1, duration: 0.6, ease: 'power2.out'}, '-=0.65')
-                      .to(intro, {opacity: 0, duration: 0.35, ease: 'power1.in'}, '-=0.3');
+                    tl.to(pageContent, {opacity: 1, duration: 0.5, ease: 'power2.out'}, '-=0.55')
+                      .to(intro,       {opacity: 0, duration: 0.3, ease: 'power1.in'}, '-=0.25');
                 });
             }
 
