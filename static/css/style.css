@@ -141,8 +141,8 @@ body.dark-cursor .cursor-follower {
     align-items: center;
     border: 1.5px solid var(--dark);
     border-radius: 60px;
-    padding: 8px 12px 8px 20px;
-    gap: 12px;
+    padding: 8px 12px 8px 22px;
+    gap: 11px;
     transition: border-color 0.3s;
 }
 
