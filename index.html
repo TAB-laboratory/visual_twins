@@ -896,7 +896,12 @@
 
     <script>
         var hlv = document.getElementById('header-logo-video');
-        function removeLogoVideo() { hlv && hlv.remove(); }
+        function removeLogoVideo() {
+            if (!hlv) return;
+            hlv.style.transition = 'opacity 0.4s ease';
+            hlv.style.opacity = '0';
+            setTimeout(function () { hlv && hlv.remove(); }, 400);
+        }
         hlv.addEventListener('ended', removeLogoVideo);
         hlv.addEventListener('error', removeLogoVideo);
     </script>
