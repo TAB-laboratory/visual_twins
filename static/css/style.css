@@ -141,7 +141,7 @@ body.dark-cursor .cursor-follower {
     align-items: center;
     border: 1.5px solid var(--dark);
     border-radius: 60px;
-    padding: 8px 12px 8px 22px;
+    padding: 8px 17px 8px 27px;
     gap: 11px;
     transition: border-color 0.3s;
 }
@@ -178,6 +178,19 @@ body.dark-cursor .cursor-follower {
     display: block;
 }
 
+
+.logo-video-link {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    text-decoration: none;
+}
+
+.logo-video {
+    height: 70px;
+    width: auto;
+    display: block;
+}
 
 .header-right {
     display: flex;

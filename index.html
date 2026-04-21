@@ -10,22 +10,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
     <link rel="stylesheet" href="./static/css/style.css"/>
-    <style>
-        .logo-wrapper {
-            position: relative;
-            overflow: hidden;
-        }
-        #header-logo-video {
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center center;
-            transform: scale(2.9);
-            z-index: 2;
-        }
-    </style>
 </head>
 <body>
 
@@ -37,14 +21,10 @@
 
 
     <header class="header">
-        <a href="./" class="logo">
-            <div class="logo-wrapper">
-                <video id="header-logo-video" src="./static/video/logo-animation.mp4" autoplay muted playsinline preload="auto"></video>
-                <span class="logo-text">VISUAL<br>TWINS</span>
-                <div class="logo-icon">
-                    <img src="./static/images/logo-icon.png" alt="Visual Twins">
-                </div>
-            </div>
+        <a href="./" class="logo-video-link">
+            <video class="logo-video" autoplay muted playsinline>
+                <source src="./static/video/logo-animation.mp4" type="video/mp4">
+            </video>
         </a>
 
         <div class="header-right">
@@ -894,17 +874,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
-    <script>
-        var hlv = document.getElementById('header-logo-video');
-        function removeLogoVideo() {
-            if (!hlv) return;
-            hlv.style.transition = 'opacity 0.4s ease';
-            hlv.style.opacity = '0';
-            setTimeout(function () { hlv && hlv.remove(); }, 400);
-        }
-        hlv.addEventListener('ended', removeLogoVideo);
-        hlv.addEventListener('error', removeLogoVideo);
-    </script>
 
     <script src="./static/js/main.js"></script>
 </div>

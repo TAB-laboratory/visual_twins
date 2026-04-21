@@ -34,6 +34,14 @@ document.addEventListener('DOMContentLoaded', () => {
         s.addEventListener('mouseleave', () => document.body.classList.remove('dark-cursor'));
     });
 
+    // Logo video: play once, freeze on last frame
+    document.querySelectorAll('.logo-video').forEach(vid => {
+        vid.addEventListener('ended', () => {
+            vid.currentTime = vid.duration;
+            vid.pause();
+        });
+    });
+
     const header = document.querySelector('.header');
     let lastScroll = 0;
 
