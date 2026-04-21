@@ -1,0 +1,6 @@
+
+.idea/
+.claude/
+.DS_Store
+Thumbs.db
+static/js/tg-config.js

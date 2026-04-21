@@ -3,12 +3,11 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <base href="/visual_twins/">
     <title>404 — Visual Twins</title>
     <link rel="preconnect" href="https://fonts.googleapis.com"/>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
-    <link rel="stylesheet" href="static/css/style.css"/>
+    <link rel="stylesheet" href="./static/css/style.css"/>
     <style>
         .not-found {
             padding: 160px 2.5rem 8rem;
@@ -75,6 +74,47 @@
                 padding: 130px 1.5rem 5rem;
             }
         }
+
+        /* Logo video */
+        .logo-video-link {
+            display: flex;
+            align-items: center;
+            flex-shrink: 0;
+            text-decoration: none;
+        }
+        .logo-video {
+            height: 70px;
+            width: auto;
+            display: block;
+        }
+        @media (max-width: 768px) {
+            .logo-video { height: 46px; }
+        }
+        @media (max-width: 480px) {
+            .logo-video { height: 40px; }
+        }
+
+        /* Footer logo */
+        .footer-logo-link {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            text-decoration: none;
+        }
+        .footer-logo-img {
+            width: 56px;
+            height: 56px;
+            display: block;
+            flex-shrink: 0;
+        }
+        .footer-logo-name {
+            font-size: 1rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            line-height: 1.2;
+            color: #fff;
+        }
     </style>
 </head>
 <body>
@@ -82,13 +122,11 @@
 <div class="cursor-follower"></div>
 
 <header class="header">
-    <a href="" class="logo">
-        <div class="logo-wrapper">
-            <span class="logo-text">VISUAL<br>TWINS</span>
-            <div class="logo-icon">
-                <img src="static/images/logo-icon.png" alt="Visual Twins">
-            </div>
-        </div>
+    <a href="./" class="logo-video-link">
+        <video class="logo-video" autoplay muted playsinline>
+            <source src="static/video/logo-animation.webm" type="video/webm">
+            <source src="static/video/logo-animation.mp4" type="video/mp4">
+        </video>
     </a>
     <div class="header-right">
         <a href="contact/" class="btn-cta">Начать проект</a>
@@ -98,7 +136,7 @@
 
 <nav class="mobile-menu">
     <div class="mobile-nav">
-        <a href="">Главная</a>
+        <a href="./">Главная</a>
         <a href="services/">Услуги</a>
         <a href="portfolio/">Работы</a>
         <a href="team/">Команда</a>
@@ -121,7 +159,7 @@
         <h1>Здесь ничего<br>нет (пока)</h1>
         <p class="not-found-sub">Такой страницы не существует или она была удалена. Зато у нас есть всё остальное.</p>
         <div class="not-found-actions">
-            <a href="" class="btn-solid">← На главную</a>
+            <a href="./" class="btn-solid">← На главную</a>
             <a href="portfolio/" class="btn-outline">Посмотреть работы</a>
         </div>
     </div>
@@ -130,13 +168,9 @@
 <footer class="footer">
     <div class="footer-top">
         <div class="footer-brand">
-            <a href="" class="logo">
-                <div class="logo-wrapper">
-                    <span class="logo-text">VISUAL<br>TWINS</span>
-                    <div class="logo-icon">
-                        <img src="static/images/logo-icon.png" alt="Visual Twins">
-                    </div>
-                </div>
+            <a href="./" class="footer-logo-link">
+                <img src="static/images/logo.png" alt="Visual Twins" class="footer-logo-img">
+                <span class="footer-logo-name">Visual<br>Twins</span>
             </a>
             <p class="footer-tagline">Команда, которая помогает вашему бизнесу говорить ярко и просто.</p>
         </div>

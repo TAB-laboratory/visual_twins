@@ -1598,6 +1598,29 @@ body.dark-cursor .cursor-follower {
     background: rgba(255, 255, 255, 0.15);
 }
 
+.footer-logo-link {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    text-decoration: none;
+}
+
+.footer-logo-img {
+    width: 56px;
+    height: 56px;
+    display: block;
+    flex-shrink: 0;
+}
+
+.footer-logo-name {
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    line-height: 1.2;
+    color: #fff;
+}
+
 .footer-tagline {
     margin-top: 1.25rem;
     font-size: 0.9rem;
@@ -1721,6 +1744,7 @@ body.dark-cursor .cursor-follower {
     .logo-wrapper { padding: 5px 10px 5px 14px; gap: 8px; }
     .logo-icon { width: 42px; height: 42px; }
     .logo-text { font-size: 0.8rem; }
+    .logo-video { height: 46px; }
     .btn-cta { display: none; }
 
 
@@ -1804,9 +1828,10 @@ body.dark-cursor .cursor-follower {
 
 
 @media (max-width: 480px) {
-      .logo-wrapper { padding: 4px 8px 4px 12px; gap: 6px; }
+    .logo-wrapper { padding: 4px 8px 4px 12px; gap: 6px; }
     .logo-icon { width: 36px; height: 36px; }
     .logo-text { font-size: 0.72rem; }
+    .logo-video { height: 40px; }
 
 
     .works-grid { grid-template-columns: 1fr; gap: 0.5rem; }
