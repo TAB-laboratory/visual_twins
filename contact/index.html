@@ -471,25 +471,31 @@
         var services = Array.from(form.querySelectorAll('input[name="services"]:checked'))
                            .map(function (cb) { return cb.value; }).join(', ') || '—';
 
+        function esc(s) {
+            return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+        }
+
         var text = [
-            '📋 *Новая заявка с сайта Visual Twins*',
+            '📋 <b>Новая заявка с сайта Visual Twins</b>',
             '',
-            '👤 *Имя:* ' + name,
-            '📱 *Контакт:* ' + contact,
-            '🏢 *Бренд:* ' + (brand || '—'),
-            '🎯 *Услуги:* ' + services,
-            '📝 *О проекте:* ' + (details || '—'),
+            '👤 <b>Имя:</b> ' + esc(name),
+            '📱 <b>Контакт:</b> ' + esc(contact),
+            '🏢 <b>Бренд:</b> ' + esc(brand || '—'),
+            '🎯 <b>Услуги:</b> ' + esc(services),
+            '📝 <b>О проекте:</b> ' + esc(details || '—'),
         ].join('\n');
 
         var apiBase = 'https://api.telegram.org/bot' + TG_TOKEN;
 
         try {
             // Отправляем текст
-            await fetch(apiBase + '/sendMessage', {
+            var msgRes = await fetch(apiBase + '/sendMessage', {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify({chat_id: TG_CHAT_ID, text: text, parse_mode: 'Markdown'})
+                body: JSON.stringify({chat_id: TG_CHAT_ID, text: text, parse_mode: 'HTML'})
             });
+            var msgJson = await msgRes.json();
+            if (!msgJson.ok) throw new Error('TG error: ' + msgJson.description);
 
             // Отправляем файлы (если есть)
             if (selectedFiles && selectedFiles.length > 0) {
@@ -522,6 +528,7 @@
             }
 
         } catch (err) {
+            console.error('Форма не отправлена:', err);
             submitBtn.textContent = 'Ошибка — попробуйте ещё раз';
             submitBtn.disabled = false;
             setTimeout(function () {
