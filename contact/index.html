@@ -150,7 +150,28 @@
         .form-textarea {
             resize: vertical;
             min-height: 120px;
-            padding-bottom: 2.6rem;
+        }
+
+        .ref-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            width: 100%;
+            padding: 0.9rem 1rem;
+            border: 1.5px solid var(--border);
+            border-radius: 12px;
+            background: #fff;
+            font-family: var(--font);
+            font-size: 0.95rem;
+            color: #aaa;
+            cursor: pointer;
+            transition: border-color 0.25s, color 0.25s;
+            text-align: left;
+        }
+
+        .ref-btn:hover {
+            border-color: var(--dark);
+            color: var(--dark);
         }
 
         .form-textarea-wrap {
@@ -421,16 +442,18 @@
 
             <div class="form-group">
                 <label class="form-label" for="details">Расскажите о проекте</label>
-                <div class="form-textarea-wrap">
-                    <textarea class="form-textarea" id="details" name="details"
-                              placeholder="Что нужно сделать, сроки, бюджет — любые детали помогут нам подготовиться"></textarea>
-                    <button type="button" class="attach-btn" id="attach-btn" title="Прикрепить файл">
-                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66L9.41 17.41a2 2 0 0 1-2.83-2.83l8.49-8.48"/>
-                        </svg>
-                        Прикрепить файл
-                    </button>
-                </div>
+                <textarea class="form-textarea" id="details" name="details"
+                          placeholder="Что нужно сделать, сроки, бюджет — любые детали помогут нам подготовиться"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Референсы</label>
+                <button type="button" class="ref-btn" id="attach-btn">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66L9.41 17.41a2 2 0 0 1-2.83-2.83l8.49-8.48"/>
+                    </svg>
+                    Прикрепить файл
+                </button>
                 <input type="file" id="file-input" name="files" multiple
                        accept="image/*,video/*,.pdf,.doc,.docx,.zip" style="display:none">
                 <div class="attach-list" id="attach-list"></div>
