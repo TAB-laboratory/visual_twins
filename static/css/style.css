@@ -190,6 +190,7 @@ body.dark-cursor .cursor-follower {
     height: 70px;
     width: auto;
     display: block;
+    border-radius: 40px;
 }
 
 .header-right {
@@ -1803,6 +1804,11 @@ body.dark-cursor .cursor-follower {
 
     .brand-row { gap: 0.5rem; }
 
+
+    /* touch targets */
+    .btn-service { cursor: pointer; min-height: 48px; }
+    .accordion-trigger { cursor: pointer; min-height: 48px; }
+    .accordion-icon { width: 36px; height: 36px; }
 
 
     .photo-collage { height: 50vw; min-height: 220px; }

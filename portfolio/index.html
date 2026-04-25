@@ -236,7 +236,7 @@
         @media (max-width: 600px) {
             .portfolio-grid {
                 grid-template-columns: 1fr;
-                padding: 0 1.5rem 4rem;
+                padding: 0 1.25rem 4rem;
             }
 
             .portfolio-item.wide,
@@ -245,11 +245,19 @@
             }
 
             .portfolio-filters {
-                padding: 0 1.5rem 2rem;
+                padding: 0 1.25rem 2rem;
             }
 
             .portfolio-hero {
-                padding: 130px 1.5rem 3rem;
+                padding: 110px 1.25rem 2.5rem;
+            }
+
+            .portfolio-item { cursor: pointer; }
+            .video-modal-close { cursor: pointer; }
+
+            .portfolio-filters button {
+                min-height: 40px;
+                cursor: pointer;
             }
         }
     </style>
@@ -261,7 +269,6 @@
 <header class="header">
     <a href="../" class="logo-video-link">
         <video class="logo-video" autoplay muted playsinline>
-            <source src="../static/video/logo-animation.webm" type="video/webm">
             <source src="../static/video/logo-animation.mp4" type="video/mp4">
         </video>
     </a>
