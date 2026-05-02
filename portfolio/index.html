@@ -235,13 +235,14 @@
 
         @media (max-width: 600px) {
             .portfolio-grid {
-                grid-template-columns: 1fr;
-                padding: 0 1.25rem 4rem;
+                grid-template-columns: 1fr 1fr;
+                padding: 0 1rem 4rem;
+                gap: 0.5rem;
             }
 
             .portfolio-item.wide,
             .portfolio-item[style*="span 3"] {
-                grid-column: span 1 !important;
+                grid-column: span 2 !important;
             }
 
             .portfolio-filters {
