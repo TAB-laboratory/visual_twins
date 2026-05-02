@@ -59,30 +59,28 @@ button {
     position: fixed;
     top: 0;
     left: 0;
-    width: 14px;
-    height: 14px;
-    background: var(--dark);
+    width: 10px;
+    height: 10px;
+    background: #000;
     border-radius: 50%;
     pointer-events: none;
     z-index: 9999;
     transform: translate(-50%, -50%);
     transition: width 0.25s var(--ease), height 0.25s var(--ease), background 0.25s;
-    mix-blend-mode: difference;
 }
 
 .cursor-follower {
     position: fixed;
     top: 0;
     left: 0;
-    width: 40px;
-    height: 40px;
-    border: 1.5px solid var(--dark);
+    width: 36px;
+    height: 36px;
+    border: 1.5px solid rgba(0,0,0,0.6);
     border-radius: 50%;
     pointer-events: none;
     z-index: 9998;
     transform: translate(-50%, -50%);
     transition: transform 0.12s var(--ease), width 0.3s var(--ease), height 0.3s var(--ease), border-color 0.25s;
-    mix-blend-mode: difference;
 }
 
 body.cursor-hover .cursor {

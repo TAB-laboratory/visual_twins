@@ -530,6 +530,7 @@
         <button class="video-modal-close" id="modalClose">✕</button>
         <div class="video-modal-inner">
             <video id="modalVideo" controls playsinline></video>
+            <img id="modalImg" src="" alt="" style="display:none;max-width:100%;max-height:90vh;object-fit:contain;border-radius:16px;display:none;">
         </div>
     </div>
 </main>
@@ -587,12 +588,21 @@
 (function () {
     var modal      = document.getElementById('videoModal');
     var modalVideo = document.getElementById('modalVideo');
+    var modalImg   = document.getElementById('modalImg');
     var closeBtn   = document.getElementById('modalClose');
 
-    function openModal(src) {
-        modalVideo.src = src;
-        modalVideo.load();
-        modalVideo.play();
+    function openModal(src, isImage) {
+        if (isImage) {
+            modalVideo.style.display = 'none';
+            modalImg.style.display = 'block';
+            modalImg.src = src;
+        } else {
+            modalImg.style.display = 'none';
+            modalVideo.style.display = '';
+            modalVideo.src = src;
+            modalVideo.load();
+            modalVideo.play();
+        }
         modal.classList.add('active');
         document.body.style.overflow = 'hidden';
     }
@@ -601,13 +611,18 @@
         modal.classList.remove('active');
         modalVideo.pause();
         modalVideo.src = '';
+        modalImg.src = '';
+        modalImg.style.display = 'none';
+        modalVideo.style.display = '';
         document.body.style.overflow = '';
     }
 
     document.querySelectorAll('.portfolio-item').forEach(function (item) {
         item.addEventListener('click', function () {
             var previewVideo = item.querySelector('.portfolio-item-inner video');
-            if (previewVideo) openModal(previewVideo.src);
+            var previewImg   = item.querySelector('.portfolio-item-inner img');
+            if (previewVideo) openModal(previewVideo.src, false);
+            else if (previewImg) openModal(previewImg.src, true);
         });
     });
 
