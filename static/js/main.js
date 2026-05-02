@@ -118,10 +118,6 @@ document.addEventListener('DOMContentLoaded', () => {
             scrollTrigger: {trigger: '.our-works', start: 'top 80%'},
             opacity: 0, y: 30, duration: 0.8, ease: 'power3.out'
         });
-        gsap.from('.work-card', {
-            scrollTrigger: {trigger: '.works-grid', start: 'top 85%'},
-            opacity: 0, y: 60, duration: 0.8, stagger: 0.12, ease: 'power3.out'
-        });
 
         document.querySelectorAll('.service-section').forEach(sec => {
             gsap.from(sec.querySelector('.service-title'), {
@@ -141,20 +137,20 @@ document.addEventListener('DOMContentLoaded', () => {
         const brandRow = document.querySelector('.brand-row');
         if (brandRow) {
             gsap.from('.brand-item', {
-                scrollTrigger: {trigger: brandRow, start: 'top 82%'},
-                opacity: 0, y: 30, duration: 0.6, stagger: 0.12, ease: 'power3.out'
+                scrollTrigger: {trigger: brandRow, start: 'top 85%'},
+                opacity: 0, y: 40, duration: 0.8,
+                stagger: { each: 0.12 },
+                ease: 'power3.out'
             });
         }
 
         const videoGrid = document.querySelector('.video-grid');
         if (videoGrid) {
-            gsap.set('.vg-card', {opacity: 0, scale: 0.82, y: 20});
-            gsap.to('.vg-card', {
-                scrollTrigger: {trigger: videoGrid, start: 'top 82%'},
-                opacity: 1, scale: 1, duration: 0.45,
-                stagger: {each: 0.09, from: 'start'},
-                ease: 'back.out(1.4)',
-                clearProps: 'transform'
+            gsap.from('.vg-card', {
+                scrollTrigger: {trigger: videoGrid, start: 'top 85%'},
+                opacity: 0, y: 40, duration: 0.8,
+                stagger: { each: 0.09 },
+                ease: 'power3.out'
             });
         }
 
@@ -326,47 +322,5 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    const vgCards = document.querySelectorAll('.vg-card');
-    if (vgCards.length) {
-        const videoPool = [
-            './static/video/reels-fscr1.mp4',
-            './static/video/reels-fscr2.mp4',
-            './static/video/reels-6.mp4',
-            './static/video/reels-8.mp4',
-            './static/video/reels-9.mp4',
-            './static/video/work-008.mp4',
-            './static/video/work-018.mp4',
-            './static/video/work-037.mp4',
-            './static/video/work-039.mp4',
-            './static/video/work-045.mp4',
-            './static/video/work-046.mp4',
-            './static/video/work-048.mp4',
-            './static/video/work-051.mp4',
-            './static/video/work-052.mp4',
-        ];
-
-        let poolPtr = 7;
-
-        function cycleCard(card) {
-            const vid = card.querySelector('video');
-            if (!vid) return;
-            vid.style.transition = 'opacity 0.5s ease';
-            vid.style.opacity = '0';
-            setTimeout(() => {
-                const src = vid.querySelector('source');
-                src.src = videoPool[poolPtr % videoPool.length];
-                poolPtr++;
-                vid.load();
-                vid.play().catch(() => {});
-                vid.style.opacity = '1';
-            }, 520);
-        }
-
-        let cardPtr = 0;
-        setInterval(() => {
-            cycleCard(vgCards[cardPtr % vgCards.length]);
-            cardPtr++;
-        }, 2200);
-    }
 
 });
