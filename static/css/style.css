@@ -1783,7 +1783,7 @@ body.dark-cursor .cursor-follower {
     .btn-cta { display: none; }
 
     /* Hero */
-    .hero { padding: 96px 1.25rem 3rem; }
+    .hero { padding: 96px 1.25rem 6rem; }
     .scroll-indicator { display: none; }
 
     /* About */
@@ -1847,7 +1847,7 @@ body.dark-cursor .cursor-follower {
     .process-step { grid-template-columns: 40px 1fr; }
 
     /* Awards */
-    .awards-section { padding: 3rem 1.25rem !important; }
+    .awards-section { min-height: unset !important; padding: 5rem 1.25rem 6rem !important; }
     .awards-inner { grid-template-columns: 1fr !important; gap: 2rem !important; }
 
     /* Team */

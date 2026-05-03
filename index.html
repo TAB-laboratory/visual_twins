@@ -76,7 +76,6 @@
                     <a href="./contact/" class="btn-solid">Начать проект</a>
                 </div>
             </div>
-
         </section>
 
 
@@ -996,7 +995,8 @@
     let simW,simH,dyeW,dyeH,velocity,dye,pressure,divergence,curlFbo,cssW=1,cssH=1;
     function initFBOs(){const ar=canvas.width/canvas.height;simW=Math.round(FCFG.SIM_RES*ar);simH=FCFG.SIM_RES;dyeW=Math.round(FCFG.DYE_RES*ar);dyeH=FCFG.DYE_RES;velocity=dbl(simW,simH,fRG.internalFormat,fRG.format,LIN);dye=dbl(dyeW,dyeH,fRGBA.internalFormat,fRGBA.format,LIN);pressure=dbl(simW,simH,fR.internalFormat,fR.format,gl.NEAREST);divergence=tex(simW,simH,fR.internalFormat,fR.format,gl.NEAREST);curlFbo=tex(simW,simH,fR.internalFormat,fR.format,gl.NEAREST);}
 
-    function resizeCanvas(){const dpr=Math.min(devicePixelRatio||1,2);const r=hero.getBoundingClientRect();cssW=r.width;cssH=r.height;const w=Math.floor(r.width*dpr);const h=Math.floor(r.height*dpr);if(canvas.width!==w||canvas.height!==h){canvas.width=w;canvas.height=h;initFBOs();}}
+    const heroButtons=hero.querySelector('.hero-buttons');
+    function resizeCanvas(){const dpr=Math.min(devicePixelRatio||1,2);const isMobile=window.innerWidth<=768;if(isMobile&&heroButtons){const heroRect=hero.getBoundingClientRect();const btnRect=heroButtons.getBoundingClientRect();const visH=Math.max(50,btnRect.top-heroRect.top);canvas.style.height=visH+'px';}else{canvas.style.height='';}const r=canvas.getBoundingClientRect();cssW=r.width;cssH=r.height;const w=Math.floor(r.width*dpr);const h=Math.floor(r.height*dpr);if(canvas.width!==w||canvas.height!==h){canvas.width=w;canvas.height=h;initFBOs();}}
 
     /* Splat */
     let hue=0;
@@ -1052,9 +1052,13 @@
     });
 
     hero.addEventListener('touchmove',e=>{
-        e.preventDefault();
+        const isMobile=window.innerWidth<=768;
+        const btnTop=isMobile&&heroButtons?heroButtons.getBoundingClientRect().top:Infinity;
+        const touchInCanvas=Array.from(e.changedTouches).some(t=>t.clientY<btnTop);
+        if(!isMobile||touchInCanvas) e.preventDefault();
         const r=hero.getBoundingClientRect();
         Array.from(e.changedTouches).forEach(t=>{
+            if(isMobile&&t.clientY>=btnTop) return;
             const id=t.identifier,lx=t.clientX-r.left,ly=t.clientY-r.top;
             const p=pts[id]||(pts[id]={x:lx,y:ly,vx:0,vy:0});
             p.vx+=(clamp(lx-p.x,6)-p.vx)*0.06;

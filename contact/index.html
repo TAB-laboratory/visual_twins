@@ -532,28 +532,32 @@
         var apiBase = 'https://api.telegram.org/bot' + TG_TOKEN;
 
         try {
-            // Отправляем текст
-            var msgRes = await fetch(apiBase + '/sendMessage', {
-                method: 'POST',
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify({chat_id: TG_CHAT_ID, text: text, parse_mode: 'HTML'})
-            });
-            var msgJson = await msgRes.json();
-            if (!msgJson.ok) throw new Error('TG error: ' + msgJson.description);
+            for (var ci = 0; ci < TG_CHAT_IDS.length; ci++) {
+                var chatId = TG_CHAT_IDS[ci];
 
-            // Отправляем файлы (если есть)
-            if (selectedFiles && selectedFiles.length > 0) {
-                for (var i = 0; i < selectedFiles.length; i++) {
-                    var fd = new FormData();
-                    fd.append('chat_id', TG_CHAT_ID);
-                    var file = selectedFiles[i];
-                    var isVideo = file.type.startsWith('video/');
-                    var isPhoto = file.type.startsWith('image/');
-                    var endpoint = isVideo ? '/sendVideo' : isPhoto ? '/sendPhoto' : '/sendDocument';
-                    var field    = isVideo ? 'video'      : isPhoto ? 'photo'      : 'document';
-                    if (i === 0) fd.append('caption', '📎 Файлы к заявке от ' + name);
-                    fd.append(field, file);
-                    await fetch(apiBase + endpoint, {method: 'POST', body: fd});
+                // Отправляем текст
+                var msgRes = await fetch(apiBase + '/sendMessage', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({chat_id: chatId, text: text, parse_mode: 'HTML'})
+                });
+                var msgJson = await msgRes.json();
+                if (!msgJson.ok) throw new Error('TG error: ' + msgJson.description);
+
+                // Отправляем файлы (если есть)
+                if (selectedFiles && selectedFiles.length > 0) {
+                    for (var i = 0; i < selectedFiles.length; i++) {
+                        var fd = new FormData();
+                        fd.append('chat_id', chatId);
+                        var file = selectedFiles[i];
+                        var isVideo = file.type.startsWith('video/');
+                        var isPhoto = file.type.startsWith('image/');
+                        var endpoint = isVideo ? '/sendVideo' : isPhoto ? '/sendPhoto' : '/sendDocument';
+                        var field    = isVideo ? 'video'      : isPhoto ? 'photo'      : 'document';
+                        if (i === 0) fd.append('caption', '📎 Файлы к заявке от ' + name);
+                        fd.append(field, file);
+                        await fetch(apiBase + endpoint, {method: 'POST', body: fd});
+                    }
                 }
             }
 
